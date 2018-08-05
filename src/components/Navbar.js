@@ -1,6 +1,6 @@
 import React from 'react'
 import Link from 'gatsby-link'
-
+import Icon from './Icon'
 import github from '../img/github-icon.svg'
 import twitter from '../img/twitter-icon.svg'
 import logo from '../img/logo.svg'
@@ -21,26 +21,16 @@ const Navbar = () => (
         </Link>
       </div>
       <div className="navbar-end">
-        <a
-          className="navbar-item"
-          href="https://twitter.com/Butter_Bridge"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <span className="icon">
-            <img src={twitter} alt="Twitter" />
-          </span>
-        </a>
-        <a
-          className="navbar-item"
-          href="https://github.com/ButterBridge"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <span className="icon">
-            <img src={github} alt="Github" />
-          </span>
-        </a>
+        <Icon 
+            link="https://twitter.com/Butter_Bridge"
+            src={twitter}
+            alt="Twitter"
+        />
+        <Icon 
+            link="https://github.com/ButterBridge"
+            src={github}
+            alt="Github"
+        />
       </div>
     </div>
   </nav>
