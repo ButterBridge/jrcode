@@ -1,19 +1,12 @@
 ---
 templateKey: 'about-page'
 path: /about
-title: About our values
 ---
-### Shade-grown coffee
-Coffee is a small tree or shrub that grows in the forest understory in its wild form, and traditionally was grown commercially under other trees that provided shade. The forest-like structure of shade coffee farms provides habitat for a great number of migratory and resident species.
+### The day job
+I teach at Manchester's coding bootcamp, Northcoders. We put about ten highly capable junior devs out across the north of the UK every two weeks. You can read more about Northcoders [here](https://northcoders.com/).
 
-### Single origin
-Single-origin coffee is coffee grown within a single known geographic origin. Sometimes, this is a single farm or a specific collection of beans from a single country. The name of the coffee is then usually the place it was grown to whatever degree available.
+### I like messing around with...
+All things JavaScript, but mainly React on the front-end (this site is built with [gatsby](https://www.gatsbyjs.org/)) and Node.js at the back (though this one is on [netlify](https://www.netlify.com/). I've got to know [firebase](https://firebase.google.com/) pretty well too, but mostly PSQL and MongoDB for databases. I want to start bringing machine learning to my projects so currently working on assimilating some Python with the hope of getting on top of [tensorflow](https://www.tensorflow.org/).
 
-### Sustainable farming
-Sustainable agriculture is farming in sustainable ways based on an understanding of ecosystem services, the study of relationships between organisms and their environment. What grows where and how it is grown are a matter of choice and careful consideration for nature and communities.
-
-### Direct sourcing
-Direct trade is a form of sourcing practiced by some coffee roasters. Advocates of direct trade practices promote direct communication and price negotiation between buyer and farmer, along with systems that encourage and incentivize quality.
-
-### Reinvest profits
-We want to truly empower the communities that bring amazing coffee to you. That’s why we reinvest 20% of our profits into farms, local businesses and schools everywhere our coffee is grown. You can see the communities grow and learn more about coffee farming on our blog.
+### ...if I'm not...
+Hanging around with my awesome family, playing computer games, watching films, making music, reading, cooking or any of those other things that make me sound like a real human being.
