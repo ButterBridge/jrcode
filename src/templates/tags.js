@@ -1,7 +1,7 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 import Link from 'gatsby-link';
-import { ListItem, Main, Container, Detail, Subtitle, List } from '../styled-components';
+import { ListItem, Main, Container, Detail, Subtitle, List, Opener} from '../styled-components';
 
 class TagRoute extends React.Component {
   render() {
