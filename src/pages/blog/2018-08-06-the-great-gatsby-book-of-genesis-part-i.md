@@ -1,9 +1,10 @@
 ---
 templateKey: 'blog-post'
 title: 'The Gatsby Book of Genesis Part I'
-date: 2018-08-06T16:55:10.000Z
+date: '2018-08-06T16:55:10.000Z'
 description: >-
   How I learned to stop worrying about working from a starter kit and start working from a starter kit.
+imageLocation: '2018-08-06-gatsby-genesis-no-navbar'
 tags:
   - gatsby
   - refactoring
