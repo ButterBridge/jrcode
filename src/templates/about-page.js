@@ -4,7 +4,7 @@ import Content, { HTMLContent } from '../components/Content'
 import { Main, Container, Title } from '../styled-components';
 
 export const AboutPageTemplate = ({ title, content, contentComponent }) => {
-  const PageContent = contentComponent || Content
+  const PageContent = contentComponent || Content;
 
   return (
     <Main>
@@ -12,7 +12,7 @@ export const AboutPageTemplate = ({ title, content, contentComponent }) => {
         <Title>
             {title}
         </Title>
-        <PageContent className="content" content={content} />
+        <PageContent content={content} />
       </Container>
     </Main>
   )
@@ -25,7 +25,7 @@ AboutPageTemplate.propTypes = {
 }
 
 const AboutPage = ({ data }) => {
-  const { markdownRemark: post } = data
+  const { markdownRemark: post } = data;
 
   return (
     <AboutPageTemplate
@@ -40,7 +40,7 @@ AboutPage.propTypes = {
   data: PropTypes.object.isRequired,
 }
 
-export default AboutPage
+export default AboutPage;
 
 export const aboutPageQuery = graphql`
   query AboutPage($id: String!) {

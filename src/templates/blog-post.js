@@ -4,6 +4,7 @@ import { kebabCase } from 'lodash'
 import Helmet from 'react-helmet'
 import Link from 'gatsby-link'
 import Content, { HTMLContent } from '../components/Content'
+import { Main, Container, Title, Opener, Subtitle, Meta, List, ListItem } from '../styled-components';
 
 export const BlogPostTemplate = ({
   content,
@@ -16,32 +17,28 @@ export const BlogPostTemplate = ({
   const PostContent = contentComponent || Content
 
   return (
-    <section className="section">
+    <Main>
       {helmet || ''}
-      <div className="container content">
-        <div className="columns">
-          <div className="column is-10 is-offset-1">
-            <h1 className="title is-size-2 has-text-weight-bold is-bold-light">
+      <Container>
+            <Title>
               {title}
-            </h1>
-            <p>{description}</p>
+            </Title>
+            <Opener>{description}</Opener>
             <PostContent content={content} />
             {tags && tags.length ? (
-              <div style={{ marginTop: `4rem` }}>
-                <h4>Tags</h4>
-                <ul className="taglist">
+              <Meta>
+                <Subtitle>Tags</Subtitle>
+                <List>
                   {tags.map(tag => (
-                    <li key={tag + `tag`}>
+                    <ListItem key={tag}>
                       <Link to={`/tags/${kebabCase(tag)}/`}>{tag}</Link>
-                    </li>
+                    </ListItem>
                   ))}
-                </ul>
-              </div>
+                </List>
+              </Meta>
             ) : null}
-          </div>
-        </div>
-      </div>
-    </section>
+      </Container>
+    </Main>
   )
 }
 
