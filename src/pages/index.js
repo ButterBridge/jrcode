@@ -17,7 +17,6 @@ export default class IndexPage extends React.Component {
           {posts
             .map(({ node: post }) => (
               <Content
-                className="content"
                 key={post.id}
               >
                 <Link to={post.fields.slug}>
