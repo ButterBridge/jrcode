@@ -14,9 +14,9 @@ const TagsPage = ({
         <List>
         {group.map(tag => (
             <ListItem key={tag.fieldValue}>
-            <Link to={`/tags/${kebabCase(tag.fieldValue)}/`}>
-                <Opener>{tag.fieldValue} ({tag.totalCount})</Opener>
-            </Link>
+                <Link to={`/tags/${kebabCase(tag.fieldValue)}/`}>
+                    <Opener>{tag.fieldValue} ({tag.totalCount})</Opener>
+                </Link>
             </ListItem>
         ))}
         </List>
