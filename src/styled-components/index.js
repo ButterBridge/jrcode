@@ -91,5 +91,5 @@ export const IconHolder = styled.img`
 export const HeadLetter = styled.span`
     font-family: ${({font}) => `'${font}'`};
     padding: 1px;
-    background-color: yellow;
+    background-color: ${({colour}) => colour};
 `
