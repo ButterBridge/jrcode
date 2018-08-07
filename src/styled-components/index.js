@@ -26,8 +26,9 @@ export const Container = styled.div`
 `
 
 export const Meta = styled.div`
-    border: 1px solid blue;
+    border-radius: 1em;
     margin: 1px;
+    background-color: ${({colour}) => colour};
 `
 
 export const List = styled.ul`
@@ -55,6 +56,8 @@ export const Title = styled.h3`
 
 export const Subtitle = styled.h4`
     font-size: 1.5em;
+    margin: 1em;
+    padding: 1em;
 `
 
 export const Opener = styled.p`

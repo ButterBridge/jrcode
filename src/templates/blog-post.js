@@ -34,7 +34,9 @@ console.log(sampleColour);
         <PostContent content={content} />
         <Image images={images} caption={caption}/>
         {tags && tags.length ? (
-            <Meta>
+            <Meta
+                colour={sample(colours)}
+            >
             <Subtitle>Tags</Subtitle>
             <List>
                 {tags.map(tag => (
