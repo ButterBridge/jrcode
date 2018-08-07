@@ -34,6 +34,12 @@ module.exports = {
         modulePath: `${__dirname}/src/cms/cms.js`,
       },
     },
+    {
+        resolve: `gatsby-plugin-typography`,
+        options: {
+          pathToConfigModule: `src/utils/typography`,
+        },
+    },
     'gatsby-plugin-netlify', // make sure to keep it last in the array
   ],
 }
