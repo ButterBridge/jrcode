@@ -7,37 +7,34 @@ import twitter from '../img/twitter-icon.svg'
 import { NavBar, Container, NavBarItem } from '../styled-components';
 
 const Navbar = () => (
-        <Container>
-    <NavBar>
+    <div className="navbar">
+        <NavBar>
             <NavBarItem>
-                <Heading />
+                <Link to="/">
+                    Home
+                </Link>
             </NavBarItem>
             <NavBarItem>
-            <Link to="/">
-            Home
-            </Link>
+                <Link to="/about">
+                    About
+                </Link>
             </NavBarItem>
             <NavBarItem>
-            <Link to="/about">
-            About
-            </Link>
+                <Icon 
+                    link="https://twitter.com/Butter_Bridge"
+                    src={twitter}
+                    alt="Twitter"
+                />
             </NavBarItem>
             <NavBarItem>
-            <Icon 
-                link="https://twitter.com/Butter_Bridge"
-                src={twitter}
-                alt="Twitter"
-            />
+                <Icon 
+                    link="https://github.com/ButterBridge"
+                    src={github}
+                    alt="Github"
+                />
             </NavBarItem>
-            <NavBarItem>
-            <Icon 
-                link="https://github.com/ButterBridge"
-                src={github}
-                alt="Github"
-            />
-            </NavBarItem>
-    </NavBar>
-        </Container>
+        </NavBar>
+    </div>
 )
 
 export default Navbar

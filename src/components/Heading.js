@@ -21,7 +21,7 @@ class Heading extends Component {
 
     render() {
         return (
-            <div>
+            <div className="heading">
                 {['J', 'R', '→', 'J', 'S'].map((char, i) => {
                     return <HeadLetter
                         key={i}

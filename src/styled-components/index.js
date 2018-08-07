@@ -73,7 +73,6 @@ export const Detail = styled.p`
 `
 
 export const NavBar = styled.nav`
-    max-height: 2rem;
     min-width: 100%;
     position: relative;
     display: flex;
@@ -92,6 +91,5 @@ export const IconHolder = styled.img`
 export const HeadLetter = styled.span`
     font-family: ${({font}) => `'${font}'`};
     padding: 1px;
-    width: 5%;
-    height: 5%;
+    background-color: yellow;
 `

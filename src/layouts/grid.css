@@ -1,0 +1,18 @@
+.grid {
+    display: grid;
+    grid-template-columns: 100px;
+}
+
+.heading {
+    grid-column: 1 / 2;
+    display: grid;
+    grid-template-columns: repeat(5, 20%);
+}
+
+.navbar {
+    grid-area : 1 / 2 / 1 / 2;
+}
+
+.content {
+    grid-area: 2 / 2 / 2 / 2;
+}

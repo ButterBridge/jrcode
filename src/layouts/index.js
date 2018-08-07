@@ -1,14 +1,20 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
-
 import Navbar from '../components/Navbar'
+import './grid.css';
+import Heading from '../components/Heading';
 
 const TemplateWrapper = ({ children }) => (
   <div>
     <Helmet title="JR->JS" />
-    <Navbar />
-    <div>{children()}</div>
+    <div className="grid">
+        <Heading />
+        <Navbar />
+        <div className="content">
+            {children()}
+        </div>
+    </div>
   </div>
 )
 
