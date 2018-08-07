@@ -1,12 +1,7 @@
 import React, { Component } from 'react';
 import {sample} from 'lodash';
 import { HeadLetter } from '../styled-components';
-/*
-@import url('https://fonts.googleapis.com/css?family=Gloria+Hallelujah|Hanalei+Fill|MedievalSharp|Pacifico|Ruslan+Display'
-*/
-
-const fonts = ['Gloria Hallelujah', 'Hanalei Fill', 'MedievalSharp', 'Pacifico', 'Ruslan Display'];
-const colours = ['#FF595E', '#8AC926', '#1982C4', '#E0CA3C', '#6A4C93']
+import {colours, fonts} from '../style';
 
 class Heading extends Component {
     state = {
