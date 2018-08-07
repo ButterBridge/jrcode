@@ -22,9 +22,7 @@ export const Main = styled.section`
 `
 
 export const Container = styled.div`
-    border: 1px solid green;
-    margin: 1px;
-    padding: 1em;
+    margin: 1em;
 `
 
 export const Meta = styled.div`
