@@ -1,9 +1,5 @@
 import styled, {injectGlobal} from 'styled-components';
 
-// injectGlobal`
-//     @import url('https://fonts.googleapis.com/css?family=Gloria+Hallelujah|Hanalei+Fill|MedievalSharp|Pacifico|Ruslan+Display'
-// `
-
 export const Content = styled.div`
     border: 1px solid #eaecee;
     background: whitesmoke;
@@ -19,7 +15,10 @@ export const Content = styled.div`
 `
 
 export const Main = styled.section`
-    border: 1px solid red;
+    margin: 1em;
+    border-top: 1em solid ${({colour}) => colour};
+    border-right: 1em solid ${({colour}) => colour};
+    border-radius: 15px;
 `
 
 export const Container = styled.div`

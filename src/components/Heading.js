@@ -34,14 +34,13 @@ class Heading extends Component {
     }
 
     changeFont = targetindex => {
-        const {colours, fonts} = this.state;
         this.setState({
-            fonts : fonts.map((font, index) => {
+            fonts : this.state.fonts.map((font, index) => {
                 return index === targetindex ?
                     sample(fonts) :
                     font
             }),
-            colours : colours.map((font, index) => {
+            colours : this.state.colours.map((font, index) => {
                 return index === targetindex ?
                     sample(colours) :
                     font

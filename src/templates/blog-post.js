@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { kebabCase } from 'lodash';
+import { kebabCase, sample } from 'lodash';
 import Helmet from 'react-helmet';
 import Link from 'gatsby-link';
 import Content, { HTMLContent } from '../components/Content';
-import { Main, Container, Title, Opener, Subtitle, Meta, List, ListItem } from '../styled-components';
 import Image from '../components/Image';
+import { Main, Container, Title, Opener, Subtitle, Meta, List, ListItem } from '../styled-components';
+import {colours} from '../style';
 
 export const BlogPostTemplate = ({
   content,
@@ -18,9 +19,12 @@ export const BlogPostTemplate = ({
   caption
 }) => {
   const PostContent = contentComponent || Content;
-
+    const sampleColour = sample(colours);
+console.log(sampleColour);
   return (
-    <Main>
+    <Main
+        colour={sample(colours)}
+    >
       {helmet || ''}
       <Container>
         <Title>
