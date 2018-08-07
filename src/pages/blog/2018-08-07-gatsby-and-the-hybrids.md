@@ -4,7 +4,7 @@ title: 'Gatsby and the Hybrids'
 date: '2018-08-07T21:24:10.000Z'
 description: >-
   Gatsby, the mad scientist, creates a hybridised component - because he can.
-caption: Pitching itself as _the_ static site generator...
+caption: Hot stuff
 tags:
   - gatsby
   - react
