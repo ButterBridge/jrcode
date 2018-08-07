@@ -21,6 +21,7 @@ export const Main = styled.section`
 export const Container = styled.div`
     border: 1px solid green;
     margin: 1px;
+    padding: 1em;
 `
 
 export const Meta = styled.div`
@@ -69,4 +70,20 @@ export const Paragraph = styled.p`
 
 export const Detail = styled.p`
     font-size: 0.75em;
+`
+
+export const NavBar = styled.nav`
+    max-height: 1.1rem;
+    min-width: 100%;
+    position: relative;
+    display: flex;
+    align-items: left;
+`
+
+export const NavBarItem = styled.span`
+    padding: 2px;
+`
+
+export const IconHolder = styled.img`
+    height: 1rem;
 `

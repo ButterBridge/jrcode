@@ -1,18 +1,19 @@
 import React from 'react'
 import PT from 'prop-types'
+import { IconHolder } from '../styled-components';
 
 function Icon ({link, ...imgProps}) {
     return (
-        <a
-          className="navbar-item"
-          href={link}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <span className="icon">
-            <img {...imgProps} />
-          </span>
-        </a>
+        <span>
+            <a
+            href={link}
+            target="_blank"
+            rel="noopener noreferrer"
+            >
+                <IconHolder {...imgProps} />
+            </a>
+
+        </span>
     )
 }
 

@@ -3,34 +3,37 @@ import Link from 'gatsby-link'
 import Icon from './Icon'
 import github from '../img/github-icon.svg'
 import twitter from '../img/twitter-icon.svg'
+import { NavBar, Container, NavBarItem } from '../styled-components';
 
 const Navbar = () => (
-  <nav className="navbar is-transparent">
-    <div className="container">
-      <div className="navbar-brand">
-        <Link to="/" className="navbar-item">
-          Home
-        </Link>
-      </div>
-      <div className="navbar-start">
-        <Link className="navbar-item" to="/about">
-          About
-        </Link>
-      </div>
-      <div className="navbar-end">
-        <Icon 
-            link="https://twitter.com/Butter_Bridge"
-            src={twitter}
-            alt="Twitter"
-        />
-        <Icon 
-            link="https://github.com/ButterBridge"
-            src={github}
-            alt="Github"
-        />
-      </div>
-    </div>
-  </nav>
+        <Container>
+    <NavBar>
+            <NavBarItem>
+            <Link to="/">
+            Home
+            </Link>
+            </NavBarItem>
+            <NavBarItem>
+            <Link to="/about">
+            About
+            </Link>
+            </NavBarItem>
+            <NavBarItem>
+            <Icon 
+                link="https://twitter.com/Butter_Bridge"
+                src={twitter}
+                alt="Twitter"
+            />
+            </NavBarItem>
+            <NavBarItem>
+            <Icon 
+                link="https://github.com/ButterBridge"
+                src={github}
+                alt="Github"
+            />
+            </NavBarItem>
+    </NavBar>
+        </Container>
 )
 
 export default Navbar
