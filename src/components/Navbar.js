@@ -4,19 +4,19 @@ import Icon from './Icon'
 import Heading from './Heading';
 import github from '../img/github-icon.svg'
 import twitter from '../img/twitter-icon.svg'
-import { NavBar, Container, NavBarItem } from '../styled-components';
+import { NavBar, Container, NavBarItem, Opener } from '../styled-components';
 
 const Navbar = () => (
     <div className="navbar">
         <NavBar>
             <NavBarItem>
                 <Link to="/">
-                    Home
+                    <Opener>Home</Opener>
                 </Link>
             </NavBarItem>
             <NavBarItem>
                 <Link to="/about">
-                    About
+                    <Opener>About</Opener>
                 </Link>
             </NavBarItem>
             <NavBarItem>

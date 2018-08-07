@@ -19,11 +19,11 @@ export const BlogPostTemplate = ({
   caption
 }) => {
   const PostContent = contentComponent || Content;
-    const sampleColour = sample(colours);
-console.log(sampleColour);
+  const sampleColour = sample(colours);
+
   return (
     <Main
-        colour={sample(colours)}
+        colour={sampleColour}
     >
       {helmet || ''}
       <Container>
@@ -35,12 +35,12 @@ console.log(sampleColour);
         <Image images={images} caption={caption}/>
         {tags && tags.length ? (
             <Meta
-                colour={sample(colours)}
+                colour={sampleColour}
             >
             <Subtitle>Tags</Subtitle>
             <List>
                 {tags.map(tag => (
-                <ListItem key={tag}>
+                <ListItem key={tag} colour={sampleColour}>
                     <Link to={`/tags/${kebabCase(tag)}/`}>{tag}</Link>
                 </ListItem>
                 ))}

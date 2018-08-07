@@ -32,22 +32,21 @@ export const Meta = styled.div`
 `
 
 export const List = styled.ul`
-    border: 1px solid #eaecee;
-    background: whitesmoke;
-    padding: 2em 4em;
-    list-style: none;
-    margin-left: 0;
-    margin-right: 1.5rem;
-    margin-top: 1.5rem;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: left;
-    align-items: center
+    
 `
 
 export const ListItem = styled.li`
     border: 3px;
-    display: list-item block;
+    list-style-type: none;
+    display: inline-block;
+    background-color: white;
+    padding: 5px;
+    border-radius: 5px;
+    margin-right: 10px;
+
+    a {
+        color: ${({colour}) => colour};
+    }
 `
 
 export const Title = styled.h3`
@@ -56,12 +55,14 @@ export const Title = styled.h3`
 
 export const Subtitle = styled.h4`
     font-size: 1.5em;
-    margin: 1em;
-    padding: 1em;
+    margin: 0.5em;
+    padding: 0.5em;
 `
 
-export const Opener = styled.p`
+export const Opener = styled.h6`
     font-size: 1.2em;
+    margin: 0;
+    padding: 0.5em;
 `
 
 export const Paragraph = styled.p`
@@ -77,10 +78,11 @@ export const NavBar = styled.nav`
     position: relative;
     display: flex;
     align-items: left;
+    padding-left: 1em;
 `
 
 export const NavBarItem = styled.span`
-    padding: 2px;
+    padding: 0.5px;
 `
 
 export const IconHolder = styled.img`
