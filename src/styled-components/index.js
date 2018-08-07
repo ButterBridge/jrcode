@@ -1,4 +1,8 @@
-import styled from 'styled-components';
+import styled, {injectGlobal} from 'styled-components';
+
+// injectGlobal`
+//     @import url('https://fonts.googleapis.com/css?family=Gloria+Hallelujah|Hanalei+Fill|MedievalSharp|Pacifico|Ruslan+Display'
+// `
 
 export const Content = styled.div`
     border: 1px solid #eaecee;
@@ -48,10 +52,6 @@ export const ListItem = styled.li`
     display: list-item block;
 `
 
-export const Heading = styled.h1`
-    font-size: 3em;
-`
-
 export const Title = styled.h3`
     font-size: 2em;
 `
@@ -73,7 +73,7 @@ export const Detail = styled.p`
 `
 
 export const NavBar = styled.nav`
-    max-height: 1.1rem;
+    max-height: 2rem;
     min-width: 100%;
     position: relative;
     display: flex;
@@ -86,4 +86,12 @@ export const NavBarItem = styled.span`
 
 export const IconHolder = styled.img`
     height: 1rem;
+    margin: 0;
+`
+
+export const HeadLetter = styled.span`
+    font-family: ${({font}) => `'${font}'`};
+    padding: 1px;
+    width: 5%;
+    height: 5%;
 `

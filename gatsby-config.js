@@ -40,6 +40,18 @@ module.exports = {
           pathToConfigModule: `src/utils/typography`,
         },
     },
+    {
+        resolve: `gatsby-plugin-google-fonts`,
+        options: {
+          fonts: [
+            `Gloria+Hallelujah`,
+            `Hanalei+Fill`,
+            `MedievalSharp`,
+            `Pacifico`,
+            `Rusland-Display`
+          ]
+        }
+    },
     'gatsby-plugin-netlify', // make sure to keep it last in the array
   ],
 }

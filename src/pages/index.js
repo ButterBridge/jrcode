@@ -11,9 +11,6 @@ export default class IndexPage extends React.Component {
     return (
       <Main>
         <Container>
-          <Content>
-            <Heading>JR->JS</Heading>
-          </Content>
           {posts
             .map(({ node: post }) => (
               <Content
