@@ -14,7 +14,8 @@ export const BlogPostTemplate = ({
   tags,
   title,
   helmet,
-  images
+  images,
+  caption
 }) => {
   const PostContent = contentComponent || Content;
 
@@ -27,7 +28,7 @@ export const BlogPostTemplate = ({
         </Title>
         <Opener>{description}</Opener>
         <PostContent content={content} />
-        <Image images={images}/>
+        <Image images={images} caption={caption}/>
         {tags && tags.length ? (
             <Meta>
             <Subtitle>Tags</Subtitle>
@@ -54,9 +55,8 @@ BlogPostTemplate.propTypes = {
 }
 
 const BlogPost = (props) => {
-    console.log(props);
   const { markdownRemark: post, allFile : {edges}} = props.data;
-  const linkedImage = edges.find(edge => edge.node.childImageSharp.sizes.originalImg.includes(post.frontmatter.imageLocation));
+  const linkedImage = edges.find(edge => edge.node.childImageSharp.sizes.originalImg.includes(kebabCase(post.frontmatter.title)));
   return (
     <BlogPostTemplate
       content={post.html}
@@ -65,6 +65,7 @@ const BlogPost = (props) => {
       helmet={<Helmet title={`${post.frontmatter.title} | Blog`} />}
       tags={post.frontmatter.tags}
       title={post.frontmatter.title}
+      caption={post.frontmatter.caption}
       images={linkedImage.node.childImageSharp}
     />
   )
@@ -88,7 +89,7 @@ export const pageQuery = graphql`
         title
         description
         tags
-        imageLocation
+        caption
       }
     }
     allFile(filter : {extension : {eq : "png"}}) {

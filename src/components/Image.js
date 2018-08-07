@@ -1,9 +1,12 @@
 import React from 'react';
 import Img from "gatsby-image"
 
-const Image = ({images}) => {
+const Image = ({images, caption}) => {
     return (
-        <Img sizes={images.sizes} />
+        <figure>
+            <Img sizes={images.sizes} />
+            <figcaption>{caption}</figcaption>
+        </figure>
     );
 };
 
