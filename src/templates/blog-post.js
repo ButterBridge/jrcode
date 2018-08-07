@@ -65,7 +65,7 @@ const BlogPost = (props) => {
       helmet={<Helmet title={`${post.frontmatter.title} | Blog`} />}
       tags={post.frontmatter.tags}
       title={post.frontmatter.title}
-      images={linkedImage.node.childImageSharp.sizes}
+      images={linkedImage.node.childImageSharp}
     />
   )
 }
@@ -95,10 +95,10 @@ export const pageQuery = graphql`
         edges {
             node {
                 childImageSharp {
-                    sizes(maxWidth: 1240 ) {
-                        tracedSVG,
+                    sizes {
                         originalImg
-                    }
+                        ...GatsbyImageSharpSizes
+                      }
                 }
             }
         }

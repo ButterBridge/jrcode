@@ -1,8 +1,9 @@
 import React from 'react';
+import Img from "gatsby-image"
 
 const Image = ({images}) => {
     return (
-        <img src={images.originalImg}/>
+        <Img sizes={images.sizes} />
     );
 };
 
