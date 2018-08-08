@@ -82,7 +82,9 @@ export const Paragraph = styled.p`
 `
 
 export const Detail = styled.p`
-    font-size: 0.75em;
+    font-size: 0.8em;
+    margin: 1em;
+    color: white;
 `
 
 export const NavBar = styled.nav`

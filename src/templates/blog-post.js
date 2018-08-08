@@ -33,7 +33,7 @@ export const BlogPostTemplate = ({
         <Opener>{description}</Opener>
         <PostContent content={content} />
         <Centraliser>
-            <Image images={images} caption={caption}/>
+            <Image images={images} caption={caption} sampleColour={sampleColour}/>
         </Centraliser>
         {tags && tags.length && (
             <Meta

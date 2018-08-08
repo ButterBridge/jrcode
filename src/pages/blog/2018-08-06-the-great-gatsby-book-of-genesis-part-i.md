@@ -4,7 +4,7 @@ title: 'The Gatsby Book of Genesis Part I'
 date: '2018-08-06T16:55:10.000Z'
 description: >-
   How I learned to stop worrying about working from a starter kit and start working from a starter kit.
-caption: Why I'm keeping the Bulma navbar and icon style, just for the time being...
+caption: A huge predatory Twitter bird is one reason why I'm keeping the Bulma navbar and icon style, just for the time being...
 tags:
   - gatsby
   - refactoring

@@ -1,12 +1,14 @@
 import React from 'react';
 import Img from "gatsby-image"
-import { Container, Centraliser } from '../styled-components';
+import { Container, Centraliser, Detail, Meta } from '../styled-components';
 
-const Image = ({images, caption}) => {
+const Image = ({images, caption, sampleColour}) => {
     return (
         <figure>
             <Img sizes={images.sizes} />
-            <figcaption>{caption}</figcaption>
+            <figcaption>
+                <Meta colour={sampleColour}>
+                <Detail>{caption}</Detail></Meta></figcaption>
         </figure>
     );
 };
