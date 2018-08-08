@@ -74,6 +74,13 @@ export const Subtitle = styled.h4`
 export const Opener = styled.h6`
     font-size: 1.1em;
     margin: 0;
+    margin-bottom: 1em;
+    padding: 0.5em;
+`
+
+export const Option = styled.h6`
+    font-size: 1.1em;
+    margin: 0;
     padding: 0.5em;
 `
 

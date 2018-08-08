@@ -2,7 +2,7 @@ import React from 'react'
 import { kebabCase } from 'lodash'
 import Helmet from 'react-helmet'
 import Link from 'gatsby-link'
-import { Main, Content, Title, List, ListItem, Opener } from '../../styled-components';
+import { Main, Content, Title, List, ListItem, Opener, Option } from '../../styled-components';
 
 const TagsPage = ({
   data: { allMarkdownRemark: { group }, site: { siteMetadata: { title } } },
@@ -15,7 +15,7 @@ const TagsPage = ({
         {group.map(tag => (
             <ListItem key={tag.fieldValue}>
                 <Link to={`/tags/${kebabCase(tag.fieldValue)}/`}>
-                    <Opener>{tag.fieldValue} ({tag.totalCount})</Opener>
+                    <Option>{tag.fieldValue} ({tag.totalCount})</Option>
                 </Link>
             </ListItem>
         ))}

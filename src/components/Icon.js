@@ -1,10 +1,10 @@
 import React from 'react'
 import PT from 'prop-types'
-import { IconHolder, Opener } from '../styled-components';
+import { IconHolder, Option } from '../styled-components';
 
 function Icon ({link, ...imgProps}) {
     return (
-        <Opener>
+        <Option>
             <a
                 href={link}
                 target="_blank"
@@ -12,7 +12,7 @@ function Icon ({link, ...imgProps}) {
             >
                 <IconHolder {...imgProps} />
             </a>
-        </Opener>
+        </Option>
     )
 }
 
