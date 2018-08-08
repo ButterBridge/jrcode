@@ -25,6 +25,16 @@ export const Container = styled.div`
     margin: 1em;
 `
 
+export const Centraliser = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    ${({shrink}) => shrink ? 'max-width: 40vw;' : ''};
+    ${({shrink}) => shrink ? 'max-height: 20vw;' : ''};
+    margin: 0;
+    width: 100%;
+`
+
 export const Meta = styled.div`
     border-radius: 1em;
     margin: 1px;
@@ -60,7 +70,7 @@ export const Subtitle = styled.h4`
 `
 
 export const Opener = styled.h6`
-    font-size: 1.2em;
+    font-size: 1.1em;
     margin: 0;
     padding: 0.5em;
 `

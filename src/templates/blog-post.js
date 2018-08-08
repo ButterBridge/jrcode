@@ -5,7 +5,7 @@ import Helmet from 'react-helmet';
 import Link from 'gatsby-link';
 import Content, { HTMLContent } from '../components/Content';
 import Image from '../components/Image';
-import { Main, Container, Title, Opener, Subtitle, Meta, List, ListItem } from '../styled-components';
+import { Main, Container, Title, Opener, Subtitle, Meta, List, ListItem, Centraliser } from '../styled-components';
 import {colours} from '../style';
 
 export const BlogPostTemplate = ({
@@ -32,21 +32,23 @@ export const BlogPostTemplate = ({
         </Title>
         <Opener>{description}</Opener>
         <PostContent content={content} />
-        <Image images={images} caption={caption}/>
-        {tags && tags.length ? (
+        <Centraliser>
+            <Image images={images} caption={caption}/>
+        </Centraliser>
+        {tags && tags.length && (
             <Meta
                 colour={sampleColour}
             >
-            <Subtitle>Tags</Subtitle>
-            <List>
-                {tags.map(tag => (
-                <ListItem key={tag} colour={sampleColour}>
-                    <Link to={`/tags/${kebabCase(tag)}/`}>{tag}</Link>
-                </ListItem>
-                ))}
-            </List>
+                <Subtitle>Tags</Subtitle>
+                <List>
+                    {tags.map(tag => (
+                    <ListItem key={tag} colour={sampleColour}>
+                        <Link to={`/tags/${kebabCase(tag)}/`}><Opener>{tag}</Opener></Link>
+                    </ListItem>
+                    ))}
+                </List>
             </Meta>
-        ) : null}
+        )}
       </Container>
     </Main>
   );

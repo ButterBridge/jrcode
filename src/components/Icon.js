@@ -1,19 +1,18 @@
 import React from 'react'
 import PT from 'prop-types'
-import { IconHolder } from '../styled-components';
+import { IconHolder, Opener } from '../styled-components';
 
 function Icon ({link, ...imgProps}) {
     return (
-        <span>
+        <Opener>
             <a
-            href={link}
-            target="_blank"
-            rel="noopener noreferrer"
+                href={link}
+                target="_blank"
+                rel="noopener noreferrer"
             >
                 <IconHolder {...imgProps} />
             </a>
-
-        </span>
+        </Opener>
     )
 }
 
