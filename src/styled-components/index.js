@@ -29,10 +29,12 @@ export const Centraliser = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    ${({shrink}) => shrink ? 'max-width: 40vw;' : ''};
-    ${({shrink}) => shrink ? 'max-height: 20vw;' : ''};
+    ${({shrink}) => shrink ? 'max-width: 50%;' : ''};
     margin: 0;
-    width: 100%;
+
+    figure {
+        width: 50vw;
+    }
 `
 
 export const Meta = styled.div`
