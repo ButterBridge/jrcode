@@ -16,3 +16,8 @@
 .content {
     grid-area: 2 / 2 / 2 / 2;
 }
+
+a {
+    text-shadow: none;
+    background-image: none;
+}

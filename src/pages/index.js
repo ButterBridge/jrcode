@@ -1,12 +1,15 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Link from 'gatsby-link'
-import {Content, Main, Container, Heading, Title, Detail, Paragraph} from '../styled-components'
+import {Content, Main, Container, Heading, Title, Detail, Paragraph, Meta} from '../styled-components'
+import {colours} from '../style';
+import { sample } from 'lodash';
 
 export default class IndexPage extends React.Component {
   render() {
     const { data } = this.props;
     const { edges: posts } = data.allMarkdownRemark;
+    const sampleColour = sample(colours);
 
     return (
       <Main>
@@ -22,7 +25,9 @@ export default class IndexPage extends React.Component {
                 <Detail>{post.frontmatter.date}</Detail>
                 <Paragraph>{post.excerpt}</Paragraph>
                 <Link to={post.fields.slug}>
+                <Meta colour={sampleColour}>
                     <Detail>Keep Reading →</Detail>
+                </Meta>
                 </Link>
               </Content>
             ))}

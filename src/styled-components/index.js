@@ -1,13 +1,12 @@
 import styled, {injectGlobal} from 'styled-components';
 
 export const Content = styled.div`
-    border: 1px solid #eaecee;
-    background: whitesmoke;
-    padding: 2em 4em;
-    list-style: none;
-    margin-left: 0;
+    border-left: 1em solid ${({colour}) => colour};
+    border-bottom: 1em solid ${({colour}) => colour};
+    border-radius: 15px;
+    padding: 1.5em;
     margin-right: 1.5rem;
-    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
     display: flex;
     flex-wrap: wrap;
     justify-content: left;
@@ -63,6 +62,7 @@ export const ListItem = styled.li`
 
 export const Title = styled.h3`
     font-size: 2em;
+    margin: 0;
 `
 
 export const Subtitle = styled.h4`
@@ -79,6 +79,7 @@ export const Opener = styled.h6`
 
 export const Paragraph = styled.p`
     font-size: 1em;
+    margin: 0;
 `
 
 export const Detail = styled.p`
