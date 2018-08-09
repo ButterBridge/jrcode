@@ -18,9 +18,10 @@ class Heading extends Component {
 
     render() {
         return (
-            <div className="grid-main-heading">
+            <div className="grid-heading">
                 {['J', 'R', '→', 'J', 'S'].map((char, i) => {
                     return <HeadLetter
+                        gridCols={{from : i + 1, to : i + 2}}
                         key={i}
                         font={this.state.fonts[i]}
                         colour={this.state.colours[i]}

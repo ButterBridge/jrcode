@@ -1,4 +1,4 @@
-import styled, {injectGlobal} from 'styled-components';
+import styled from 'styled-components';
 
 export const Content = styled.div`
     border-left: 1em solid ${({colour}) => colour};
@@ -115,8 +115,11 @@ export const IconHolder = styled.img`
 
 export const HeadLetter = styled.span`
     font-family: ${({font}) => `'${font}'`};
-    padding: 1px;
+    font-size: 1.5em;
+    width: 100%;
     background-color: ${({colour}) => colour};
+    text-align: center;
+    grid-column :  ${({gridCols : {from, to}}) => `${from} / ${to}`}
 `
 
 export const Bullet = styled.span`

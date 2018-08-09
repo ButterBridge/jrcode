@@ -1,20 +1,23 @@
 .grid-main {
     display: grid;
-    grid-template-columns: 100px;
-}
-
-.grid-main-heading {
-    grid-area: 1 / 1 / 3 / 2;
-    display: grid;
-    grid-template-columns: repeat(5, 20%);
+    grid-template-columns: 150px;
 }
 
 .grid-main-navbar {
     grid-area : 1 / 2 / 1 / 2;
+    margin-top : 1em;
 }
 
 .grid-main-content {
     grid-area: 2 / 2 / 2 / 2;
+}
+
+.grid-heading {
+    position: fixed;
+    width: 150px;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(5, 20%);
 }
 
 .grid-title {
