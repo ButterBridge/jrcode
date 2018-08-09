@@ -18,7 +18,7 @@ class Heading extends Component {
 
     render() {
         return (
-            <div className="heading">
+            <div className="grid-main-heading">
                 {['J', 'R', '→', 'J', 'S'].map((char, i) => {
                     return <HeadLetter
                         key={i}

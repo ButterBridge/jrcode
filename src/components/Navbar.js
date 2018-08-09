@@ -7,7 +7,7 @@ import twitter from '../img/twitter-icon.svg'
 import { NavBar, Container, NavBarItem, Option } from '../styled-components';
 
 const Navbar = () => (
-    <div className="navbar">
+    <div className="grid-main-navbar">
         <NavBar>
             <NavBarItem>
                 <Link to="/">

@@ -1,8 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Link from 'gatsby-link'
-import {Content, Main, Container, Heading, Title, Detail, Paragraph, Meta} from '../styled-components'
+import {Content, Main, Container, Heading, Title, Detail, Paragraph, Meta, Bullet} from '../styled-components'
 import {colours} from '../style';
+import '../style/default-styles.css';
 import { sample } from 'lodash';
 
 export default class IndexPage extends React.Component {
@@ -20,7 +21,17 @@ export default class IndexPage extends React.Component {
                 key={post.id}
               >
                 <Link to={post.fields.slug}>
-                    <Title>{post.frontmatter.title}</Title>
+                    <div className="grid-title">
+                        <Bullet 
+                            colour={sampleColour}
+                            className="grid-title-bullet"
+                        />
+                        <Title
+                            className="grid-title-main"
+                        >
+                            {post.frontmatter.title}
+                        </Title>
+                    </div>
                 </Link>
                 <Detail>{post.frontmatter.date}</Detail>
                 <Paragraph>{post.excerpt}</Paragraph>

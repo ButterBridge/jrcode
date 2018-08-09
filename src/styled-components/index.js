@@ -63,6 +63,7 @@ export const ListItem = styled.li`
 export const Title = styled.h3`
     font-size: 2em;
     margin: 0;
+    display: inline-block;
 `
 
 export const Subtitle = styled.h4`
@@ -116,4 +117,12 @@ export const HeadLetter = styled.span`
     font-family: ${({font}) => `'${font}'`};
     padding: 1px;
     background-color: ${({colour}) => colour};
+`
+
+export const Bullet = styled.span`
+    border-radius: 50%;
+    padding: 0.5em;
+    display: inline;
+    color: ${({colour}) => colour};
+    background: ${({colour}) => colour};
 `

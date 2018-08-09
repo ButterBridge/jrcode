@@ -8,10 +8,10 @@ import Heading from '../components/Heading';
 const TemplateWrapper = ({ children }) => (
   <div>
     <Helmet title="JR->JS" />
-    <div className="grid">
+    <div className="grid-main">
         <Heading />
         <Navbar />
-        <div className="content">
+        <div className="grid-main-content">
             {children()}
         </div>
     </div>
