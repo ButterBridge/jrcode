@@ -32,9 +32,9 @@ export const BlogPostTemplate = ({
         </Title>
         <Opener>{description}</Opener>
         <PostContent content={content} />
-        <Centraliser>
+        {images && <Centraliser>
             <Image images={images} caption={caption} sampleColour={sampleColour}/>
-        </Centraliser>
+        </Centraliser>}
         {tags && tags.length && (
             <Meta
                 colour={sampleColour}
@@ -74,7 +74,7 @@ const BlogPost = (props) => {
       tags={post.frontmatter.tags}
       title={post.frontmatter.title}
       caption={post.frontmatter.caption}
-      images={linkedImage.node.childImageSharp}
+      images={linkedImage ? linkedImage.node.childImageSharp : null}
     />
   )
 }
