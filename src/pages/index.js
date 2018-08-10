@@ -6,8 +6,11 @@ import {colours} from '../style';
 import '../style/default-styles.css';
 import { sample } from 'lodash';
 import { withBullet } from '../components/with/withBullet';
+import { withLink } from '../components/with/withLink';
 
 const BulletedTitle = withBullet(Title);
+const LinkedBulletedTitle = withLink(BulletedTitle);
+const LinkedMeta = withLink(Meta);
 
 export default class IndexPage extends React.Component {
   render() {
@@ -23,19 +26,19 @@ export default class IndexPage extends React.Component {
               <Content
                 key={post.id}
               >
-                <Link to={post.fields.slug}>
-                <BulletedTitle 
+                <LinkedBulletedTitle
+                    linkTo={post.fields.slug} 
                     componentContent={post.frontmatter.title}
                     colour={sampleColour}
                 />
-                </Link>
                 <Detail>{post.frontmatter.date}</Detail>
                 <Paragraph>{post.excerpt}</Paragraph>
-                <Link to={post.fields.slug}>
-                <Meta colour={sampleColour}>
+                <LinkedMeta
+                    linkTo={post.fields.slug}
+                    colour={sampleColour}
+                >
                     <Detail>Keep Reading →</Detail>
-                </Meta>
-                </Link>
+                </LinkedMeta>
               </Content>
             ))}
         </Container>
