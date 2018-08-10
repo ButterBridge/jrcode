@@ -7,6 +7,7 @@ description: >-
 tags:
   - northcoders
   - projects
+  - teaching
 ---
 
 The day before I go on holidays for a week, we are about to embark on a grand scheme - creating a set of teaching tools, not for the students, but for us.
