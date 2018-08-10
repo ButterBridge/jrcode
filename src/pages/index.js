@@ -5,6 +5,9 @@ import {Content, Main, Container, Heading, Title, Detail, Paragraph, Meta, Bulle
 import {colours} from '../style';
 import '../style/default-styles.css';
 import { sample } from 'lodash';
+import { withBullet } from '../components/with/withBullet';
+
+const BulletedTitle = withBullet(Title);
 
 export default class IndexPage extends React.Component {
   render() {
@@ -21,17 +24,10 @@ export default class IndexPage extends React.Component {
                 key={post.id}
               >
                 <Link to={post.fields.slug}>
-                    <div className="grid-title">
-                        <Bullet 
-                            colour={sampleColour}
-                            className="grid-title-bullet"
-                        />
-                        <Title
-                            className="grid-title-main"
-                        >
-                            {post.frontmatter.title}
-                        </Title>
-                    </div>
+                <BulletedTitle 
+                    componentContent={post.frontmatter.title}
+                    colour={sampleColour}
+                />
                 </Link>
                 <Detail>{post.frontmatter.date}</Detail>
                 <Paragraph>{post.excerpt}</Paragraph>

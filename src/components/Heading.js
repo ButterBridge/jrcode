@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {sample} from 'lodash';
 import { HeadLetter } from '../styled-components';
 import {colours, fonts} from '../style';
+import {withBullet} from './with/withBullet';
 
 class Heading extends Component {
     state = {

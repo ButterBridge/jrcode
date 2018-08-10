@@ -7,6 +7,9 @@ import Content, { HTMLContent } from '../components/Content';
 import Image from '../components/Image';
 import { Main, Container, Title, Opener, Subtitle, Meta, List, ListItem, Centraliser, Option, Bullet } from '../styled-components';
 import {colours} from '../style';
+import { withBullet } from '../components/with/withBullet';
+
+const BulletedTitle = withBullet(Title);
 
 export const BlogPostTemplate = ({
     content,
@@ -27,7 +30,11 @@ export const BlogPostTemplate = ({
     >
         {helmet || ''}
         <Container>
-            <div className="grid-title">
+            <BulletedTitle 
+                componentContent={title}
+                colour={sampleColour}
+            />
+            {/* <div className="grid-title">
                 <Bullet 
                     colour={sampleColour}
                     className="grid-title-bullet"
@@ -37,7 +44,7 @@ export const BlogPostTemplate = ({
                 >
                     {title}
                 </Title>
-            </div>
+            </div> */}
             <Opener>{description}</Opener>
             <PostContent content={content} />
             {images && <Centraliser>
