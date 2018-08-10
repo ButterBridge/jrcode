@@ -5,51 +5,59 @@ import Helmet from 'react-helmet';
 import Link from 'gatsby-link';
 import Content, { HTMLContent } from '../components/Content';
 import Image from '../components/Image';
-import { Main, Container, Title, Opener, Subtitle, Meta, List, ListItem, Centraliser, Option } from '../styled-components';
+import { Main, Container, Title, Opener, Subtitle, Meta, List, ListItem, Centraliser, Option, Bullet } from '../styled-components';
 import {colours} from '../style';
 
 export const BlogPostTemplate = ({
-  content,
-  contentComponent,
-  description,
-  tags,
-  title,
-  helmet,
-  images,
-  caption
+    content,
+    contentComponent,
+    description,
+    tags,
+    title,
+    helmet,
+    images,
+    caption
 }) => {
-  const PostContent = contentComponent || Content;
-  const sampleColour = sample(colours);
+    const PostContent = contentComponent || Content;
+    const sampleColour = sample(colours);
 
   return (
     <Main
         colour={sampleColour}
     >
-      {helmet || ''}
-      <Container>
-        <Title>
-            {title}
-        </Title>
-        <Opener>{description}</Opener>
-        <PostContent content={content} />
-        {images && <Centraliser>
-            <Image images={images} caption={caption} sampleColour={sampleColour}/>
-        </Centraliser>}
-        {tags && tags.length && (
-            <Meta
-                colour={sampleColour}
-            >
-                <Subtitle>Tags</Subtitle>
-                <List>
-                    {tags.map(tag => (
-                    <ListItem key={tag} colour={sampleColour}>
-                        <Link to={`/tags/${kebabCase(tag)}/`}><Option>{tag}</Option></Link>
-                    </ListItem>
-                    ))}
-                </List>
-            </Meta>
-        )}
-      </Container>
+        {helmet || ''}
+        <Container>
+            <div className="grid-title">
+                <Bullet 
+                    colour={sampleColour}
+                    className="grid-title-bullet"
+                />
+                <Title
+                    className="grid-title-main"
+                >
+                    {title}
+                </Title>
+            </div>
+            <Opener>{description}</Opener>
+            <PostContent content={content} />
+            {images && <Centraliser>
+                <Image images={images} caption={caption} sampleColour={sampleColour}/>
+            </Centraliser>}
+            {tags && tags.length && (
+                <Meta
+                    colour={sampleColour}
+                >
+                    <Subtitle>Tags</Subtitle>
+                    <List>
+                        {tags.map(tag => (
+                        <ListItem key={tag} colour={sampleColour}>
+                            <Link to={`/tags/${kebabCase(tag)}/`}><Option>{tag}</Option></Link>
+                        </ListItem>
+                        ))}
+                    </List>
+                </Meta>
+            )}
+        </Container>
     </Main>
   );
 }
