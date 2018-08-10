@@ -23,7 +23,7 @@ tags:
 
 ## Instant gratification
 
-So yes, create-react-app (henceforth 'CRA', for all our sakes) has a lot going for it, from both a developer and a teacher point of view. There's enough to learn in **react** without having to learn babel and webpack first. But we do promise to demystify most of what we teach, and there's a lot of mystery wrapped up in CRA and its rather sterile sound package.json 'react-scripts'.
+So yes, create-react-app (henceforth 'CRA', for all our sakes) has a lot going for it, from both a developer and a teacher point of view. There's enough to learn in **react** without having to learn **babel** and **webpack** first. But we do promise to demystify most of what we teach, and there's a lot of mystery wrapped up in CRA and its rather sterile sound package.json 'react-scripts'.
 
 Still, configuring a webpack setup is just no fun. Doable, for sure, but somehow... bureaucratic. So, I was excited to learn about [parcel.js](https://parceljs.org/), which promises to be, in their words, a 'blazing fast, zero configuration web application bundler'. I won't deny it, zero configuration is the sell here. I like speed as much as the next guy, but for the purposes of giving some insight into the build process of a react app, having one fewer config files was the clincher.
 
@@ -42,7 +42,7 @@ Anyhoo, after the `npm install -g parcel-bundler` I added the following to my pa
 }
 ```
 
-I also needed a bit of babel config. Babel is the go-to transpiler for React code - it converts their proprietary JSX 'language' (and any other modern / experimental JavaScript) into friendly, ugly trad-Javascript (the stuff of which nightmares are made, but IE9 can gobble up contentedly).
+I also needed a bit of babel config. Babel is the go-to transpiler for react code - it converts their proprietary **JSX** 'language' (and any other modern / experimental JavaScript) into friendly, ugly trad-Javascript (the stuff of which nightmares are made, but IE9 can gobble up contentedly).
 
 It took a bit of experimentation to discover which babel packages I needed for this little app, but I ended up with the following installed in my devDependencies (I'm not entirely sure both the bottom ones are necessary, but I am sure I can't be bothered to find out right now):
 
