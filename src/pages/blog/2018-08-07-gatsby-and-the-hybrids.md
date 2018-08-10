@@ -10,6 +10,7 @@ tags:
   - react
   - SSR
   - static-sites
+  - this-site
 ---
 
 I've made some progress with structuring the website, but will save that for another blog post. In the meanwhile I'm going to take a moment to discuss hybrid components in Gatsby.
