@@ -5,13 +5,8 @@ import Helmet from 'react-helmet';
 import Link from 'gatsby-link';
 import Content, { HTMLContent } from '../components/Content';
 import Image from '../components/Image';
-import { Main, Container, Title, Opener, Subtitle, Meta, List, ListItem, Centraliser, Option, Bullet } from '../styled-components';
+import { Main, Container, BulletedTitle, Opener, Subtitle, Meta, List, LinkedListItem, Centraliser, Option } from '../styled-components';
 import {colours} from '../style';
-import { withBullet } from '../components/with/withBullet';
-import { withLink } from '../components/with/withLink';
-
-const BulletedTitle = withBullet(Title);
-const LinkedListItem = withLink(ListItem);
 
 export const BlogPostTemplate = ({
     content,
