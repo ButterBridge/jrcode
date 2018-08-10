@@ -14,9 +14,9 @@ export const BlogPostTemplate = ({
     description,
     tags,
     title,
-    helmet,
     images,
-    caption
+    caption,
+    siteTitle
 }) => {
     const PostContent = contentComponent || Content;
     const sampleColour = sample(colours);
@@ -25,7 +25,7 @@ export const BlogPostTemplate = ({
         <Main
             colour={sampleColour}
         >
-            {helmet || ''}
+            <Helmet title={`${siteTitle} - blog - ${title}`} />
             <Container>
                 <BulletedTitle 
                     componentContent={title}
@@ -67,15 +67,15 @@ BlogPostTemplate.propTypes = {
     helmet: PropTypes.object,
 }
 
-const BlogPost = (props) => {
-    const { markdownRemark: post, allFile : {edges}} = props.data;
+const BlogPost = ({data}) => {
+    const { markdownRemark: post, allFile : {edges}} = data;
     const linkedImage = edges.find(edge => edge.node.childImageSharp.sizes.originalImg.includes(kebabCase(post.frontmatter.title)));
     return (
         <BlogPostTemplate
         content={post.html}
         contentComponent={HTMLContent}
         description={post.frontmatter.description}
-        helmet={<Helmet title={`JR->JS Blog ${post.frontmatter.title}`} />}
+        siteTitle={data.site.siteMetadata.title}
         tags={post.frontmatter.tags}
         title={post.frontmatter.title}
         caption={post.frontmatter.caption}
@@ -94,6 +94,11 @@ export default BlogPost;
 
 export const pageQuery = graphql`
     query ImagePageAndBlogPostByID($id: String!) {
+        site {
+            siteMetadata {
+                title
+            }
+        }
         markdownRemark(id: { eq: $id }) {
             id
             html

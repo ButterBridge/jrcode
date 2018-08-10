@@ -13,7 +13,7 @@ class TagRoute extends React.Component {
 
         return (
             <Main>
-                <Helmet title={`${tag} @ JR->JS`} />
+                <Helmet title={`${tag} @ ${title}`} />
                 <Container>
                     <Subtitle>{tagHeader}</Subtitle>
                     <List>
