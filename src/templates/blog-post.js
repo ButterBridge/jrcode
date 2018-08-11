@@ -33,7 +33,8 @@ export const BlogPostTemplate = ({
         >
             <Helmet title={`${siteTitle} - blog - ${title}`} />
             <Container>
-                <BulletedTitle 
+                <BulletedTitle
+                    addition="title"
                     componentContent={title}
                     colour={sampleColour}
                 />

@@ -5,6 +5,7 @@ import { withLink } from './with/withLink';
 export const Bullet = styled.span`
     border-radius: 50%;
     padding: 0.5em;
+    margin: 15px;
     display: inline;
     color: ${({colour}) => colour};
     background: ${({colour}) => colour};

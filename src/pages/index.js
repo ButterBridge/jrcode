@@ -21,6 +21,7 @@ export default class IndexPage extends React.Component {
                     key={post.id}
                 >
                     <LinkedBulletedTitle
+                        addition="title"
                         linkTo={post.fields.slug} 
                         componentContent={post.frontmatter.title}
                         colour={sampleColour}

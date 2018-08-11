@@ -23,6 +23,7 @@ class TagRoute extends React.Component {
                               linkTo={post.node.fields.slug}
                           >
                               <BulletedOption
+                                addition="option"
                                 componentContent={post.node.frontmatter.title}
                                 colour="black"
                               />

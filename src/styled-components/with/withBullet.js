@@ -2,14 +2,14 @@ import React from 'react';
 import {Bullet} from '../../styled-components';
 
 export const withBullet = (Component) => {
-    return ({componentContent, colour, ...props}) => {
-        return <div className="grid-title">
+    return ({componentContent, addition, colour, ...props}) => {
+        return <div className={`grid-${addition}`}>
             <Bullet 
                 colour={colour}
-                className="grid-title-bullet"
+                className={`grid-${addition}-bullet`}
             />
             <Component
-                className="grid-title-main"
+                className={`grid-${addition}-main`}
                 {...props}
             >
                 {componentContent}

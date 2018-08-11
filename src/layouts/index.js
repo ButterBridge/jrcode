@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import Navbar from '../components/Navbar'
-import '../style/grid.css';
+import '../style/grid.sass';
 import Heading from '../components/Heading';
 
 const TemplateWrapper = ({ children }) => (
