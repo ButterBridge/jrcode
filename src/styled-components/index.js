@@ -61,7 +61,8 @@ export const IconHolder = styled.img`
 `
 
 export const List = styled.ul`
-    
+    margin: 0;
+    margin-left: 1em;
 `
 
 export const ListItem = styled.li`
