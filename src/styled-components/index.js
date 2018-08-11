@@ -117,6 +117,7 @@ export const Option = styled.h6`
     margin: 0.2em;
     padding: 0.2em;
 `
+export const BulletedOption = withBullet(Option);
 
 export const Paragraph = styled.p`
     font-size: 1em;
