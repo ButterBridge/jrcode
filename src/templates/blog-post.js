@@ -21,6 +21,12 @@ export const BlogPostTemplate = ({
     const PostContent = contentComponent || Content;
     const sampleColour = sample(colours);
 
+    tags.sort((a, b) => {
+        if(a < b) return -1;
+        if(a > b) return 1;
+        return 0;
+    })
+
     return (
         <Main
             colour={sampleColour}
