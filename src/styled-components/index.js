@@ -114,8 +114,8 @@ export const Opener = styled.h6`
 
 export const Option = styled.h6`
     font-size: 1.1em;
-    margin: 0;
-    padding: 0.5em;
+    margin: 0.2em;
+    padding: 0.2em;
 `
 
 export const Paragraph = styled.p`
@@ -131,7 +131,7 @@ export const Subtitle = styled.h4`
 
 export const Title = styled.h3`
     font-size: 2em;
-    margin: 0;
+    margin: 0.1em;
     display: inline-block;
 `
 export const BulletedTitle = withBullet(Title);
