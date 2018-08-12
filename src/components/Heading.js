@@ -16,7 +16,6 @@ class Heading extends Component {
 
     componentDidMount = () => {
         // this.canvas = React.createRef();
-        const {colours} = this.state;
 
         const space = new CanvasSpace(this.refs.canvas);
 
@@ -38,18 +37,18 @@ class Heading extends Component {
                     follower = follower.add(space.pointer.$subtract(follower).divide(5));
     
                     // calculate the size and color of each cell based on its distance to the pointer
-                    pts.forEach(p => {
-                        const mag = follower.$subtract(Rectangle.center(p)).magnitude();
-                        const scale = Math.min(1, Math.abs(1 - (0.8 * mag / space.center.y)));
+                    pts.forEach((p, i) => {
+                        const mag = Math.min(follower.$subtract(Rectangle.center(p)).magnitude(), 750);
+                        const scale = Math.min(1, Math.abs(1 - (0.4 * mag / space.center.y)));
                         const r = Rectangle.fromCenter(Rectangle.center(p), Rectangle.size(p));
     
+                        const {colours} = this.state;
                         form.fill(colours[Math.floor(scale * colours.length)]).rect(r);
                     })
                 }
             });
 
             space.bindMouse().bindTouch().play();
-
         })
     }
 

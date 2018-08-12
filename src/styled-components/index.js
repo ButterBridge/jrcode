@@ -50,6 +50,7 @@ export const HeadLetter = styled.span`
     font-family: ${({font}) => `'${font}'`};
     font-size: 1.5em;
     width: 100%;
+    border: 0.5px solid whitesmoke;
     background-color: ${({colour}) => colour};
     text-align: center;
     grid-column :  ${({gridCols : {from, to}}) => `${from} / ${to}`}
