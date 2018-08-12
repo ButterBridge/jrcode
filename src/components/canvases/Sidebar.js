@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {CanvasSpace, Num, Rectangle, Pt, Create, Color} from 'pts';
+import {CanvasSpace, Rectangle, Create} from 'pts';
 
 class Sidebar extends Component {
     render() {
