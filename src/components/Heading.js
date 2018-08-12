@@ -16,6 +16,7 @@ class Heading extends Component {
 
     componentDidMount = () => {
         // this.canvas = React.createRef();
+        const {colours} = this.state;
 
         const space = new CanvasSpace(this.refs.canvas);
 
@@ -29,7 +30,7 @@ class Heading extends Component {
         }, () => {
             space.add({ 
                 start: (bound) => {
-                    pts = Create.gridCells(space.innerBound, 20, 15);
+                    pts = Create.gridCells(space.innerBound, 5, 13);
                     follower = space.center;
                 },
     
@@ -39,10 +40,9 @@ class Heading extends Component {
                     // calculate the size and color of each cell based on its distance to the pointer
                     pts.forEach(p => {
                         const mag = follower.$subtract(Rectangle.center(p)).magnitude();
-                        const scale = Math.min(1, Math.abs(1 - (0.2 * mag / space.center.y)));
+                        const scale = Math.min(1, Math.abs(1 - (0.8 * mag / space.center.y)));
                         const r = Rectangle.fromCenter(Rectangle.center(p), Rectangle.size(p));
     
-                        const {colours} = this.state;
                         form.fill(colours[Math.floor(scale * colours.length)]).rect(r);
                     })
                 }
@@ -55,7 +55,7 @@ class Heading extends Component {
 
     render() {
         return (
-            <div className="grid-heading">
+            <div className="grid-sidebar">
                 {['J', 'R', '→', 'J', 'S'].map((char, i) => {
                     return <HeadLetter
                         gridCols={{from : i + 1, to : i + 2}}
@@ -67,9 +67,11 @@ class Heading extends Component {
                         {char}
                     </HeadLetter>
                 })}
-                <canvas ref="canvas">
+                <div className="grid-sidebar-canvas">
+                    <canvas ref="canvas" style={{width : '100%', height : '100%'}}>
 
-                </canvas>
+                    </canvas>
+                </div>
             </div>
         );
     }
