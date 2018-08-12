@@ -5,7 +5,7 @@
   "author": "Austin Green",
   "dependencies": {
     "bulma": "^0.6.0",
-    "gatsby": "^1.9.277",
+    "gatsby": "^1.9.213",
     "gatsby-image": "^1.0.55",
     "gatsby-link": "^1.6.37",
     "gatsby-plugin-google-fonts": "0.0.4",
@@ -25,7 +25,7 @@
     "netlify-cms": "^1.7.0",
     "prop-types": "^15.6.0",
     "pts": "^0.5.1",
-    "react": "^16.4.2",
+    "react": "^16.2.0",
     "react-helmet": "^5.2.0",
     "styled-components": "^3.4.1",
     "typography-theme-kirkham": "^0.16.3",
