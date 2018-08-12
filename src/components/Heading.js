@@ -20,7 +20,7 @@ class Heading extends Component {
                         key={i}
                         font={fonts[i]}
                         colour={colours[i]}
-                        onMouseEnter={() => this.changeFont(i)}
+                        onMouseEnter={() => this.changeStyle(i)}
                     >
                         {char}
                     </HeadLetter>
@@ -32,7 +32,7 @@ class Heading extends Component {
         );
     }
 
-    changeFont = targetindex => {
+    changeStyle = targetindex => {
         this.setState({
             fonts : this.state.fonts.map((font, index) => {
                 return index === targetindex ?
