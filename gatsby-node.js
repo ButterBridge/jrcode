@@ -1,6 +1,7 @@
 const _ = require('lodash')
 const path = require('path')
 const { createFilePath } = require('gatsby-source-filesystem')
+const generateBabelConfig = require( 'gatsby/dist/utils/babel-config' );
 
 exports.createPages = ({ boundActionCreators, graphql }) => {
   const { createPage } = boundActionCreators
@@ -85,11 +86,35 @@ exports.onCreateNode = ({ node, boundActionCreators, getNode }) => {
 }
 
 exports.modifyWebpackConfig = ({ config, stage }) => {
-    return config.merge({
-      resolve: {
-        alias: {
-          'react': __dirname + '/node_modules/gatsby/node_modules/react',
-        }
-      }
-    })
+
+    const program = {
+        directory: __dirname,
+        browserslist: [ '> 1%', 'last 2 versions', 'IE >= 9' ]
+    };
+
+    return Promise.all([
+        config.merge({
+            resolve: {
+                alias: {
+                'react': __dirname + '/node_modules/gatsby/node_modules/react',
+                }
+            }
+        }),
+
+        generateBabelConfig( program, stage )
+            .then(babelConfig => {
+                config.removeLoader('js')
+                    .loader('js', {
+                        test: /\.jsx?$/,
+                        exclude: (modulePath) => {
+                            debugger;
+
+                            return /node_modules/.test( modulePath ) &&
+                                !/node_modules\/(pts)/.test( modulePath );
+                        },
+                        loader: 'babel',
+                        query: babelConfig
+                    } );
+            })
+        ]);
   };

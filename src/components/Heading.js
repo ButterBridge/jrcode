@@ -26,7 +26,7 @@ class Heading extends Component {
                     </HeadLetter>
                 })}
                 <div className="grid-sidebar-canvas">
-                    {/* <Sidebar colours={colours} dimensions={[5, 13]}/> */}
+                    <Sidebar colours={colours} dimensions={[5, 13]}/>
                 </div>
             </div>
         );
