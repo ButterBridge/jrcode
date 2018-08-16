@@ -4,50 +4,50 @@ import Content, { HTMLContent } from '../components/Content'
 import { Main, Container, Title } from '../styled-components';
 
 export const AboutPageTemplate = ({ title, content, contentComponent }) => {
-  const PageContent = contentComponent || Content;
+    const PageContent = contentComponent || Content;
 
-  return (
-    <Main>
-      <Container>
-        <Title>
-            {title}
-        </Title>
-        <PageContent content={content} />
-      </Container>
-    </Main>
-  )
+    return (
+        <Main>
+            <Container>
+                <Title>
+                    {title}
+                </Title>
+                <PageContent content={content} />
+            </Container>
+        </Main>
+    )
 }
 
 AboutPageTemplate.propTypes = {
-  title: PropTypes.string.isRequired,
-  content: PropTypes.string,
-  contentComponent: PropTypes.func,
+    title: PropTypes.string.isRequired,
+    content: PropTypes.string,
+    contentComponent: PropTypes.func,
 }
 
 const AboutPage = ({data}) => {
-  const { markdownRemark: post } = data;
-  return (
-    <AboutPageTemplate
-      contentComponent={HTMLContent}
-      title={post.frontmatter.title}
-      content={post.html}
-    />
-  )
+    const { markdownRemark: post } = data;
+    return (
+        <AboutPageTemplate
+            contentComponent={HTMLContent}
+            title={post.frontmatter.title}
+            content={post.html}
+        />
+    )
 }
 
 AboutPage.propTypes = {
-  data: PropTypes.object.isRequired,
+    data: PropTypes.object.isRequired,
 }
 
 export default AboutPage;
 
 export const aboutPageQuery = graphql`
-  query AboutPage($id: String!) {
-    markdownRemark(id: { eq: $id }) {
-      html
-      frontmatter {
-        title
-      }
+    query AboutPage($id: String!) {
+        markdownRemark(id: { eq: $id }) {
+            html
+            frontmatter {
+                title
+            }
+        }
     }
-  }
 `
