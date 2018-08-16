@@ -92,16 +92,22 @@ exports.modifyWebpackConfig = ({ config, stage }) => {
         browserslist: [ '> 1%', 'last 2 versions', 'IE >= 9' ]
     };
 
-    // return Promise.all([
-        return config.merge({
+    return Promise.all([
+        config.merge({
             resolve: {
                 alias: {
                     'react': __dirname + '/node_modules/gatsby/node_modules/react',
                 }
             }
         })
-        // ,
-
+        ,
+        config.merge({
+            resolve: {
+                alias: {
+                    'react-dom': __dirname + '/node_modules/gatsby/node_modules/react-dom',
+                }
+            }
+        })
         // generateBabelConfig(program, stage).then(babelConfig => {
         //     config.removeLoader("js").loader("js", {
         //       test: /\.js?$/,
@@ -116,5 +122,5 @@ exports.modifyWebpackConfig = ({ config, stage }) => {
         //       query: babelConfig
         //     });
         //   })
-        // ]);
+        ]);
 };
