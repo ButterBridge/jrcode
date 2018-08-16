@@ -4,7 +4,7 @@ import { HeadLetter } from '../styled-components';
 import {colours, fonts} from '../style';
 import Sidebar from './canvases/Sidebar';
 
-class Heading extends Component {
+class Brand extends Component {
     state = {
         fonts : Array(6).fill().map(x => sample(fonts)),
         colours : Array(6).fill().map(x => sample(colours))
@@ -48,4 +48,4 @@ class Heading extends Component {
     }
 }
 
-export default Heading;
+export default Brand;
