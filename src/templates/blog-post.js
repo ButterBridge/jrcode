@@ -11,12 +11,9 @@ import {colours} from '../style';
 export const BlogPostTemplate = ({
     content,
     contentComponent,
-    description,
-    tags,
-    title,
+    siteTitle,
     images,
-    caption,
-    siteTitle
+    frontmatter : {description, tags, title, caption, date, formattedDate}
 }) => {
     const PostContent = contentComponent || Content;
     const sampleColour = sample(colours);
@@ -69,8 +66,7 @@ export const BlogPostTemplate = ({
 BlogPostTemplate.propTypes = {
     content: PropTypes.string.isRequired,
     contentComponent: PropTypes.func,
-    description: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
+    frontmatter: PropTypes.object.isRequired,
     helmet: PropTypes.object,
 }
 
@@ -79,14 +75,11 @@ const BlogPost = ({data}) => {
     const linkedImage = edges.find(edge => edge.node.childImageSharp.sizes.originalImg.includes(kebabCase(post.frontmatter.title)));
     return (
         <BlogPostTemplate
-        content={post.html}
-        contentComponent={HTMLContent}
-        description={post.frontmatter.description}
-        siteTitle={data.site.siteMetadata.title}
-        tags={post.frontmatter.tags}
-        title={post.frontmatter.title}
-        caption={post.frontmatter.caption}
-        images={linkedImage ? linkedImage.node.childImageSharp : null}
+            content={post.html}
+            contentComponent={HTMLContent}
+            siteTitle={data.site.siteMetadata.title}
+            frontmatter={post.frontmatter}
+            images={linkedImage ? linkedImage.node.childImageSharp : null}
         />
     )
 }
@@ -110,7 +103,8 @@ export const pageQuery = graphql`
             id
             html
             frontmatter {
-                date(formatString: "MMMM DD, YYYY")
+                date
+                formattedDate : date(formatString: "MMMM DD, YYYY")
                 title
                 description
                 tags
