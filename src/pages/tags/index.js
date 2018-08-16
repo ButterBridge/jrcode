@@ -24,9 +24,7 @@ class TagsPage extends React.Component {
                 return 0;
             }
         });
-
-        console.log(group);
-    
+            
         return <Main>
             <Helmet title={`Tags | ${title}`} />
             <Content>

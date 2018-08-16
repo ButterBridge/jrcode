@@ -5,10 +5,11 @@ import Navbar from '../components/Navbar'
 import '../style/grid.sass';
 import Brand from '../components/Brand';
 
-const TemplateWrapper = ({ children }) => (
-    <div>
-        <Helmet title="jrcode" />
-        <Brand />
+const TemplateWrapper = ({ children, data }) => {
+    const siteName = 'jrcode';
+    return <div>
+        <Helmet title={siteName} />
+        <Brand siteName={siteName} />
         <div className="grid-main">
             <Navbar />
             <div className="grid-main-content">
@@ -16,10 +17,10 @@ const TemplateWrapper = ({ children }) => (
             </div>
         </div>
     </div>
-)
+}
 
 TemplateWrapper.propTypes = {
     children: PropTypes.func,
 }
 
-export default TemplateWrapper
+export default TemplateWrapper;

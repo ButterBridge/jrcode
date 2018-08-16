@@ -6,15 +6,16 @@ import Sidebar from './canvases/Sidebar';
 
 class Brand extends Component {
     state = {
-        fonts : Array(6).fill().map(x => sample(fonts)),
-        colours : Array(6).fill().map(x => sample(colours))
+        fonts : Array(this.props.siteName.length).fill().map(x => sample(fonts)),
+        colours : Array(this.props.siteName.length).fill().map(x => sample(colours))
     }
 
     render() {
         const {fonts, colours} = this.state;
+        const {siteName} = this.props;
         return (
             <div className="grid-sidebar">
-                {['j', 'r', 'c', 'o', 'd', 'e'].map((char, i) => {
+                {siteName.split('').map((char, i) => {
                     return <HeadLetter
                         gridCols={{from : i + 1, to : i + 2}}
                         key={i}
