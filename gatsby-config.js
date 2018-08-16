@@ -1,6 +1,6 @@
 module.exports = {
     siteMetadata: {
-        title: 'JR->JS',
+        title: 'jrcode',
     },
     plugins: [
         'gatsby-plugin-react-helmet',

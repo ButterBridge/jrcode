@@ -6,15 +6,15 @@ import Sidebar from './canvases/Sidebar';
 
 class Heading extends Component {
     state = {
-        fonts : Array(5).fill().map(x => sample(fonts)),
-        colours : Array(5).fill().map(x => sample(colours))
+        fonts : Array(6).fill().map(x => sample(fonts)),
+        colours : Array(6).fill().map(x => sample(colours))
     }
 
     render() {
         const {fonts, colours} = this.state;
         return (
             <div className="grid-sidebar">
-                {['J', 'R', '→', 'J', 'S'].map((char, i) => {
+                {['j', 'r', 'c', 'o', 'd', 'e'].map((char, i) => {
                     return <HeadLetter
                         gridCols={{from : i + 1, to : i + 2}}
                         key={i}
@@ -26,7 +26,7 @@ class Heading extends Component {
                     </HeadLetter>
                 })}
                 <div className="grid-sidebar-canvas">
-                    <Sidebar colours={colours} dimensions={[5, 13]}/>
+                    <Sidebar colours={colours} dimensions={[6, 13]}/>
                 </div>
             </div>
         );
