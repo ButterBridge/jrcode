@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
-import {CanvasSpace, Rectangle, Create} from 'pts';
+// import {CanvasSpace} from '../../libraries/pts/dist/es2015/Canvas';
+// import {Rectangle} from '../../libraries/pts/dist/es2015/Op';
+// import {Create} from '../../libraries/pts/dist/es2015/Create';
+    // import {CanvasSpace, Rectangle, Create} from 'pts';
 
 class Sidebar extends Component {
     render() {
@@ -9,6 +12,7 @@ class Sidebar extends Component {
     }
 
     componentDidMount = () => {
+        const {CanvasSpace, Rectangle, Create} = Pts;
         const space = new CanvasSpace(this.refs.canvas);
         const form = space.getForm();
 

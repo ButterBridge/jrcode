@@ -92,29 +92,29 @@ exports.modifyWebpackConfig = ({ config, stage }) => {
         browserslist: [ '> 1%', 'last 2 versions', 'IE >= 9' ]
     };
 
-    return Promise.all([
-        config.merge({
+    // return Promise.all([
+        return config.merge({
             resolve: {
                 alias: {
-                'react': __dirname + '/node_modules/gatsby/node_modules/react',
+                    'react': __dirname + '/node_modules/gatsby/node_modules/react',
                 }
             }
-        }),
+        })
+        // ,
 
-        generateBabelConfig( program, stage )
-            .then(babelConfig => {
-                config.removeLoader('js')
-                    .loader('js', {
-                        test: /\.jsx?$/,
-                        exclude: (modulePath) => {
-                            debugger;
-
-                            return /node_modules/.test( modulePath ) &&
-                                !/node_modules\/(pts)/.test( modulePath );
-                        },
-                        loader: 'babel',
-                        query: babelConfig
-                    } );
-            })
-        ]);
-  };
+        // generateBabelConfig(program, stage).then(babelConfig => {
+        //     config.removeLoader("js").loader("js", {
+        //       test: /\.js?$/,
+        //       exclude: modulePath => {
+        //         return (
+        //           /src\/libraries/.test(modulePath) &&
+        //           // whitelist specific es6 modules
+        //           !/src\/libraries\/(pts)/.test(modulePath)
+        //         );
+        //       },
+        //       loader: "babel",
+        //       query: babelConfig
+        //     });
+        //   })
+        // ]);
+};
