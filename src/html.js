@@ -9,8 +9,6 @@ if (process.env.NODE_ENV === `production`) {
     }
 }
 
-const test = `console.log('using?')`
-
 module.exports = class HTML extends React.Component {
     render() {
         let css;
@@ -34,12 +32,7 @@ module.exports = class HTML extends React.Component {
                     {this.props.headComponents}
                     {css}
                     <script
-                        async src="https://unpkg.com/pts@0.5.2/dist/pts.js"
-                    />
-                    <script
-                        dangerouslySetInnerHTML={{
-                            __html : test
-                        }}
+                        src="https://unpkg.com/pts@0.5.2/dist/pts.js"
                     />
                 </head>
                 <body {...this.props.bodyAttributes}>
