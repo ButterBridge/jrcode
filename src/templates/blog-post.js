@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { kebabCase, sample } from 'lodash';
 import Helmet from 'react-helmet';
 import Link from 'gatsby-link';
+import { kebabCase, sample } from 'lodash';
 import Content, { HTMLContent } from '../components/Content';
 import Image from '../components/Image';
-import { Main, Container, BulletedTitle, Opener, Subtitle, Meta, List, LinkedListItem, Centraliser, Option } from '../styled-components';
+import { Main, Container, BulletedTitle, Opener, Subtitle, Meta, List, LinkedListItem, Centraliser, Option, Detail } from '../styled-components';
 import {colours} from '../style';
 
 export const BlogPostTemplate = ({
@@ -35,10 +35,21 @@ export const BlogPostTemplate = ({
                     componentContent={title}
                     colour={sampleColour}
                 />
+                <Meta
+                    colour={sampleColour}
+                >
+                    <Detail>
+                        {formattedDate}
+                    </Detail>
+                </Meta>
                 <Opener>{description}</Opener>
                 <PostContent content={content} />
                 {images && <Centraliser>
-                    <Image images={images} caption={caption} sampleColour={sampleColour}/>
+                    <Image 
+                        images={images}
+                        caption={caption}
+                        sampleColour={sampleColour}
+                    />
                 </Centraliser>}
                 {tags && tags.length && (
                     <Meta

@@ -90,6 +90,7 @@ export const Main = styled.section`
 `
 
 export const Meta = styled.div`
+    display: block;
     border-radius: 1em;
     margin: 1px;
     background-color: ${({colour}) => colour};
