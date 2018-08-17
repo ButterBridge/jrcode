@@ -6,7 +6,7 @@ import { kebabCase, sample } from 'lodash';
 import Content, { HTMLContent } from '../components/Content';
 import Image from '../components/Image';
 import Transition from '../components/Transition';
-import { Main, Container, BulletedTitle, Opener, Subtitle, Meta, List, LinkedListItem, Centraliser, Option, Detail } from '../styled-components';
+import { Main, Container, BulletedTitle, Opener, Subtitle, Meta, List, LinkedListItem, Centraliser, Option, Detail, TransitionContainer } from '../styled-components';
 import {colours} from '../style';
 
 export const BlogPostTemplate = ({
@@ -30,7 +30,7 @@ export const BlogPostTemplate = ({
             colour={sampleColour}
         >
             <Helmet title={`${siteTitle} - blog - ${title}`} />
-            <Container>
+            <TransitionContainer>
                 <BulletedTitle
                     addition="title"
                     componentContent={title}
@@ -70,7 +70,7 @@ export const BlogPostTemplate = ({
                         </List>
                     </Meta>
                 )}
-            </Container>
+            </TransitionContainer>
         </Main>
     );
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 import Link from 'gatsby-link';
-import { ListItem, Main, Container, Detail, Subtitle, List, Opener, Option, BulletedOption, LinkedListItem, LinkedMeta} from '../styled-components';
+import { ListItem, Main, Container, Detail, Subtitle, List, Opener, Option, BulletedOption, LinkedListItem, LinkedMeta, TransitionContainer} from '../styled-components';
 
 class TagRoute extends React.Component {
     render() {
@@ -14,7 +14,7 @@ class TagRoute extends React.Component {
         return (
             <Main>
                 <Helmet title={`${tag} @ ${title}`} />
-                <Container>
+                <TransitionContainer>
                     <Subtitle>{tagHeader}</Subtitle>
                     <List>
                         {posts.map(post => {
@@ -35,7 +35,7 @@ class TagRoute extends React.Component {
                         >
                             <Option>All tags →</Option>
                         </LinkedMeta>
-                </Container>
+                </TransitionContainer>
             </Main>
         );
     }

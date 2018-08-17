@@ -4,8 +4,7 @@ import Content, { HTMLContent } from '../components/Content'
 import { Main, Title, TransitionContainer } from '../styled-components';
 import Transition from '../components/Transition';
 
-export const AboutPageTemplate = ({ title, content, contentComponent }) => {
-    const PageContent = contentComponent || Content;
+export const AboutPageTemplate = ({ title, content, contentComponent : PageContent = Content }) => {
 
     return (
         <Main>
