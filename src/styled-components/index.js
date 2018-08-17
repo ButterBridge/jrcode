@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { withBullet } from './with/withBullet';
 import { withLink } from './with/withLink';
+import { withTransition } from './with/withTransition';
 
 export const Bullet = styled.span`
     border-radius: 50%;
@@ -26,6 +27,7 @@ export const Centraliser = styled.div`
 export const Container = styled.div`
     margin: 1em;
 `
+export const TransitionContainer = withTransition(Container);
 
 export const Content = styled.div`
     border-left: 1em solid ${({colour}) => colour};
@@ -81,13 +83,13 @@ export const ListItem = styled.li`
 `
 export const LinkedListItem = withLink(ListItem);
 
-
 export const Main = styled.section`
     margin: 1em;
     border-top: 1em solid ${({colour}) => colour};
     border-right: 1em solid ${({colour}) => colour};
     border-radius: 15px;
 `
+export const TransitionMain = withTransition(Main);
 
 export const Meta = styled.div`
     display: block;
@@ -141,14 +143,3 @@ export const Title = styled.h3`
 `
 export const BulletedTitle = withBullet(Title);
 export const LinkedBulletedTitle = withLink(BulletedTitle);
-
-
-
-
-
-
-
-
-
-
-

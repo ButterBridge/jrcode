@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Content, { HTMLContent } from '../components/Content'
-import { Main, Container, Title } from '../styled-components';
+import { Main, Title, TransitionContainer } from '../styled-components';
 import Transition from '../components/Transition';
 
 export const AboutPageTemplate = ({ title, content, contentComponent }) => {
@@ -9,12 +9,12 @@ export const AboutPageTemplate = ({ title, content, contentComponent }) => {
 
     return (
         <Main>
-            <Container>
+            <TransitionContainer>
                 <Title>
                     {title}
                 </Title>
                 <PageContent content={content} />
-            </Container>
+            </TransitionContainer>
         </Main>
     )
 }
@@ -28,13 +28,11 @@ AboutPageTemplate.propTypes = {
 const AboutPage = ({data}) => {
     const { markdownRemark: post } = data;
     return (
-        <Transition>
-            <AboutPageTemplate
-                contentComponent={HTMLContent}
-                title={post.frontmatter.title}
-                content={post.html}
-            />
-        </Transition>
+        <AboutPageTemplate
+            contentComponent={HTMLContent}
+            title={post.frontmatter.title}
+            content={post.html}
+        />
     )
 }
 
