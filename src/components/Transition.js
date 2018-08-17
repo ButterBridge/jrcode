@@ -32,12 +32,14 @@ class Transition extends React.Component {
   render() {
     const transitionProps = {
       timeout: {
-        enter: 0,
+        enter: this.props.additionalTimeout || 0,
         exit: timeout,
       },
       appear: true,
       in: !this.state.exiting,
     }
+
+    console.log(transitionProps);
 
     return (
       <ReactTransition {...transitionProps}>

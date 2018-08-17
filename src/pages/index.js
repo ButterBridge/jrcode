@@ -5,6 +5,7 @@ import {Content, Main, Heading, Detail, Paragraph, LinkedBulletedTitle, LinkedMe
 import {colours} from '../style';
 import '../style/default-styles.css';
 import { sample } from 'lodash';
+import Transition from '../components/Transition';
 
 export default class IndexPage extends React.Component {
     render() {
@@ -14,29 +15,32 @@ export default class IndexPage extends React.Component {
 
         return (
             <Main><TransitionContainer>
-                {posts.map(({ node: post }) => (
-                    <Content
+                {posts.map(({ node: post }, index) => (
+                    <Transition
                         key={post.id}
+                        additionalTimeout={index * 200}
                     >
-                        <LinkedBulletedTitle
-                            addition="title"
-                            linkTo={post.fields.slug} 
-                            componentContent={post.frontmatter.title}
-                            colour={sampleColour}
-                        />
-                        <Paragraph>{post.excerpt}</Paragraph>
-                        <LinkedMeta
-                            colour={sampleColour}
-                        >
-                            <Detail>{post.frontmatter.formattedDate}</Detail>
-                        </LinkedMeta>
-                        <LinkedMeta
-                            linkTo={post.fields.slug}
-                            colour={sampleColour}
-                        >
-                            <Detail>Keep Reading →</Detail>
-                        </LinkedMeta>
-                    </Content>
+                        <Content>
+                            <LinkedBulletedTitle
+                                addition="title"
+                                linkTo={post.fields.slug} 
+                                componentContent={post.frontmatter.title}
+                                colour={sampleColour}
+                            />
+                            <Paragraph>{post.excerpt}</Paragraph>
+                            <LinkedMeta
+                                colour={sampleColour}
+                            >
+                                <Detail>{post.frontmatter.formattedDate}</Detail>
+                            </LinkedMeta>
+                            <LinkedMeta
+                                linkTo={post.fields.slug}
+                                colour={sampleColour}
+                            >
+                                <Detail>Keep Reading →</Detail>
+                            </LinkedMeta>
+                        </Content>
+                    </Transition>
                 ))}
             </TransitionContainer></Main>
         )
