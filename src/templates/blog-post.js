@@ -5,6 +5,7 @@ import Link from 'gatsby-link';
 import { kebabCase, sample } from 'lodash';
 import Content, { HTMLContent } from '../components/Content';
 import Image from '../components/Image';
+import Transition from '../components/Transition';
 import { Main, Container, BulletedTitle, Opener, Subtitle, Meta, List, LinkedListItem, Centraliser, Option, Detail } from '../styled-components';
 import {colours} from '../style';
 
@@ -85,13 +86,15 @@ const BlogPost = ({data}) => {
     const { markdownRemark: post, allFile : {edges}} = data;
     const linkedImage = edges.find(edge => edge.node.childImageSharp.sizes.originalImg.includes(kebabCase(post.frontmatter.title)));
     return (
-        <BlogPostTemplate
-            content={post.html}
-            contentComponent={HTMLContent}
-            siteTitle={data.site.siteMetadata.title}
-            frontmatter={post.frontmatter}
-            images={linkedImage ? linkedImage.node.childImageSharp : null}
-        />
+        <Transition>
+            <BlogPostTemplate
+                content={post.html}
+                contentComponent={HTMLContent}
+                siteTitle={data.site.siteMetadata.title}
+                frontmatter={post.frontmatter}
+                images={linkedImage ? linkedImage.node.childImageSharp : null}
+            />
+        </Transition>
     )
 }
 

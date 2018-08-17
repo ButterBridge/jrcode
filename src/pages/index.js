@@ -5,6 +5,7 @@ import {Content, Main, Container, Heading, Detail, Paragraph, LinkedBulletedTitl
 import {colours} from '../style';
 import '../style/default-styles.css';
 import { sample } from 'lodash';
+import Transition from '../components/Transition';
 
 export default class IndexPage extends React.Component {
     render() {
@@ -13,34 +14,32 @@ export default class IndexPage extends React.Component {
         const sampleColour = sample(colours);
 
         return (
-            <Main>
-                <Container>
-                    {posts.map(({ node: post }) => (
-                        <Content
-                            key={post.id}
+            <Transition><Main><Container>
+                {posts.map(({ node: post }) => (
+                    <Content
+                        key={post.id}
+                    >
+                        <LinkedBulletedTitle
+                            addition="title"
+                            linkTo={post.fields.slug} 
+                            componentContent={post.frontmatter.title}
+                            colour={sampleColour}
+                        />
+                        <Paragraph>{post.excerpt}</Paragraph>
+                        <LinkedMeta
+                            colour={sampleColour}
                         >
-                            <LinkedBulletedTitle
-                                addition="title"
-                                linkTo={post.fields.slug} 
-                                componentContent={post.frontmatter.title}
-                                colour={sampleColour}
-                            />
-                            <Paragraph>{post.excerpt}</Paragraph>
-                            <LinkedMeta
-                                colour={sampleColour}
-                            >
-                                <Detail>{post.frontmatter.formattedDate}</Detail>
-                            </LinkedMeta>
-                            <LinkedMeta
-                                linkTo={post.fields.slug}
-                                colour={sampleColour}
-                            >
-                                <Detail>Keep Reading →</Detail>
-                            </LinkedMeta>
-                        </Content>
-                    ))}
-                </Container>
-            </Main>
+                            <Detail>{post.frontmatter.formattedDate}</Detail>
+                        </LinkedMeta>
+                        <LinkedMeta
+                            linkTo={post.fields.slug}
+                            colour={sampleColour}
+                        >
+                            <Detail>Keep Reading →</Detail>
+                        </LinkedMeta>
+                    </Content>
+                ))}
+            </Container></Main></Transition>
         )
     }
 }
