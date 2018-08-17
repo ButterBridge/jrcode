@@ -5,18 +5,16 @@ import Link from 'gatsby-link';
 import { kebabCase, sample } from 'lodash';
 import Content, { HTMLContent } from '../components/Content';
 import Image from '../components/Image';
-import Transition from '../components/Transition';
-import { Main, Container, BulletedTitle, Opener, Subtitle, Meta, List, LinkedListItem, Centraliser, Option, Detail, TransitionContainer } from '../styled-components';
+import { Main, BulletedTitle, Opener, Subtitle, Meta, List, LinkedListItem, Centraliser, Option, Detail, TransitionContainer } from '../styled-components';
 import {colours} from '../style';
 
 export const BlogPostTemplate = ({
     content,
-    contentComponent,
+    contentComponent : PostContent = Content,
     siteTitle,
     images,
     frontmatter : {description, tags, title, caption, date, formattedDate}
 }) => {
-    const PostContent = contentComponent || Content;
     const sampleColour = sample(colours);
 
     tags.sort((a, b) => {
@@ -86,15 +84,13 @@ const BlogPost = ({data}) => {
     const { markdownRemark: post, allFile : {edges}} = data;
     const linkedImage = edges.find(edge => edge.node.childImageSharp.sizes.originalImg.includes(kebabCase(post.frontmatter.title)));
     return (
-        <Transition>
-            <BlogPostTemplate
-                content={post.html}
-                contentComponent={HTMLContent}
-                siteTitle={data.site.siteMetadata.title}
-                frontmatter={post.frontmatter}
-                images={linkedImage ? linkedImage.node.childImageSharp : null}
-            />
-        </Transition>
+        <BlogPostTemplate
+            content={post.html}
+            contentComponent={HTMLContent}
+            siteTitle={data.site.siteMetadata.title}
+            frontmatter={post.frontmatter}
+            images={linkedImage ? linkedImage.node.childImageSharp : null}
+        />
     )
 }
 

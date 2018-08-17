@@ -1,11 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Link from 'gatsby-link'
-import {Content, Main, Container, Heading, Detail, Paragraph, LinkedBulletedTitle, LinkedMeta, Meta} from '../styled-components'
+import {Content, Main, Heading, Detail, Paragraph, LinkedBulletedTitle, LinkedMeta, Meta, TransitionContainer} from '../styled-components'
 import {colours} from '../style';
 import '../style/default-styles.css';
 import { sample } from 'lodash';
-import Transition from '../components/Transition';
 
 export default class IndexPage extends React.Component {
     render() {
@@ -14,7 +13,7 @@ export default class IndexPage extends React.Component {
         const sampleColour = sample(colours);
 
         return (
-            <Transition><Main><Container>
+            <Main><TransitionContainer>
                 {posts.map(({ node: post }) => (
                     <Content
                         key={post.id}
@@ -39,7 +38,7 @@ export default class IndexPage extends React.Component {
                         </LinkedMeta>
                     </Content>
                 ))}
-            </Container></Main></Transition>
+            </TransitionContainer></Main>
         )
     }
 }
