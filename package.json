@@ -30,6 +30,7 @@
     "pts": "^0.5.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
+    "react-google-recaptcha": "^1.0.0",
     "react-helmet": "^5.2.0",
     "react-responsive": "^5.0.0",
     "react-transition-group": "^2.4.0",
@@ -46,7 +47,7 @@
   "main": "n/a",
   "scripts": {
     "start": "npm run develop",
-    "build": "gatsby build",
+    "build": "echo SITE_RECAPTCHA_KEY=$SITE_RECAPTCHA_KEY >> env.production && gatsby build",
     "develop": "gatsby develop",
     "serve": "gatsby serve",
     "format": "prettier --trailing-comma es5 --no-semi --single-quote --write \"{gatsby-*.js,src/**/*.js}\"",

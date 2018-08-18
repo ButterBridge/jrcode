@@ -1,8 +1,4 @@
 import React, { Component } from 'react';
-// import {CanvasSpace} from '../../libraries/pts/dist/es2015/Canvas';
-// import {Rectangle} from '../../libraries/pts/dist/es2015/Op';
-// import {Create} from '../../libraries/pts/dist/es2015/Create';
-    // import {CanvasSpace, Rectangle, Create} from 'pts';
 
 class Sidebar extends Component {
     render() {
