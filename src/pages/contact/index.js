@@ -35,7 +35,7 @@ state = { name: "", email: "", message: "" };
 
   render() {
     return (
-        <form name="contact" method="post" netlify netlify-honeypot="bot-field">
+        <form name="contact" method="post" data-netlify="true">
         <input type="hidden" name="form-name" value="contact" />
         <p>
           <label>Your Name: <input type="text" name="name"/></label>
