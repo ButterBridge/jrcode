@@ -48,6 +48,32 @@ export const Detail = styled.p`
     color: white;
 `
 
+export const FormButton = styled.button`
+    border-radius: 15px;
+    padding: 0.5em;
+    margin: 1.5em;
+    grid-area:  ${({gridArea : {from, to}}) => `${from} / ${to}`};
+`
+
+export const FormInput = styled.input`
+    font-size: 1em;
+    grid-area:  ${({gridArea : {from, to}}) => `${from} / ${to}`};
+    padding: 5px;
+`
+
+export const FormLabel = styled.label`
+    font-size: 1em;
+    grid-area:  ${({gridArea : {from, to}}) => `${from} / ${to}`};
+    text-align: 'right';
+    padding: 5px;
+`
+
+export const FormTextarea = styled.textarea`
+    font-size: 1em;
+    grid-area:  ${({gridArea : {from, to}}) => `${from} / ${to}`};
+    padding: 5px;
+`
+
 export const HeadLetter = styled.span`
     font-family: ${({font}) => `'${font}'`};
     font-size: 1.5em;

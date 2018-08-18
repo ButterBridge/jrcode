@@ -1,5 +1,6 @@
 import React from "react";
 import { navigateTo } from "gatsby-link";
+import {Main, TransitionContainer, Meta, FormLabel, FormTextarea, FormInput, FormButton} from '../../styled-components';
 
 const RECAPTCHA_KEY = process.env.SITE_RECAPTCHA_KEY;
 
@@ -35,21 +36,63 @@ state = { name: "", email: "", message: "" };
 
   render() {
     return (
-        <form name="contact" method="post" data-netlify="true">
-        <input type="hidden" name="form-name" value="contact" />
-        <p>
-          <label>Your Name: <input type="text" name="name"/></label>
-        </p>
-        <p>
-          <label>Your Email: <input type="email" name="email"/></label>
-        </p>
-        <p>
-          <label>Message: <textarea name="message"></textarea></label>
-        </p>
-        <p>
-          <button type="submit">Send</button>
-        </p>
-      </form>
+        <Main>
+            <TransitionContainer>
+                <form name="contact" method="post" data-netlify="true" className="grid-form">
+                    <input type="hidden" name="form-name" value="contact" />
+                    <FormLabel
+                        gridArea={{
+                            from : '1 / 1',
+                            to: '2 / 2'
+                        }}
+                    >Name please!</FormLabel>
+                    <FormInput 
+                        type="text"
+                        name="name"
+                        gridArea={{
+                            from : '1 / 2',
+                            to: '2 / 3'
+                        }}
+                    />
+                    <FormLabel
+                        gridArea={{
+                            from : '2 / 1',
+                            to: '3 / 2'
+                        }}
+                    >Contact email:</FormLabel>
+                    <FormInput 
+                        type="email"
+                        name="email"
+                        gridArea={{
+                            from : '2 / 2',
+                            to: '3 / 3'
+                        }}
+                    />
+                    <FormLabel
+                        gridArea={{
+                            from : '3 / 1',
+                            to: '4 / 2'
+                        }}
+                    >What you got?</FormLabel>
+                    <FormTextarea
+                        name="message"
+                        gridArea={{
+                            from : '3 / 2',
+                            to: '4 / 3'
+                        }}    
+                    />
+                    <FormButton 
+                        type="submit"
+                        gridArea={{
+                            from : '4 / 1',
+                            to: '5 / 3'
+                        }} 
+                    >
+                        Send
+                    </FormButton>
+                </form>
+            </TransitionContainer>
+        </Main>
     );
   }
 }
