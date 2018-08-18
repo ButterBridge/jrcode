@@ -24,7 +24,8 @@ export default class Contact extends React.Component {
         return (
             <Main>
                 <TransitionContainer>
-                <h1>Contact</h1>
+                {formSendError && <Opener>There was an error sending your message... please try again later. {Object.keys(formSendError)}</Opener>}
+                    {formSent && <Opener>Thanks for your message! I'll get back to you as soon as possible.</Opener>}
         <form
           name="contact"
           method="post"
