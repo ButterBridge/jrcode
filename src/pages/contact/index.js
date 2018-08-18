@@ -1,7 +1,13 @@
 import React from "react";
 import {Main, TransitionContainer, Meta, FormLabel, FormTextarea, FormInput, FormButton, Opener} from '../../styled-components';
-import { encode } from "../../utils/helpers";
+// import { encode } from "../../utils/helpers";
 
+function encode(data) {
+    const encoded = Object.keys(data)
+      .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+      .join("&");
+    return encoded
+  }
 export default class Contact extends React.Component {
     state = { 
         name: '',
@@ -13,7 +19,7 @@ export default class Contact extends React.Component {
     };
 
     render() {
-        const {formSent, formSendError, submitting} = this.state;
+        const {formSent, formSendError, submitting, name, email, message} = this.state;
         return (
             <Main>
                 <TransitionContainer>
@@ -30,10 +36,12 @@ export default class Contact extends React.Component {
                         <FormInput 
                             type="text"
                             name="name"
+                            value={name}
                             gridArea={{
                                 from : '1 / 2',
                                 to: '2 / 3'
                             }}
+                            onChange={this.handleChange}
                         />
                         <FormLabel
                             gridArea={{
@@ -44,10 +52,12 @@ export default class Contact extends React.Component {
                         <FormInput 
                             type="email"
                             name="email"
+                            value={email}
                             gridArea={{
                                 from : '2 / 2',
                                 to: '3 / 3'
                             }}
+                            onChange={this.handleChange}
                         />
                         <FormLabel
                             gridArea={{
@@ -57,10 +67,12 @@ export default class Contact extends React.Component {
                         >What you got?</FormLabel>
                         <FormTextarea
                             name="message"
+                            value={message}
                             gridArea={{
                                 from : '3 / 2',
                                 to: '4 / 3'
-                            }}    
+                            }}
+                            onChange={this.handleChange}   
                         />
                         <FormButton
                             onClick={this.handleSubmit}
@@ -80,6 +92,7 @@ export default class Contact extends React.Component {
 
 
     handleChange = e => {
+        console.log(e.target.name, e.target.value);
         this.setState({ 
             [e.target.name]: e.target.value 
         });
@@ -95,13 +108,17 @@ export default class Contact extends React.Component {
             submitting: true
         })
 
+        const encoding = encode({
+            'form-name': 'contact',
+            name, email, message
+        })
+
+        console.log(encoding);
+
         fetch('/', {
             method: 'POST',
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-            body: encode({
-                'form-name': e.target.getAttribute('name'),
-                name, email, message
-            })
+            body: encoding
         })
         .then(() => {
             this.setState({
