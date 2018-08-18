@@ -24,6 +24,103 @@ export default class Contact extends React.Component {
         return (
             <Main>
                 <TransitionContainer>
+                <h1>Contact</h1>
+        <form
+          name="contact"
+          method="post"
+          action="/thanks/"
+          data-netlify="true"
+          data-netlify-honeypot="bot-field"
+          onSubmit={this.handleSubmit}
+        >
+          {/* The `form-name` hidden field is required to support form submissions without JavaScript */}
+          <input type="hidden" name="form-name" value="contact" />
+          <p hidden>
+            <label>
+              Don’t fill this out:{" "}
+              <input name="bot-field" onChange={this.handleChange} />
+            </label>
+          </p>
+          <p>
+            <label>
+              Your name:<br />
+              <input type="text" name="name" onChange={this.handleChange} />
+            </label>
+          </p>
+          <p>
+            <label>
+              Your email:<br />
+              <input type="email" name="email" onChange={this.handleChange} />
+            </label>
+          </p>
+          <p>
+            <label>
+              Message:<br />
+              <textarea name="message" onChange={this.handleChange} />
+            </label>
+          </p>
+          <p>
+            <button type="submit">Send</button>
+          </p>
+        </form>
+                </TransitionContainer>
+            </Main>
+        );
+    }
+
+
+    handleChange = e => {
+        this.setState({ 
+            [e.target.name]: e.target.value 
+        });
+    };
+
+    handleSubmit = e => {
+        const {name, email, message} = this.state;
+
+        this.setState({
+            formSent: false,
+            formSendError: false,
+            submitting: true
+        })
+
+        const encoding = encode({
+            'form-name': 'contact',
+            name, email, message
+        })
+
+
+
+        fetch('/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: encoding
+        })
+        .then(() => {
+            this.setState({
+                formSent: true,
+                name: '',
+                email: '',
+                message: '',
+                submitting: false
+            })
+        })
+        .catch((err) => {
+            console.log(err)
+            this.setState({
+                formSendError: err,
+                submitting: false
+            })
+        });
+
+        e.preventDefault();
+
+    };
+}
+
+
+/*
+
                     {formSendError && <Opener>There was an error sending your message... please try again later. {Object.keys(formSendError)}</Opener>}
                     {formSent && <Opener>Thanks for your message! I'll get back to you as soon as possible.</Opener>}
                     <form 
@@ -34,7 +131,7 @@ export default class Contact extends React.Component {
                         onSubmit={this.handleSubmit}
                         // action="/contact"
                     >
-                        {/* <input type="hidden" name="form-name" value="contact" /> */}
+                        <input type="hidden" name="form-name" value="contact" /> 
                         <FormLabel
                             gridArea={{
                                 from : '1 / 1',
@@ -93,57 +190,4 @@ export default class Contact extends React.Component {
                             Send
                         </FormButton>
                     </form>
-                </TransitionContainer>
-            </Main>
-        );
-    }
-
-
-    handleChange = e => {
-        this.setState({ 
-            [e.target.name]: e.target.value 
-        });
-    };
-
-    handleSubmit = e => {
-        const {name, email, message} = this.state;
-
-        this.setState({
-            formSent: false,
-            formSendError: false,
-            submitting: true
-        })
-
-        const encoding = encode({
-            'form-name': 'contact',
-            name, email, message
-        })
-
-
-
-        fetch('/', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-            body: encoding
-        })
-        .then(() => {
-            this.setState({
-                formSent: true,
-                name: '',
-                email: '',
-                message: '',
-                submitting: false
-            })
-        })
-        .catch((err) => {
-            console.log(err)
-            this.setState({
-                formSendError: err,
-                submitting: false
-            })
-        });
-
-        e.preventDefault();
-
-    };
-}
+                    */
