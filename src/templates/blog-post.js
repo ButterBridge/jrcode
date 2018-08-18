@@ -33,6 +33,7 @@ export const BlogPostTemplate = ({
                     addition="title"
                     componentContent={title}
                     colour={sampleColour}
+                    classTag={'post'}
                 />
                 <Meta
                     colour={sampleColour}
