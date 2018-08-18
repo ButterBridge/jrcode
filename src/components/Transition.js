@@ -23,7 +23,7 @@ class Transition extends React.Component {
     }
 
     render() {
-        const {additionalTimeout = 0, actions = ['fade']} = this.props;
+        const {additionalTimeout = 0, actions = ['fade'], children} = this.props;
         const {exiting} = this.state;
 
         const transitionProps = {
@@ -43,7 +43,7 @@ class Transition extends React.Component {
                             ...composeTransitionStyles({ status, timeout, actions }),
                         }}
                     >
-                        {this.props.children}
+                        {children}
                     </div>
                 )}
             </ReactTransition>
