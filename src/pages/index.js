@@ -19,6 +19,7 @@ export default class IndexPage extends React.Component {
                     <Transition
                         key={post.id}
                         additionalTimeout={index * 200}
+                        actions={['fade', 'slide']}
                     >
                         <Content>
                             <LinkedBulletedTitle

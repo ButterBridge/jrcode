@@ -1,5 +1,5 @@
-const getTransitionStyles = timeout => {
-    return {
+const getTransitionStyles = timeout => ({
+    fade : {
         entering: {
             opacity: 0,
         },
@@ -7,13 +7,42 @@ const getTransitionStyles = timeout => {
             transition: `opacity ${timeout}ms ease-in-out`,
             opacity: 1,
         },
-        exiting: {
+        exited: {
             transition: `opacity ${timeout}ms ease-in-out`,
             opacity: 0,
+        }, 
+    },
+
+    slide : {
+        entering: {
+            transform: 'translateX(-100%)'
         },
+        entered: {
+            transition: `transform ${timeout}ms`,
+            transform: 'translateX(0%)'
+        },
+        exited: {
+            transform: 'translateX(0%)'
+        }
     }
+})
+
+const composeTransitionStyles = ({ timeout, status, actions }) => {
+    const {elements, transitions} = actions.reduce((acc, action) => {
+        acc.elements = {
+            ...acc.elements,
+            ...getTransitionStyles()[action][status]
+        };
+        acc.transitions.push(getTransitionStyles(timeout)[action][status].transition || '');
+        return acc;
+    }, {
+        elements: {},
+        transitions : []
+    });
+    
+    elements.transition = transitions.join();
+
+    return elements;
 }
-  
-const getTransitionStyle = ({ timeout, status }) => getTransitionStyles(timeout)[status];
-  
-export default getTransitionStyle;
+    
+export default composeTransitionStyles;
