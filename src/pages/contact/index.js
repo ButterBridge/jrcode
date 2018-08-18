@@ -18,9 +18,9 @@ export default class Contact extends React.Component {
         return (
             <Main>
                 <TransitionContainer>
-                    {formSendError && <Opener>There was an error sending your message... please try again later.</Opener>}
+                    {formSendError && <Opener>There was an error sending your message... please try again later. {Object.keys(formSendError)}</Opener>}
                     {formSent && <Opener>Thanks for your message! I'll get back to you as soon as possible.</Opener>}
-                    <form name="contact" method="post" data-netlify="true" className="grid-form" onSubmit={this.handleSubmit} action="/">
+                    <form name="contact" method="post" data-netlify="true" className="grid-form" onSubmit={this.handleSubmit} action="/contact">
                         <input type="hidden" name="form-name" value="contact" />
                         <FormLabel
                             gridArea={{
@@ -93,7 +93,6 @@ export default class Contact extends React.Component {
     };
 
     handleSubmit = e => {
-        e.preventDefault();
         const {name, email, message} = this.state;
 
         this.setState({
@@ -112,7 +111,6 @@ export default class Contact extends React.Component {
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
             body: encoding
         })
-        .then(() => navigateTo(form.getAttribute("action")))
         .then(() => {
             this.setState({
                 formSent: true,
@@ -122,11 +120,15 @@ export default class Contact extends React.Component {
                 submitting: false
             })
         })
-        .catch(() => 
+        .catch((err) => {
+            console.log(err)
             this.setState({
-                formSendError: true,
+                formSendError: err,
                 submitting: false
             })
-        );
+        });
+
+        e.preventDefault();
+
     };
 }
