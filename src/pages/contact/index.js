@@ -28,7 +28,7 @@ export default class Contact extends React.Component {
                                 to: '2 / 2'
                             }}
                         >Name please!</FormLabel>
-                        <FormInput 
+                        <input 
                             type="text"
                             name="name"
                             value={name}
@@ -44,7 +44,7 @@ export default class Contact extends React.Component {
                                 to: '3 / 2'
                             }}
                         >Contact email:</FormLabel>
-                        <FormInput 
+                        <input 
                             type="email"
                             name="email"
                             value={email}
@@ -60,7 +60,7 @@ export default class Contact extends React.Component {
                                 to: '4 / 2'
                             }}
                         >What you got?</FormLabel>
-                        <FormTextarea
+                        <textarea
                             name="message"
                             value={message}
                             gridArea={{
