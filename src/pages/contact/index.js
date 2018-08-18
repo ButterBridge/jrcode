@@ -32,6 +32,7 @@ export default class Contact extends React.Component {
           data-netlify="true"
           data-netlify-honeypot="bot-field"
           onSubmit={this.handleSubmit}
+          className="grid-form"
         >
           {/* The `form-name` hidden field is required to support form submissions without JavaScript */}
           <input type="hidden" name="form-name" value="contact" />
@@ -42,25 +43,48 @@ export default class Contact extends React.Component {
             </label>
           </p>
           <p>
-            <label>
+            <FormLabel
+            gridArea={{
+                from : '1 / 1',
+                to: '2 / 2'
+            }}>
               Your name:<br />
               <input type="text" name="name" onChange={this.handleChange} />
-            </label>
+            </FormLabel>
           </p>
           <p>
-            <label>
+            <FormLabel
+            gridArea={{
+                from : '2 / 1',
+                to: '3 / 2'
+            }}
+            >
               Your email:<br />
               <input type="email" name="email" onChange={this.handleChange} />
-            </label>
+            </FormLabel>
           </p>
           <p>
-            <label>
+            <FormLabel
+            gridArea={{
+                from : '3 / 1',
+                to: '4 / 2'
+            }}
+            >
               Message:<br />
               <textarea name="message" onChange={this.handleChange} />
-            </label>
+            </FormLabel>
           </p>
           <p>
-            <button type="submit">Send</button>
+          <FormButton
+                            type="submit"
+                            disabled={submitting}
+                            gridArea={{
+                                from : '4 / 1',
+                                to: '5 / 3'
+                            }} 
+                        >
+                            Send
+                        </FormButton>
           </p>
         </form>
                 </TransitionContainer>
