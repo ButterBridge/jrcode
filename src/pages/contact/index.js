@@ -1,13 +1,7 @@
 import React from "react";
 import {Main, TransitionContainer, Meta, FormLabel, FormTextarea, FormInput, FormButton, Opener} from '../../styled-components';
-// import { encode } from "../../utils/helpers";
+import { encode } from "../../utils/helpers";
 
-function encode(data) {
-    const encoded = Object.keys(data)
-      .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
-      .join("&");
-    return encoded
-  }
 export default class Contact extends React.Component {
     state = { 
         name: '',
@@ -25,7 +19,7 @@ export default class Contact extends React.Component {
                 <TransitionContainer>
                     {formSendError && <Opener>There was an error sending your message... please try again later.</Opener>}
                     {formSent && <Opener>Thanks for your message! I'll get back to you as soon as possible.</Opener>}
-                    <form name="contact" method="post" data-netlify="true" className="grid-form">
+                    <form name="contact" method="post" data-netlify="true" className="grid-form" onSubmit={this.handleSubmit}>
                         <input type="hidden" name="form-name" value="contact" />
                         <FormLabel
                             gridArea={{
@@ -75,7 +69,7 @@ export default class Contact extends React.Component {
                             onChange={this.handleChange}   
                         />
                         <FormButton
-                            onClick={this.handleSubmit}
+                            type="submit"
                             disabled={submitting}
                             gridArea={{
                                 from : '4 / 1',
@@ -92,7 +86,6 @@ export default class Contact extends React.Component {
 
 
     handleChange = e => {
-        console.log(e.target.name, e.target.value);
         this.setState({ 
             [e.target.name]: e.target.value 
         });
@@ -112,8 +105,6 @@ export default class Contact extends React.Component {
             'form-name': 'contact',
             name, email, message
         })
-
-        console.log(encoding);
 
         fetch('/', {
             method: 'POST',
