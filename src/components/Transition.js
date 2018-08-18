@@ -1,7 +1,9 @@
 import React from "react"
 import { Transition as ReactTransition } from "react-transition-group"
 import composeTransitionStyles from "../utils/transitions"
-import { historyExitingEventType, timeout } from "../../gatsby-browser"
+
+const timeout = 250;
+const historyExitingEventType = `history::exiting`;
 
 class Transition extends React.Component {
     state = { 
@@ -18,13 +20,6 @@ class Transition extends React.Component {
 
     componentWillUnmount() {
         window.removeEventListener(historyExitingEventType, this.listenerHandler)
-    }
-
-    static getDerivedStateFromProps({ exiting }) {
-        if (exiting) {
-            return { exiting: false }
-        }
-        return null
     }
 
     render() {
