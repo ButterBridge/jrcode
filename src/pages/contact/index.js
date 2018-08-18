@@ -1,7 +1,13 @@
 import React from "react";
 import {Main, TransitionContainer, Meta, FormLabel, FormTextarea, FormInput, FormButton, Opener} from '../../styled-components';
-import { encode } from "../../utils/helpers";
+// import { encode } from "../../utils/helpers";
 import { navigateTo } from "gatsby-link";
+
+const encode = (data) => {
+    return Object.keys(data)
+    .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+    .join("&");
+}
 
 export default class Contact extends React.Component {
     state = { 
@@ -28,7 +34,7 @@ export default class Contact extends React.Component {
                                 to: '2 / 2'
                             }}
                         >Name please!</FormLabel>
-                        <input 
+                        <FormInput 
                             type="text"
                             name="name"
                             value={name}
@@ -44,7 +50,7 @@ export default class Contact extends React.Component {
                                 to: '3 / 2'
                             }}
                         >Contact email:</FormLabel>
-                        <input 
+                        <FormInput 
                             type="email"
                             name="email"
                             value={email}
@@ -60,7 +66,7 @@ export default class Contact extends React.Component {
                                 to: '4 / 2'
                             }}
                         >What you got?</FormLabel>
-                        <textarea
+                        <FormTextarea
                             name="message"
                             value={message}
                             gridArea={{
@@ -105,6 +111,8 @@ export default class Contact extends React.Component {
             'form-name': 'contact',
             name, email, message
         })
+
+
 
         fetch('/', {
             method: 'POST',
