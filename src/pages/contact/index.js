@@ -48,7 +48,10 @@ export default class Contact extends React.Component {
             }}>
               Your name:
             </FormLabel>
-              <input type="text" name="name" onChange={this.handleChange} />
+              <FormInput type="text" name="name" onChange={this.handleChange} gridArea={{
+                                from : '1 / 2',
+                                to: '2 / 3'
+                            }} />
             <FormLabel
             gridArea={{
                 from : '2 / 1',
@@ -57,7 +60,10 @@ export default class Contact extends React.Component {
             >
               Your email:
             </FormLabel>
-              <input type="email" name="email" onChange={this.handleChange} />
+              <FormInput type="email" name="email" onChange={this.handleChange} gridArea={{
+                                from : '2 / 2',
+                                to: '3 / 3'
+                            }} />
             <FormLabel
             gridArea={{
                 from : '3 / 1',
@@ -66,7 +72,10 @@ export default class Contact extends React.Component {
             >
               Message:
             </FormLabel>
-              <textarea name="message" onChange={this.handleChange} />
+              <FormTextarea name="message" onChange={this.handleChange} gridArea={{
+                                from : '3 / 2',
+                                to: '4 / 3'
+                            }}/>
           <FormButton
                             type="submit"
                             disabled={submitting}
