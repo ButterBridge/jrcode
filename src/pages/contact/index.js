@@ -28,7 +28,6 @@ export default class Contact extends React.Component {
         <form
           name="contact"
           method="post"
-          action="/thanks/"
           data-netlify="true"
           data-netlify-honeypot="bot-field"
           onSubmit={this.handleSubmit}
@@ -42,39 +41,32 @@ export default class Contact extends React.Component {
               <input name="bot-field" onChange={this.handleChange} />
             </label>
           </p>
-          <p>
             <FormLabel
             gridArea={{
                 from : '1 / 1',
                 to: '2 / 2'
             }}>
-              Your name:<br />
-              <input type="text" name="name" onChange={this.handleChange} />
+              Your name:
             </FormLabel>
-          </p>
-          <p>
+              <input type="text" name="name" onChange={this.handleChange} />
             <FormLabel
             gridArea={{
                 from : '2 / 1',
                 to: '3 / 2'
             }}
             >
-              Your email:<br />
-              <input type="email" name="email" onChange={this.handleChange} />
+              Your email:
             </FormLabel>
-          </p>
-          <p>
+              <input type="email" name="email" onChange={this.handleChange} />
             <FormLabel
             gridArea={{
                 from : '3 / 1',
                 to: '4 / 2'
             }}
             >
-              Message:<br />
-              <textarea name="message" onChange={this.handleChange} />
+              Message:
             </FormLabel>
-          </p>
-          <p>
+              <textarea name="message" onChange={this.handleChange} />
           <FormButton
                             type="submit"
                             disabled={submitting}
@@ -85,7 +77,6 @@ export default class Contact extends React.Component {
                         >
                             Send
                         </FormButton>
-          </p>
         </form>
                 </TransitionContainer>
             </Main>
