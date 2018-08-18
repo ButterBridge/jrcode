@@ -12,7 +12,7 @@ class Brand extends Component {
 
     render() {
         const {fonts, colours} = this.state;
-        const {siteName, isSmall} = this.props;
+        const {siteName, isSmall, isAlone} = this.props;
         return (
             <div className={`grid-sidebar${isSmall ? '-mini' : ''}`}>
                 {`${isSmall ? ' ' : ''}${siteName}`.split('').map((char, i) => {
@@ -26,7 +26,7 @@ class Brand extends Component {
                         {char}
                     </HeadLetter>
                 })}
-                {!isSmall && <div className="grid-sidebar-canvas">
+                {!isSmall && !isAlone && <div className="grid-sidebar-canvas">
                     <Sidebar colours={colours} dimensions={[6, 13]}/>
                 </div>}
             </div> 

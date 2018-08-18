@@ -1,17 +1,24 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import {sample} from 'lodash';
 import Content, { HTMLContent } from '../components/Content'
-import { Main, Title, TransitionContainer } from '../styled-components';
+import { Main, Title, TransitionContainer, SuperTitle } from '../styled-components';
 import Transition from '../components/Transition';
+import Brand from '../components/Brand';
+import {colours} from '../style';
 
 export const AboutPageTemplate = ({ title, content, contentComponent : PageContent = Content }) => {
+
+    console.log(title);
 
     return (
         <Main>
             <TransitionContainer>
-                <Title>
+                <SuperTitle
+                    colour={sample(colours)}
+                >
                     {title}
-                </Title>
+                </SuperTitle>
                 <PageContent content={content} />
             </TransitionContainer>
         </Main>
@@ -29,7 +36,7 @@ const AboutPage = ({data}) => {
     return (
         <AboutPageTemplate
             contentComponent={HTMLContent}
-            title={post.frontmatter.title}
+            title={data.site.siteMetadata.title}
             content={post.html}
         />
     )
@@ -43,11 +50,13 @@ export default AboutPage;
 
 export const aboutPageQuery = graphql`
     query AboutPage($id: String!) {
-        markdownRemark(id: { eq: $id }) {
-            html
-            frontmatter {
+        site {
+            siteMetadata {
                 title
             }
+        }
+        markdownRemark(id: { eq: $id }) {
+            html
         }
     }
 `
