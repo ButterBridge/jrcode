@@ -1,6 +1,7 @@
 import React from "react";
 import {Main, TransitionContainer, Meta, FormLabel, FormTextarea, FormInput, FormButton, Opener} from '../../styled-components';
 import { encode } from "../../utils/helpers";
+import { navigateTo } from "gatsby-link";
 
 export default class Contact extends React.Component {
     state = { 
@@ -111,6 +112,7 @@ export default class Contact extends React.Component {
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
             body: encoding
         })
+        .then(() => navigateTo(form.getAttribute("action")))
         .then(() => {
             this.setState({
                 formSent: true,
