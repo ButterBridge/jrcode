@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Link from 'gatsby-link'
-import {Content, Main, Heading, Detail, Paragraph, LinkedBulletedTitle, LinkedMeta, Meta, TransitionContainer} from '../styled-components'
+import {Content, Main, Heading, Detail, Opener, Paragraph, LinkedBulletedTitle, LinkedMeta, Meta, TransitionContainer, SuperTitle} from '../styled-components'
 import {colours} from '../style';
 import '../style/default-styles.css';
 import { sample } from 'lodash';
@@ -15,6 +15,14 @@ export default class IndexPage extends React.Component {
 
         return (
             <Main><TransitionContainer>
+                <Opener>
+                    Hello. Welcome.
+                </Opener>
+                <SuperTitle
+                    colour={sampleColour}
+                >
+                    Blog...
+                </SuperTitle>
                 {posts.map(({ node: post }, index) => (
                     <Transition
                         key={post.id}

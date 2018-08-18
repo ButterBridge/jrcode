@@ -162,8 +162,19 @@ export const Subtitle = styled.h4`
     padding: 0.5em;
 `
 
+export const SuperTitle = styled.h2`
+    font-size: 2.25em;
+    background-color: ${({colour}) => colour};
+    color: white;
+    border-radius: 15px;
+    margin: 15px;
+    padding: 15px;
+    position: relative;
+    left: -34px;
+`
+
 export const Title = styled.h3`
-    font-size: 2em;
+    font-size: 1.75em;
     margin: 0.1em;
     display: inline-block;
 `
