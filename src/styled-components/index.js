@@ -154,6 +154,8 @@ export const BulletedOption = withBullet(Option);
 export const Paragraph = styled.p`
     font-size: 1em;
     margin: 0;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
 `
 
 export const Subtitle = styled.h4`
