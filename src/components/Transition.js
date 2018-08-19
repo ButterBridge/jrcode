@@ -41,6 +41,7 @@ class Transition extends React.Component {
                     <div
                         style={{
                             ...composeTransitionStyles({ status, timeout, actions }),
+                            ...this.props.style 
                         }}
                     >
                         {children}

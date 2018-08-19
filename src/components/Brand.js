@@ -3,11 +3,12 @@ import {sample} from 'lodash';
 import { HeadLetter } from '../styled-components';
 import {colours, fonts} from '../style';
 import Sidebar from './canvases/Sidebar';
+import Transition from './Transition';
 
 class Brand extends Component {
     state = {
-        fonts : Array(this.props.siteName.length + 2).fill().map(x => sample(fonts)),
-        colours : Array(this.props.siteName.length + 2).fill().map(x => sample(colours))
+        fonts : Array(this.props.siteName.length + 1).fill().map(x => sample(fonts)),
+        colours : Array(this.props.siteName.length + 1).fill().map(x => sample(colours))
     }
 
     render() {
@@ -27,7 +28,13 @@ class Brand extends Component {
                     </HeadLetter>
                 })}
                 {!isSmall && !isAlone && <div className="grid-sidebar-canvas">
-                    <Sidebar colours={colours} dimensions={[6, 13]}/>
+                    <Transition
+                        additionalTimeout={600}
+                        actions={['descend']}
+                        style={{width : '100%', height : '100%'}}
+                    >
+                        <Sidebar colours={colours} dimensions={[6, 13]}/>
+                    </Transition>
                 </div>}
             </div> 
         );
