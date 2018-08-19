@@ -19,6 +19,11 @@ const Navbar = () => (
                 </Link>
             </NavBarItem>
             <NavBarItem>
+                <Link to="/contact">
+                    <Option>Contact</Option>
+                </Link>
+            </NavBarItem>
+            <NavBarItem>
                 <Icon 
                     link="https://twitter.com/Butter_Bridge"
                     src={twitter}

@@ -18,12 +18,12 @@ export default class Contact extends React.Component {
         message: '',
         formSent: false,
         formSendError: false,
-        submitting: false
+        submitting: false,
+        sampleColour : sample(colours)
     };
 
     render() {
-        const {formSent, formSendError, submitting, name, email, message} = this.state;
-        const sampleColour = sample(colours);
+        const {formSent, formSendError, submitting, name, email, message, sampleColour} = this.state;
         return (
             <Main>
                 <TransitionContainer>
@@ -68,6 +68,7 @@ export default class Contact extends React.Component {
                             type="text"
                             name="name"
                             onChange={this.handleChange}
+                            value={name}
                             gridArea={{
                                 from : '1 / 2',
                                 to: '2 / 3'
@@ -84,6 +85,7 @@ export default class Contact extends React.Component {
                         <FormInput 
                             type="email"
                             name="email"
+                            value={email}
                             onChange={this.handleChange}
                             gridArea={{
                                 from : '2 / 2',
@@ -101,6 +103,7 @@ export default class Contact extends React.Component {
                         <FormTextarea
                             name="message"
                             onChange={this.handleChange}
+                            value={message}
                             gridArea={{
                                 from : '3 / 2',
                                 to: '4 / 3'
