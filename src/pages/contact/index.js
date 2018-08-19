@@ -1,13 +1,12 @@
 import React from "react";
 import {Main, TransitionContainer, Meta, FormLabel, FormTextarea, FormInput, FormButton, Opener, Paragraph, SuperTitle} from '../../styled-components';
-// import { encode } from "../../utils/helpers";
 import { navigateTo } from "gatsby-link";
 import {colours} from '../../style';
 import { sample } from 'lodash';
 
-const encode = (data) => {
-    return Object.keys(data)
-        .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`)
+const encode = data => {
+    return Object.entries(data)
+        .map(([key, value]) => `${encodeURIComponent(key)}=${encodeURIComponent(value)}`)
         .join("&");
 }
 
@@ -30,7 +29,7 @@ export default class Contact extends React.Component {
                     <SuperTitle
                         colour={sampleColour}
                     >
-                        Contact me!
+                        Contact
                     </SuperTitle>
                     <Paragraph>
                         Please get in contact here to ask about work & anything else interesting :)
@@ -42,7 +41,7 @@ export default class Contact extends React.Component {
                             rel="noopener noreferrer"
                         >our website.</a>
                     </Paragraph>
-                    {formSendError && <Opener>There was an error sending your message... please try again later. {Object.keys(formSendError)}</Opener>}
+                    {formSendError && <Opener>There was an error sending your message... please try again later.</Opener>}
                     {formSent && <Opener>Thanks for your message! I'll get back to you as soon as possible.</Opener>}
                     <form
                         name="contact"
@@ -113,7 +112,7 @@ export default class Contact extends React.Component {
                             type="submit"
                             disabled={submitting || !name || !email || !message}
                             gridArea={{
-                                from : '4 / 1',
+                                from : '4 / 2',
                                 to: '5 / 3'
                             }} 
                         >
@@ -160,7 +159,6 @@ export default class Contact extends React.Component {
             })
         })
         .catch((err) => {
-            console.log(err)
             this.setState({
                 formSendError: err,
                 submitting: false
