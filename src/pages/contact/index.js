@@ -111,7 +111,7 @@ export default class Contact extends React.Component {
                         />
                         <FormButton
                             type="submit"
-                            disabled={submitting}
+                            disabled={submitting || !name || !email || !message}
                             gridArea={{
                                 from : '4 / 1',
                                 to: '5 / 3'
@@ -124,7 +124,6 @@ export default class Contact extends React.Component {
             </Main>
         );
     }
-
 
     handleChange = e => {
         this.setState({ 
@@ -145,8 +144,6 @@ export default class Contact extends React.Component {
             'form-name': 'contact',
             name, email, message
         })
-
-
 
         fetch('/', {
             method: 'POST',
@@ -171,80 +168,5 @@ export default class Contact extends React.Component {
         });
 
         e.preventDefault();
-
     };
 }
-
-
-/*
-
-                    {formSendError && <Opener>There was an error sending your message... please try again later. {Object.keys(formSendError)}</Opener>}
-                    {formSent && <Opener>Thanks for your message! I'll get back to you as soon as possible.</Opener>}
-                    <form 
-                        name="contact"
-                        // method="post"
-                        data-netlify="true"
-                        className="grid-form"
-                        onSubmit={this.handleSubmit}
-                        // action="/contact"
-                    >
-                        <input type="hidden" name="form-name" value="contact" /> 
-                        <FormLabel
-                            gridArea={{
-                                from : '1 / 1',
-                                to: '2 / 2'
-                            }}
-                        >Name please!</FormLabel>
-                        <FormInput 
-                            type="text"
-                            name="name"
-                            value={name}
-                            gridArea={{
-                                from : '1 / 2',
-                                to: '2 / 3'
-                            }}
-                            onChange={this.handleChange}
-                        />
-                        <FormLabel
-                            gridArea={{
-                                from : '2 / 1',
-                                to: '3 / 2'
-                            }}
-                        >Contact email:</FormLabel>
-                        <FormInput 
-                            type="email"
-                            name="email"
-                            value={email}
-                            gridArea={{
-                                from : '2 / 2',
-                                to: '3 / 3'
-                            }}
-                            onChange={this.handleChange}
-                        />
-                        <FormLabel
-                            gridArea={{
-                                from : '3 / 1',
-                                to: '4 / 2'
-                            }}
-                        >What you got?</FormLabel>
-                        <FormTextarea
-                            name="message"
-                            value={message}
-                            gridArea={{
-                                from : '3 / 2',
-                                to: '4 / 3'
-                            }}
-                            onChange={this.handleChange}   
-                        />
-                        <FormButton
-                            type="submit"
-                            disabled={submitting}
-                            gridArea={{
-                                from : '4 / 1',
-                                to: '5 / 3'
-                            }} 
-                        >
-                            Send
-                        </FormButton>
-                    </form>
-                    */
