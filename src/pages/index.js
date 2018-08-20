@@ -17,7 +17,7 @@ export default class IndexPage extends React.Component {
                 {({colours}) => {
                     return <Main><TransitionContainer>
                         <Opener>
-                            Hello. Welcome.
+                            Hello. Thanks for coming.
                         </Opener>
                         <SuperTitle
                             colour={colours[title.length]}
@@ -37,7 +37,6 @@ export default class IndexPage extends React.Component {
                                         componentContent={post.frontmatter.title}
                                         colour={colours[title.length]}
                                     />
-                                    
                                     <Paragraph>{post.excerpt}</Paragraph>
                                     <LinkedMeta
                                         linkTo={post.fields.slug}
