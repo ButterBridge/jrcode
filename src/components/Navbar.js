@@ -19,6 +19,11 @@ const Navbar = () => (
                 </Link>
             </NavBarItem>
             <NavBarItem>
+                <Link to="/blog">
+                    <Option>Blog</Option>
+                </Link>
+            </NavBarItem>
+            <NavBarItem>
                 <Link to="/contact">
                     <Option>Contact</Option>
                 </Link>

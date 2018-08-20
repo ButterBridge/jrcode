@@ -1,10 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Link from 'gatsby-link'
-import {Content, Main, Heading, Detail, Opener, Paragraph, LinkedBulletedTitle, LinkedMeta, Meta, TransitionContainer, SuperTitle} from '../styled-components'
-import '../style/default-styles.css';
-import Transition from '../components/Transition';
-import { GameContext } from '../contexts/GameContext';
+import {Content, Main, Heading, Detail, Opener, Paragraph, LinkedBulletedTitle, LinkedMeta, Meta, TransitionContainer, SuperTitle} from '../../styled-components'
+import '../../style/default-styles.css';
+import Transition from '../../components/Transition';
+import { GameContext } from '../../contexts/GameContext';
 
 export default class IndexPage extends React.Component {
     render() {
@@ -16,13 +16,10 @@ export default class IndexPage extends React.Component {
             <GameContext.Consumer>
                 {({colours}) => {
                     return <Main><TransitionContainer>
-                        <Opener>
-                            Hello. Thanks for coming.
-                        </Opener>
                         <SuperTitle
                             colour={colours[title.length]}
                         >
-                            Latest blog posts...
+                            Blog...
                         </SuperTitle>
                         {posts.map(({ node: post }, index) => (
                             <Transition
@@ -68,7 +65,7 @@ IndexPage.propTypes = {
 }
 
 export const pageQuery = graphql`
-    query IndexQuery {
+    query BlogQuery {
         site {
             siteMetadata {
                 title
@@ -76,7 +73,6 @@ export const pageQuery = graphql`
         }
         allMarkdownRemark (
             sort: { order: DESC, fields: [frontmatter___date] },
-            limit: 3,
             filter: { frontmatter: { templateKey: { eq: "blog-post" } }}
         ) {
             edges {
