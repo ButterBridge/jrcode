@@ -25,6 +25,7 @@ export const BlogPostTemplate = ({
     return (
         <GameContext.Consumer>
             {({colours}) => {
+                if (!colours.length) return null;
                 return <Main
                     colour={colours[siteTitle.length]}
                 >
