@@ -43,7 +43,7 @@ export const BlogPostTemplate = ({
                                 {formattedDate}
                             </Detail>
                         </Meta>
-                        <Opener>{description}</Opener>
+                        <Subtitle>{description}</Subtitle>
                         <PostContent content={content} />
                         {images && <Centraliser>
                             <Image 
