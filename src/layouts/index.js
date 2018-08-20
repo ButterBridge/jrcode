@@ -7,7 +7,8 @@ import Brand from '../components/Brand';
 import '../style/grid.sass';
 import { GameProvider, GameContext } from '../contexts/GameContext';
 
-const TemplateWrapper = ({ children, data }) => {
+const TemplateWrapper = (props) => {
+    const { children, data } = props;
     const siteName = 'jrcode';
     return <GameProvider>
         <GameContext.Consumer>

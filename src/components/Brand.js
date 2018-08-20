@@ -12,7 +12,7 @@ class Brand extends Component {
     }
 
     componentDidMount = () => {
-        this.props.gameProps.generateRandomColours(this.props.siteName.length);
+        this.props.gameProps.generateRandomColours(this.props.siteName.length + 1);
     }
 
     render() {

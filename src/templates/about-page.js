@@ -1,27 +1,29 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import {sample} from 'lodash';
+// import {sample} from 'lodash';
 import Content, { HTMLContent } from '../components/Content'
 import { Main, Title, TransitionContainer, SuperTitle } from '../styled-components';
 import Transition from '../components/Transition';
 import Brand from '../components/Brand';
-import {colours} from '../style';
+import { GameProvider, GameContext } from '../contexts/GameContext';
+// import {colours} from '../style';
 
 export const AboutPageTemplate = ({ title, content, contentComponent : PageContent = Content }) => {
-
-    console.log(title);
-
     return (
-        <Main>
-            <TransitionContainer>
-                <SuperTitle
-                    colour={sample(colours)}
-                >
-                    {title}
-                </SuperTitle>
-                <PageContent content={content} />
-            </TransitionContainer>
-        </Main>
+        <GameContext.Consumer>
+            {({colours}) => {
+                return <Main>
+                    <TransitionContainer>
+                        <SuperTitle
+                            colour={colours[title.length]}
+                        >
+                            {title}
+                        </SuperTitle>
+                        <PageContent content={content} />
+                    </TransitionContainer>
+                </Main>
+            }}
+        </GameContext.Consumer>
     )
 }
 
@@ -31,12 +33,13 @@ AboutPageTemplate.propTypes = {
     contentComponent: PropTypes.func,
 }
 
-const AboutPage = ({data}) => {
-    const { markdownRemark: post } = data;
+const AboutPage = (props) => {
+    const { markdownRemark: post } = props.data;
+    console.log(props);
     return (
         <AboutPageTemplate
             contentComponent={HTMLContent}
-            title={data.site.siteMetadata.title}
+            title={props.data.site.siteMetadata.title}
             content={post.html}
         />
     )

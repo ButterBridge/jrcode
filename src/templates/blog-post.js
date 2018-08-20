@@ -2,11 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import Link from 'gatsby-link';
-import { kebabCase, sample } from 'lodash';
+import { kebabCase } from 'lodash';
 import Content, { HTMLContent } from '../components/Content';
 import Image from '../components/Image';
 import { Main, BulletedTitle, Opener, Subtitle, Meta, List, LinkedListItem, Centraliser, Option, Detail, TransitionContainer } from '../styled-components';
-import {colours} from '../style';
+import { GameContext } from '../contexts/GameContext';
 
 export const BlogPostTemplate = ({
     content,
@@ -15,7 +15,6 @@ export const BlogPostTemplate = ({
     images,
     frontmatter : {description, tags, title, caption, date, formattedDate}
 }) => {
-    const sampleColour = sample(colours);
 
     tags.sort((a, b) => {
         if(a < b) return -1;
@@ -24,53 +23,57 @@ export const BlogPostTemplate = ({
     })
 
     return (
-        <Main
-            colour={sampleColour}
-        >
-            <Helmet title={`${siteTitle} - blog - ${title}`} />
-            <TransitionContainer>
-                <BulletedTitle
-                    addition="title"
-                    componentContent={title}
-                    colour={sampleColour}
-                    classTag={'post'}
-                />
-                <Meta
-                    colour={sampleColour}
+        <GameContext.Consumer>
+            {({colours}) => {
+                return <Main
+                    colour={colours[siteTitle.length]}
                 >
-                    <Detail>
-                        {formattedDate}
-                    </Detail>
-                </Meta>
-                <Opener>{description}</Opener>
-                <PostContent content={content} />
-                {images && <Centraliser>
-                    <Image 
-                        images={images}
-                        caption={caption}
-                        sampleColour={sampleColour}
-                    />
-                </Centraliser>}
-                {tags && tags.length && (
-                    <Meta
-                        colour={sampleColour}
-                    >
-                        <Subtitle>Tags</Subtitle>
-                        <List>
-                            {tags.map(tag => (
-                            <LinkedListItem
-                                key={tag}
-                                colour={sampleColour}
-                                linkTo={`/tags/${kebabCase(tag)}/`}
+                    <Helmet title={`${siteTitle} - blog - ${title}`} />
+                    <TransitionContainer>
+                        <BulletedTitle
+                            addition="title"
+                            componentContent={title}
+                            colour={colours[siteTitle.length]}
+                            classTag={'post'}
+                        />
+                        <Meta
+                            colour={colours[siteTitle.length]}
+                        >
+                            <Detail>
+                                {formattedDate}
+                            </Detail>
+                        </Meta>
+                        <Opener>{description}</Opener>
+                        <PostContent content={content} />
+                        {images && <Centraliser>
+                            <Image 
+                                images={images}
+                                caption={caption}
+                                colour={colours[siteTitle.length]}
+                            />
+                        </Centraliser>}
+                        {tags && tags.length && (
+                            <Meta
+                                colour={colours[siteTitle.length]}
                             >
-                                <Option>{tag}</Option>
-                            </LinkedListItem>
-                            ))}
-                        </List>
-                    </Meta>
-                )}
-            </TransitionContainer>
-        </Main>
+                                <Subtitle>Tags</Subtitle>
+                                <List>
+                                    {tags.map(tag => (
+                                    <LinkedListItem
+                                        key={tag}
+                                        colour={colours[siteTitle.length]}
+                                        linkTo={`/tags/${kebabCase(tag)}/`}
+                                    >
+                                        <Option>{tag}</Option>
+                                    </LinkedListItem>
+                                    ))}
+                                </List>
+                            </Meta>
+                        )}
+                    </TransitionContainer>
+                </Main>
+            }}
+        </GameContext.Consumer>
     );
 }
 
