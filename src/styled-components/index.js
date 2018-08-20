@@ -5,9 +5,9 @@ import { withTransition } from './with/withTransition';
 
 export const Bullet = styled.span`
     border-radius: 50%;
+    display: block;
     padding: 0.5em;
     margin: 15px;
-    display: inline;
     color: ${({colour}) => colour};
     background: ${({colour}) => colour};
 `
@@ -44,8 +44,14 @@ export const Content = styled.div`
 
 export const Detail = styled.p`
     font-size: 0.8em;
-    margin: 1em;
+    padding: 0.3em;
+    padding-left: 1em;
+    padding-right: 1em;
+    display: block;
+    margin: 0.5em;
+    background-color: ${({colour}) => colour};
     color: white;
+    border-radius: 1em;
 `
 
 export const FormButton = styled.button`
@@ -153,6 +159,7 @@ export const BulletedOption = withBullet(Option);
 
 export const Paragraph = styled.p`
     font-size: 1em;
+    display: block;
     margin: 0;
     margin-top: 0.5em;
     margin-bottom: 0.5em;
@@ -178,7 +185,7 @@ export const SuperTitle = styled.h2`
 export const Title = styled.h3`
     font-size: 1.75em;
     margin: 0.1em;
-    display: inline-block;
+    display: block;
 `
 export const BulletedTitle = withBullet(Title);
 export const LinkedBulletedTitle = withLink(BulletedTitle);

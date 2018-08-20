@@ -37,18 +37,19 @@ export default class IndexPage extends React.Component {
                                         componentContent={post.frontmatter.title}
                                         colour={colours[title.length]}
                                     />
+                                    
                                     <Paragraph>{post.excerpt}</Paragraph>
-                                    <LinkedMeta
-                                        colour={colours[title.length]}
-                                    >
-                                        <Detail>{post.frontmatter.formattedDate}</Detail>
-                                    </LinkedMeta>
                                     <LinkedMeta
                                         linkTo={post.fields.slug}
                                         colour={colours[title.length]}
                                     >
                                         <Detail>Keep Reading →</Detail>
                                     </LinkedMeta>
+                                    <Detail
+                                        colour={colours[title.length]}
+                                    >
+                                        {post.frontmatter.formattedDate}
+                                    </Detail>
                                 </Content>
                             </Transition>
                         ))}
