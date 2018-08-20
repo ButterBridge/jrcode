@@ -18,7 +18,7 @@ const TemplateWrapper = (props) => {
                     <MediaQuery maxWidth={760}>
                         {(isSmall) => {
                             return <div>
-                                <Brand siteName={siteName} isSmall={isSmall} gameProps={gameProps}/>
+                                <Brand siteName={siteName} isSmall={isSmall} {...gameProps}/>
                                 <div className={`grid-main${isSmall ? '-mini' : ''}`}>
                                     <Navbar />
                                     <div className="grid-main-content">

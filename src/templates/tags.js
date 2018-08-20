@@ -1,7 +1,8 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 import Link from 'gatsby-link';
-import { ListItem, Main, Container, Detail, Subtitle, List, Opener, Option, BulletedOption, LinkedListItem, LinkedMeta, TransitionContainer} from '../styled-components';
+import { ListItem, Main, Container, Detail, Subtitle, List, Opener, Option, BulletedOption, LinkedListItem, LinkedMeta, TransitionContainer, SuperTitle} from '../styled-components';
+import { GameContext } from '../contexts/GameContext';
 
 class TagRoute extends React.Component {
     render() {
@@ -12,31 +13,40 @@ class TagRoute extends React.Component {
             `${totalCount} post${totalCount === 1 ? '' : 's'} tagged with “${tag}”`;
 
         return (
-            <Main>
-                <Helmet title={`${tag} @ ${title}`} />
-                <TransitionContainer>
-                    <Subtitle>{tagHeader}</Subtitle>
-                    <List>
-                        {posts.map(post => {
-                              return <LinkedListItem 
-                              key={post.node.fields.slug}
-                              linkTo={post.node.fields.slug}
-                          >
-                              <BulletedOption
-                                addition="option"
-                                componentContent={post.node.frontmatter.title}
-                                colour="black"
-                              />
-                          </LinkedListItem>
-                        })}
-                    </List>
-                        <LinkedMeta
-                            linkTo="/tags/"
-                        >
-                            <Option>All tags →</Option>
-                        </LinkedMeta>
-                </TransitionContainer>
-            </Main>
+            <GameContext.Consumer>
+                {({colours}) => {
+                    return <Main>
+                        <Helmet title={`${tag} @ ${title}`} />
+                        <TransitionContainer>
+                            <SuperTitle
+                                colour={colours[title.length]}
+                            >
+                                Tags
+                            </SuperTitle>
+                            <Subtitle>{tagHeader}</Subtitle>
+                            <List>
+                                {posts.map(post => {
+                                    return <LinkedListItem 
+                                        key={post.node.fields.slug}
+                                        linkTo={post.node.fields.slug}
+                                    >
+                                        <BulletedOption
+                                            addition="option"
+                                            componentContent={post.node.frontmatter.title}
+                                            colour={colours[title.length]}
+                                        />
+                                    </LinkedListItem>
+                                })}
+                            </List>
+                            <LinkedMeta
+                                linkTo="/tags/"
+                            >
+                                <Option>All tags →</Option>
+                            </LinkedMeta>
+                        </TransitionContainer>
+                    </Main>
+                }}
+            </GameContext.Consumer>
         );
     }
 }

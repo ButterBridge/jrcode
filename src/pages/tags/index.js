@@ -2,7 +2,8 @@ import React from 'react'
 import { kebabCase } from 'lodash'
 import Helmet from 'react-helmet'
 import Link from 'gatsby-link'
-import { Main, Content, Title, List, ListItem, Opener, Option } from '../../styled-components';
+import { Main, Content, Title, List, ListItem, Opener, Option, TransitionContainer, SuperTitle } from '../../styled-components';
+import { GameContext } from '../../contexts/GameContext';
 
 class TagsPage extends React.Component {
     state = {
@@ -27,18 +28,26 @@ class TagsPage extends React.Component {
             
         return <Main>
             <Helmet title={`Tags | ${title}`} />
-            <Content>
-                <Title>Tags</Title>
-                <List>
-                    {group.map(tag => (
-                        <ListItem key={tag.fieldValue}>
-                            <Link to={`/tags/${kebabCase(tag.fieldValue)}/`}>
-                                <Option>{tag.fieldValue} ({tag.totalCount})</Option>
-                            </Link>
-                        </ListItem>
-                    ))}
-                </List>
-            </Content>
+            <GameContext.Consumer>
+                {({colours}) => {
+                    return <TransitionContainer>
+                        <SuperTitle
+                            colour={colours[title.length]}
+                        >
+                            Tags
+                        </SuperTitle>
+                        <List>
+                            {group.map(tag => (
+                                <ListItem key={tag.fieldValue}>
+                                    <Link to={`/tags/${kebabCase(tag.fieldValue)}/`}>
+                                        <Option>{tag.fieldValue} ({tag.totalCount})</Option>
+                                    </Link>
+                                </ListItem>
+                            ))}
+                        </List>
+                    </TransitionContainer>
+                }}
+            </GameContext.Consumer>
         </Main>
 
     }
