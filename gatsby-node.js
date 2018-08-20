@@ -87,40 +87,20 @@ exports.onCreateNode = ({ node, boundActionCreators, getNode }) => {
 
 exports.modifyWebpackConfig = ({ config, stage }) => {
 
-    const program = {
-        directory: __dirname,
-        browserslist: [ '> 1%', 'last 2 versions', 'IE >= 9' ]
-    };
-
     return Promise.all([
         config.merge({
             resolve: {
                 alias: {
-                    'react': __dirname + '/node_modules/gatsby/node_modules/react',
+                    'react': __dirname + '/node_modules/react',
                 }
             }
-        })
-        ,
+        }),
         config.merge({
             resolve: {
                 alias: {
-                    'react-dom': __dirname + '/node_modules/gatsby/node_modules/react-dom',
+                    'react-dom': __dirname + '/node_modules/react-dom',
                 }
             }
         })
-        // generateBabelConfig(program, stage).then(babelConfig => {
-        //     config.removeLoader("js").loader("js", {
-        //       test: /\.js?$/,
-        //       exclude: modulePath => {
-        //         return (
-        //           /src\/libraries/.test(modulePath) &&
-        //           // whitelist specific es6 modules
-        //           !/src\/libraries\/(pts)/.test(modulePath)
-        //         );
-        //       },
-        //       loader: "babel",
-        //       query: babelConfig
-        //     });
-        //   })
-        ]);
+    ]);
 };

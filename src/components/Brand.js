@@ -8,12 +8,16 @@ import Transition from './Transition';
 class Brand extends Component {
     state = {
         fonts : Array(this.props.siteName.length + 1).fill().map(x => sample(fonts)),
-        colours : Array(this.props.siteName.length + 1).fill().map(x => sample(colours))
+        // colours : Array(this.props.siteName.length + 1).fill().map(x => sample(colours))
+    }
+
+    componentDidMount = () => {
+        this.props.gameProps.generateRandomColours(this.props.siteName.length);
     }
 
     render() {
-        const {fonts, colours} = this.state;
-        const {siteName, isSmall, isAlone} = this.props;
+        const {fonts} = this.state;
+        const {siteName, isSmall, isAlone, gameProps} = this.props;
         return (
             <div className={`grid-sidebar${isSmall ? '-mini' : ''}`}>
                 {`${isSmall ? ' ' : ''}${siteName}`.split('').map((char, i) => {
@@ -21,8 +25,11 @@ class Brand extends Component {
                         gridCols={{from : isSmall ? 1 : i + 1, to : isSmall ? 2 : i + 2}}
                         key={i}
                         font={fonts[i] || sample(fonts)}
-                        colour={colours[i] || sample(colours)}
-                        onMouseEnter={() => this.changeStyle(i)}
+                        colour={gameProps.colours[i] || sample(colours)}
+                        onMouseEnter={() => {
+                            this.changeStyle(i);
+                            gameProps.swapColourRandomly(i);
+                        }}
                     >
                         {char}
                     </HeadLetter>
@@ -46,12 +53,12 @@ class Brand extends Component {
                 return index === targetindex ?
                     sample(fonts) :
                     font
-            }),
-            colours : this.state.colours.map((font, index) => {
-                return index === targetindex ?
-                    sample(colours) :
-                    font
             })
+            // colours : this.state.colours.map((font, index) => {
+            //     return index === targetindex ?
+            //         sample(colours) :
+            //         font
+            // })
         })
     }
 }
