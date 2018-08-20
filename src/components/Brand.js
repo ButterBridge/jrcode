@@ -17,7 +17,7 @@ class Brand extends Component {
 
     render() {
         const {fonts} = this.state;
-        const {siteName, isSmall, isAlone, colours, swapColourRandomly} = this.props;
+        const {siteName, isSmall, isAlone, colours, onMouseOverHeadLetter} = this.props;
         if (!colours.length) return null;
         return (
             <div className={`grid-sidebar${isSmall ? '-mini' : ''}`}>
@@ -29,7 +29,7 @@ class Brand extends Component {
                         colour={colours[i]}
                         onMouseEnter={() => {
                             this.changeFont(i);
-                            swapColourRandomly(i);
+                            onMouseOverHeadLetter(i);
                         }}
                     >
                         {char}
@@ -64,7 +64,7 @@ Brand.propTypes = {
     isSmall : PT.bool.isRequired,
     isAlone : PT.bool,
     colours : PT.arrayOf(PT.string).isRequired,
-    swapColourRandomly : PT.func.isRequired,
+    onMouseOverHeadLetter : PT.func.isRequired,
     generateRandomColours : PT.func.isRequired
 }
 
