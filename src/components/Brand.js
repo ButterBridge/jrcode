@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import {sample} from 'lodash';
+import PT from 'prop-types';
+import { sample } from 'lodash';
 import { HeadLetter } from '../styled-components';
-import {colours, fonts} from '../style';
+import {fonts} from '../style';
 import Sidebar from './canvases/Sidebar';
 import Transition from './Transition';
 
@@ -17,14 +18,15 @@ class Brand extends Component {
     render() {
         const {fonts} = this.state;
         const {siteName, isSmall, isAlone, colours, swapColourRandomly} = this.props;
+        if (!colours.length) return null;
         return (
             <div className={`grid-sidebar${isSmall ? '-mini' : ''}`}>
                 {`${isSmall ? ' ' : ''}${siteName}`.split('').map((char, i) => {
                     return <HeadLetter
                         gridCols={{from : isSmall ? 1 : i + 1, to : isSmall ? 2 : i + 2}}
                         key={i}
-                        font={fonts[i] || sample(fonts)}
-                        colour={colours[i] || sample(colours)}
+                        font={fonts[i]}
+                        colour={colours[i]}
                         onMouseEnter={() => {
                             this.changeFont(i);
                             swapColourRandomly(i);
@@ -55,6 +57,15 @@ class Brand extends Component {
             })
         })
     }
+}
+
+Brand.propTypes = {
+    siteName : PT.string.isRequired,
+    isSmall : PT.bool.isRequired,
+    isAlone : PT.bool,
+    colours : PT.arrayOf(PT.string).isRequired,
+    swapColourRandomly : PT.func.isRequired,
+    generateRandomColours : PT.func.isRequired
 }
 
 export default Brand;

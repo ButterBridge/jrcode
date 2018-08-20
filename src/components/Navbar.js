@@ -1,9 +1,9 @@
 import React from 'react'
 import Link from 'gatsby-link'
 import Icon from './Icon'
+import { NavBar, Container, NavBarItem, Option } from '../styled-components';
 import github from '../img/github-icon.svg'
 import twitter from '../img/twitter-icon.svg'
-import { NavBar, Container, NavBarItem, Option } from '../styled-components';
 
 const Navbar = () => (
     <div className="grid-main-navbar">
