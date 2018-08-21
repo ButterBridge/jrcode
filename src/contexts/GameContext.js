@@ -54,7 +54,7 @@ export class GameProvider extends React.Component {
                         round = this.state[this.state.round];
                         if (helpers[round.checkCompletion](round.progress, colours)) {
                             this.progressToNextRound();
-                        }
+                        } 
                     });
                 });
             }
@@ -64,8 +64,7 @@ export class GameProvider extends React.Component {
     progressToNextRound = () => {
         const {round, colours} = this.state;
         this.setState({
-            round : round + 1,
-            progressing : 'nextRound'
+            round : round + 1
         });
         this.triggerProgression('random', () => {
             this.generateRandomColours(colours.length);
@@ -94,7 +93,6 @@ export class GameProvider extends React.Component {
                 ...this.state[round],
                 progress : [...progress, currentColours[0]]
             },
-            progressing : 'flash'
         }, done);
     }
 
@@ -103,10 +101,9 @@ export class GameProvider extends React.Component {
             progressing : type
         })
         setTimeout(() => {
-            cb();
             this.setState({
                 progressing : false
-            })
+            }, cb)
         }, 1000)
     }
 }
