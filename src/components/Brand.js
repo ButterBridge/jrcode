@@ -17,7 +17,7 @@ class Brand extends Component {
 
     render() {
         const {fonts} = this.state;
-        const {siteName, isSmall, isAlone, colours, onMouseOverHeadLetter} = this.props;
+        const {siteName, isSmall, isAlone, colours, onMouseOverHeadLetter, progressing} = this.props;
         if (!colours.length) return null;
         return (
             <div className={`grid-sidebar${isSmall ? '-mini' : ''}`}>
@@ -29,7 +29,7 @@ class Brand extends Component {
                         colour={colours[i]}
                         onMouseEnter={() => {
                             this.changeFont(i);
-                            onMouseOverHeadLetter(i);
+                            !progressing && onMouseOverHeadLetter(i);
                         }}
                     >
                         {char}
@@ -41,7 +41,11 @@ class Brand extends Component {
                         actions={['descend']}
                         style={{width : '100%', height : '100%'}}
                     >
-                        <Sidebar colours={colours} dimensions={[6, 13]}/>
+                        <Sidebar
+                            colours={colours}
+                            dimensions={[siteName.length, 13]}
+                            progressing={progressing}
+                        />
                     </Transition>
                 </div>}
             </div> 

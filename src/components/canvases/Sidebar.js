@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {sample} from 'lodash';
 
 class Sidebar extends Component {
     render() {
@@ -12,7 +13,12 @@ class Sidebar extends Component {
         const space = new CanvasSpace(this.refs.canvas);
         const form = space.getForm();
 
-        let pts, follower;
+        let pts, follower, flashOn;
+
+        const colourRef = {
+            random : ({colours}) => sample(colours),
+            flash : ({colours}) => flashOn ? colours[0] : '#fff'
+        }
        
         space.add({ 
             start: (bound) => {
@@ -22,13 +28,17 @@ class Sidebar extends Component {
 
             animate: (time, ftime) => {
                 follower = follower.add(space.pointer.$subtract(follower).divide(5));
-
+                flashOn = !flashOn;
+                const {colours, progressing} = this.props;
+                
                 pts.forEach((p, i) => {
                     const mag = Math.min(follower.$subtract(Rectangle.center(p)).magnitude(), 750);
                     const scale = Math.min(1, Math.abs(1 - (0.4 * mag / space.center.y)));
                     const r = Rectangle.fromCenter(Rectangle.center(p), Rectangle.size(p));
-                    const {colours} = this.props;
-                    form.fill(colours[Math.floor(scale * colours.length)]).rect(r);
+                    const colourFill = progressing ? 
+                        colourRef[progressing]({colours}) :
+                        colours[Math.floor(scale * colours.length)]
+                    form.fill(colourFill).rect(r);
                 })
             }
         });

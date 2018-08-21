@@ -15,6 +15,7 @@ export class GameProvider extends React.Component {
             checkResult : 'areAllEqual',
             onPositiveResult : 'targetNewColour',
             checkCompletion : 'areEquivalent',
+            minorProgression : 'flash',
             progress : []
         },
         '2' : {
@@ -24,9 +25,11 @@ export class GameProvider extends React.Component {
     }
 
     render () {
+        const {colours, progressing} = this.state;
         return (
             <GameContext.Provider value={{
-                colours : this.state.colours,
+                colours,
+                progressing,
                 onMouseOverHeadLetter : this.onMouseOverHeadLetter,              
                 generateRandomColours : this.generateRandomColours,
             }}>
@@ -46,11 +49,13 @@ export class GameProvider extends React.Component {
         let round = this.state[this.state.round];
         this[round.onMouseOverHeadLetter](letterIndex, () => {
             if (helpers[round.checkResult](this.state.colours)) {
-                this[round.onPositiveResult](round, () => {
-                    round = this.state[this.state.round];
-                    if (helpers[round.checkCompletion](round.progress, colours)) {
-                        this.progressToNextRound();
-                    }
+                this.triggerProgression(round.minorProgression, () => {
+                    this[round.onPositiveResult](round, () => {
+                        round = this.state[this.state.round];
+                        if (helpers[round.checkCompletion](round.progress, colours)) {
+                            this.progressToNextRound();
+                        }
+                    });
                 });
             }
         });
@@ -59,9 +64,12 @@ export class GameProvider extends React.Component {
     progressToNextRound = () => {
         const {round, colours} = this.state;
         this.setState({
-            round : round + 1
+            round : round + 1,
+            progressing : 'nextRound'
         });
-        this.generateRandomColours(colours.length);
+        this.triggerProgression('random', () => {
+            this.generateRandomColours(colours.length);
+        });
     }
 
     swapColourRandomly = (targetIndex, done) => {
@@ -85,8 +93,20 @@ export class GameProvider extends React.Component {
             [round] : {
                 ...this.state[round],
                 progress : [...progress, currentColours[0]]
-            }
-        }, done)        
+            },
+            progressing : 'flash'
+        }, done);
     }
 
+    triggerProgression = (type, cb) => {
+        this.setState({
+            progressing : type
+        })
+        setTimeout(() => {
+            cb();
+            this.setState({
+                progressing : false
+            })
+        }, 1000)
+    }
 }
