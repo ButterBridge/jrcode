@@ -50,7 +50,7 @@ export const BlogPostTemplate = ({
                             <Image 
                                 images={images}
                                 caption={caption}
-                                colour={colours[siteTitle.length]}
+                                colour={colours[siteTitle.length] || colours[0]}
                             />
                         </Centraliser>}
                         {tags && tags.length && (

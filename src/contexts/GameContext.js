@@ -16,11 +16,14 @@ export class GameProvider extends React.Component {
             onPositiveResult : 'targetNewColour',
             checkCompletion : 'areEquivalent',
             progress : []
+        },
+        '2' : {
+            onMouseOverHeadLetter : 'swapColourRandomly',
+            checkResult : 'doNothing'
         }
     }
 
     render () {
-        console.log(this.state.round)
         return (
             <GameContext.Provider value={{
                 colours : this.state.colours,
@@ -32,6 +35,7 @@ export class GameProvider extends React.Component {
         )
     }
 
+
     generateRandomColours = length => {
         this.setState({
             colours : Array(length).fill().map(x => sample(colours))
@@ -42,7 +46,6 @@ export class GameProvider extends React.Component {
         let round = this.state[this.state.round];
         this[round.onMouseOverHeadLetter](letterIndex, () => {
             if (helpers[round.checkResult](this.state.colours)) {
-                console.log('check good!');
                 this[round.onPositiveResult](round, () => {
                     round = this.state[this.state.round];
                     if (helpers[round.checkCompletion](round.progress, colours)) {
@@ -54,9 +57,11 @@ export class GameProvider extends React.Component {
     }
 
     progressToNextRound = () => {
+        const {round, colours} = this.state;
         this.setState({
-            round : this.state.round + 1
-        })
+            round : round + 1
+        });
+        this.generateRandomColours(colours.length);
     }
 
     swapColourRandomly = (targetIndex, done) => {
@@ -66,10 +71,7 @@ export class GameProvider extends React.Component {
                     sample(colours) :
                     colour
             })
-        }, () => {
-            console.log(this.state.colours);
-            done();
-        })
+        }, done)
     }
 
     targetNewColour = ({progress}, done) => {

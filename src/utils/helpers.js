@@ -7,3 +7,5 @@ export const areAllEqual = array => {
 export const areEquivalent = (array1, array2) => {
     return !difference(array2, array1).length
 }
+
+export const doNothing = () => {};
