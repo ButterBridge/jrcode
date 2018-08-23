@@ -28,8 +28,9 @@ const TemplateWrapper = (props) => {
                                     <div className="grid-main-navbar">
                                         <div style={{
                                             position : 'fixed',
-                                            background : 'white',
-                                            zIndex : 1
+                                            zIndex : 1,
+                                            background: 'linear-gradient(0deg, rgba(255,255,255,0) 15%, rgba(255,255,255,1) 15%)'
+
                                         }}>
                                             <Navbar 
                                                 colour={gameProps.colours[siteName.length]}
