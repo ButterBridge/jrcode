@@ -5,7 +5,7 @@ import { NavBar, Container, NavBarItem, Option } from '../styled-components';
 import github from '../img/github-icon.svg'
 import twitter from '../img/twitter-icon.svg'
 
-const Navbar = ({colour}) => (
+const Navigation = ({colour}) => (
     <div>
         <NavBar
             colour={colour}
@@ -46,6 +46,6 @@ const Navbar = ({colour}) => (
             </NavBarItem>
         </NavBar>
     </div>
-)
+);
 
-export default Navbar
+export default Navigation
