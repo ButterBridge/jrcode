@@ -2,14 +2,15 @@ import React from 'react';
 import { Rect } from '../styled-components';
 
 const Streamer = ({colours}) => {
+    const streamerLength = 100;
     return (
         <div className="grid-streamer">
-            {Array(50).fill().map((x, i) => {
+            {Array(streamerLength).fill().map((x, i) => {
                 const borderRadius = {};
                 if (i === 0) {
                     borderRadius.bl = '15px';
                 }
-                if (i === 49) {
+                if (i === streamerLength - 1) {
                     borderRadius.br = '15px';
                 }
                 return <Rect
