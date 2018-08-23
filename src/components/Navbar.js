@@ -5,9 +5,11 @@ import { NavBar, Container, NavBarItem, Option } from '../styled-components';
 import github from '../img/github-icon.svg'
 import twitter from '../img/twitter-icon.svg'
 
-const Navbar = () => (
-    <div className="grid-main-navbar">
-        <NavBar>
+const Navbar = ({colour}) => (
+    <div>
+        <NavBar
+            colour={colour}
+        >
             <NavBarItem>
                 <Link to="/">
                     <Option>Home</Option>

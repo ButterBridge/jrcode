@@ -133,10 +133,11 @@ export const LinkedMeta = withLink(Meta);
 
 export const NavBar = styled.nav`
     min-width: 100%;
-    position: relative;
     display: flex;
     align-items: left;
     padding-left: 1em;
+    padding-top: 1em;
+    margin-bottom: 0.5em;
 `
 
 export const NavBarItem = styled.span`
@@ -163,6 +164,13 @@ export const Paragraph = styled.p`
     margin: 0;
     margin-top: 0.5em;
     margin-bottom: 0.5em;
+`
+
+export const Rect = styled.div`
+    height: 100%;
+    width: 100%;
+    background-color: ${({colour}) => colour};
+    grid-column :  ${({gridCols : {from, to}}) => `${from} / ${to}`}
 `
 
 export const Subtitle = styled.h4`

@@ -6,6 +6,7 @@ import Navbar from '../components/Navbar'
 import Brand from '../components/Brand';
 import '../style/grid.sass';
 import { GameProvider, GameContext } from '../contexts/GameContext';
+import Streamer from '../components/Streamer';
 
 const TemplateWrapper = (props) => {
     const { children, data } = props;
@@ -17,15 +18,32 @@ const TemplateWrapper = (props) => {
                     <Helmet title={siteName} />
                     <MediaQuery maxWidth={760}>
                         {(isSmall) => {
-                            return <div>
-                                <Brand siteName={siteName} isSmall={isSmall} {...gameProps}/>
+                            return <Fragment>
+                                <Brand 
+                                    siteName={siteName}
+                                    isSmall={isSmall}
+                                    {...gameProps}
+                                />
                                 <div className={`grid-main${isSmall ? '-mini' : ''}`}>
-                                    <Navbar />
+                                    <div className="grid-main-navbar">
+                                        <div style={{
+                                            position : 'fixed',
+                                            background : 'white',
+                                            zIndex : 1
+                                        }}>
+                                            <Navbar 
+                                                colour={gameProps.colours[siteName.length]}
+                                            />
+                                            <Streamer
+                                                colours={gameProps.colours.slice(0, -1)}
+                                            />
+                                        </div>
+                                    </div>
                                     <div className="grid-main-content">
                                         {children()}
                                     </div>
                                 </div>
-                            </div>
+                            </Fragment>
                         }}
                     </MediaQuery>
                 </Fragment>
