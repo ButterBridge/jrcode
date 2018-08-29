@@ -4,12 +4,7 @@ import Navigation from './Navigation';
 
 const Header = ({colours, siteName}) => {
     return (
-        <div style={{
-            position : 'fixed',
-            zIndex : 1,
-            background: 'linear-gradient(0deg, rgba(255,255,255,0) 15%, rgba(255,255,255,1) 15%)'
-
-        }}>
+        <div className="grid-header">
             <Navigation 
                 colour={colours[siteName.length]}
             />

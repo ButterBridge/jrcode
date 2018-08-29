@@ -18,24 +18,22 @@ const TemplateWrapper = (props) => {
                     <Helmet title={siteName} />
                     <MediaQuery maxWidth={760}>
                         {(isSmall) => {
-                            return <Fragment>
+                            return <div className={`grid-main${isSmall ? '-mini' : ''}`}>
                                 <Brand 
                                     siteName={siteName}
                                     isSmall={isSmall}
                                     {...gameProps}
                                 />
-                                <div className={`grid-main${isSmall ? '-mini' : ''}`}>
-                                    <div className="grid-main-header">
-                                        <Header 
-                                            colours={gameProps.colours}
-                                            siteName={siteName}
-                                        />
-                                    </div>
-                                    <div className="grid-main-content">
-                                        {children()}
-                                    </div>
+                                <div className="grid-main-header">
+                                    <Header 
+                                        colours={gameProps.colours}
+                                        siteName={siteName}
+                                    />
                                 </div>
-                            </Fragment>
+                                <div className="grid-main-content">
+                                    {children()}
+                                </div>
+                            </div>
                         }}
                     </MediaQuery>
                 </Fragment>
