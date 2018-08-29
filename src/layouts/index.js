@@ -25,7 +25,7 @@ const TemplateWrapper = (props) => {
                                     {...gameProps}
                                 />
                                 <div className={`grid-main${isSmall ? '-mini' : ''}`}>
-                                    <div className="grid-main-navbar">
+                                    <div className="grid-main-header">
                                         <Header 
                                             colours={gameProps.colours}
                                             siteName={siteName}
