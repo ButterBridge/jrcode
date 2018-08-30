@@ -5,10 +5,10 @@ import { NavBar, Container, NavBarItem, Option } from '../styled-components';
 import github from '../img/github-icon.svg'
 import twitter from '../img/twitter-icon.svg'
 
-const Navigation = ({colour}) => (
+const Navigation = ({colour, isSmall}) => (
     <NavBar
         colour={colour}
-        className="grid-header-navigation"
+        className={`grid-navigation${isSmall ? '-mini' : ''}`}
     >
         <NavBarItem>
             <Link to="/">

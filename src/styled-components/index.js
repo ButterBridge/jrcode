@@ -132,9 +132,8 @@ export const Meta = styled.div`
 export const LinkedMeta = withLink(Meta);
 
 export const NavBar = styled.nav`
-    min-width: 100%;
     display: flex;
-    align-items: left;
+    justify-content: flex-end;
     padding-left: 1em;
     padding-top: 1em;
     margin-bottom: 0.5em;
