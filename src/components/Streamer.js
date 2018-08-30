@@ -14,6 +14,7 @@ const Streamer = ({colours, isSmall}) => {
                     borderRadius.br = '15px';
                 }
                 return <Rect
+                    key={i}
                     colour={colours[i % colours.length]}
                     gridCols={{
                         from: i + 1,
