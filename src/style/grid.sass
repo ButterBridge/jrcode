@@ -17,7 +17,7 @@
 .grid-header
     position: fixed;
     z-index: 1;
-    background: linear-gradient(0deg, rgba(255,255,255,0) 18%, rgba(255,255,255,1) 19%);
+    background: linear-gradient(0deg, rgba(255,255,255,0) 1em, rgba(255,255,255,1) 1em);
     display: grid;
     width: 100%;
     grid-template-rows: 3em 2em;
@@ -36,10 +36,17 @@
     z-index: 1;
 
 .grid-navigation
-    width: calc(100vw - 150px - 3em)
+    width: calc(100vw - 150px - 3em);
+    display: grid;
+    grid-template-columns: 20% 80%
 
 .grid-navigation-mini
     width: calc(100vw - 25px - 3em)
+    display: grid;
+    grid-template-columns: 20% 80%
+
+.grid-navigation-links
+    grid-area: 1 / 2 / 2 / 3;
 
 .grid-streamer
     display: grid;
