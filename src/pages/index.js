@@ -53,6 +53,9 @@ export default class IndexPage extends React.Component {
                             </Transition>
                         ))}
                     </TransitionContainer>
+                        <Link to="/blog">
+                            <Option>See all posts</Option>
+                        </Link>
                     </Main>
                 }}
             </GameContext.Consumer>
