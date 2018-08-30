@@ -52,7 +52,11 @@ export default class IndexPage extends React.Component {
                                 </Content>
                             </Transition>
                         ))}
-                    </TransitionContainer></Main>
+                    </TransitionContainer>
+                        <Link to="/blog">
+                            <Option>See all posts</Option>
+                        </Link>
+                    </Main>
                 }}
             </GameContext.Consumer>
         )

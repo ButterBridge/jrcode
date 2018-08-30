@@ -40,6 +40,11 @@ export const Content = styled.div`
     flex-wrap: wrap;
     justify-content: left;
     align-items: center
+
+    @media (max-width: 500px) {
+        margin-left: 0;
+        margin-right: 0;
+    }
 `
 
 export const Detail = styled.p`
@@ -195,6 +200,11 @@ export const SuperTitle = styled.h2`
     padding: 15px;
     position: relative;
     left: -34px;
+
+    @media (max-width: 500px) {
+        font-size: 1.75em;
+        left: 0;
+    }
 `
 
 export const Title = styled.h3`
