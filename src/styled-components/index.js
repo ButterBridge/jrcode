@@ -165,12 +165,19 @@ export const Paragraph = styled.p`
     margin-bottom: 0.5em;
 `
 
-export const Rect = styled.div`
+export const Rect = styled.div.attrs({
+    style: ({
+        colour,
+        gridCols: {from, to},
+        borderRadius: {tl = 0, tr = 0, br = 0, bl = 0}
+    }) => ({
+        backgroundColor: colour,
+        gridColumn: `${from} / ${to}`,
+        borderRadius: `${tl} ${tr} ${br} ${bl}`
+    })
+})`
     height: 100%;
     width: 100%;
-    background-color: ${({colour}) => colour};
-    grid-column:  ${({gridCols : {from, to}}) => `${from} / ${to}`};
-    border-radius: ${({borderRadius : {tl = 0, tr = 0, br = 0, bl = 0}}) => `${tl} ${tr} ${br} ${bl}`};
 `
 
 export const Subtitle = styled.h4`
