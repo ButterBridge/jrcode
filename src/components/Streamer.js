@@ -1,10 +1,10 @@
 import React from 'react';
 import { Rect } from '../styled-components';
 
-const Streamer = ({colours}) => {
+const Streamer = ({colours, isSmall}) => {
     const streamerLength = 100;
     return (
-        <div className="grid-streamer">
+        <div className={`grid-streamer${isSmall ? '-mini' : ''}`}>
             {Array(streamerLength).fill().map((x, i) => {
                 const borderRadius = {};
                 if (i === 0) {

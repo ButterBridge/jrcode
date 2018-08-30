@@ -1,10 +1,10 @@
 .grid-main 
     display: grid;
-    grid-template-columns: 150px 1fr;
+    grid-template-columns: 150px calc(100vw - 150px - 1em) 0%;
 
 .grid-main-mini
     display: grid;
-    grid-template-columns: 25px 1fr;
+    grid-template-columns: 25px calc(100vw - 25px) 0%;
 
 .grid-main-header 
     grid-area : 1 / 2 / 1 / 2;
@@ -21,22 +21,28 @@
     display: grid;
     width: 100%;
     grid-template-rows: 3em 2em;
-    grid-template-columns: 100%;
+    grid-template-columns: 100% 0%;
 
 .grid-header-navigation
     grid-area: 1 / 1 / 2 / 2;
+    padding-left: 1em;
 
 .grid-header-streamer
     grid-area: 2 / 1 / 3 / 2;
+    padding-left: 1em;
     width: 100%;
-    margin-left: 1em;
     margin-right: 1em;
     margin-top: 1em;
     z-index: 1;
 
 .grid-streamer
     display: grid;
-    grid-template-columns: repeat(100, 0.85%);
+    grid-template-columns: repeat(100, calc((100vw - 150px - 3em) / 100));
+    height: 1em;
+
+.grid-streamer-mini
+    display: grid;
+    grid-template-columns: repeat(100, calc((100vw - 25px - 2em) / 100));
     height: 1em;
     
 

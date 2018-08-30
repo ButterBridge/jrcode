@@ -2,7 +2,7 @@ import React from 'react';
 import Streamer from './Streamer';
 import Navigation from './Navigation';
 
-const Header = ({colours, siteName}) => {
+const Header = ({colours, siteName, isSmall}) => {
     return (
         <div className="grid-header">
             <Navigation 
@@ -11,6 +11,7 @@ const Header = ({colours, siteName}) => {
             <div className="grid-header-streamer">
                 <Streamer
                     colours={colours.slice(0, -1)}
+                    isSmall={isSmall}
                 />
             </div>
         </div>
