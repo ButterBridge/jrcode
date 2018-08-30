@@ -169,8 +169,8 @@ export const Rect = styled.div`
     height: 100%;
     width: 100%;
     background-color: ${({colour}) => colour};
-    grid-column :  ${({gridCols : {from, to}}) => `${from} / ${to}`}
-    border-radius : ${({borderRadius : {tl = 0, tr = 0, br = 0, bl = 0}}) => `${tl} ${tr} ${br} ${bl}`}
+    grid-column:  ${({gridCols : {from, to}}) => `${from} / ${to}`};
+    border-radius: ${({borderRadius : {tl = 0, tr = 0, br = 0, bl = 0}}) => `${tl} ${tr} ${br} ${bl}`};
 `
 
 export const Subtitle = styled.h4`
