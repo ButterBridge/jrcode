@@ -8,9 +8,11 @@ const Header = ({colours, siteName}) => {
             <Navigation 
                 colour={colours[siteName.length]}
             />
-            <Streamer
-                colours={colours.slice(0, -1)}
-            />
+            <div className="grid-header-streamer">
+                <Streamer
+                    colours={colours.slice(0, -1)}
+                />
+            </div>
         </div>
     );
 };
