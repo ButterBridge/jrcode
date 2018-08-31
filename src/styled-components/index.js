@@ -184,6 +184,11 @@ export const Rect = styled.div.attrs({
 })`
     height: 100%;
     width: 100%;
+    transition: opacity 0.05s;
+
+    &:hover {
+        opacity: 0.1;
+    }
 `
 
 export const Subtitle = styled.h4`
