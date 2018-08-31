@@ -17,21 +17,18 @@ export class GameProvider extends React.Component {
             checkCompletion : 'areEquivalent',
             minorProgression : 'flash',
             progress : []
-        },
-        '2' : {
-            onMouseOverHeadLetter : 'swapColourRandomly',
-            checkResult : 'doNothing'
         }
     }
 
     render () {
-        const {colours, progressing} = this.state;
+        const {colours, progressing, round} = this.state;
         return (
             <GameContext.Provider value={{
                 colours,
                 progressing,
-                onMouseOverHeadLetter : this.onMouseOverHeadLetter,              
-                generateRandomColours : this.generateRandomColours,
+                progress: this.state[round].progress,
+                onMouseOverHeadLetter: this.onMouseOverHeadLetter,              
+                generateRandomColours: this.generateRandomColours,
             }}>
                 {this.props.children}
             </GameContext.Provider>
@@ -64,9 +61,15 @@ export class GameProvider extends React.Component {
     progressToNextRound = () => {
         const {round, colours} = this.state;
         this.setState({
-            round : round + 1
+            round: this.state[round + 1] ? round + 1 : 1
         });
         this.triggerProgression('random', () => {
+            this.setState({
+                [round]: {
+                    ...this.state[round],
+                    progress: []
+                }
+            });
             this.generateRandomColours(colours.length);
         });
     }

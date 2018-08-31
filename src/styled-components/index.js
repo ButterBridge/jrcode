@@ -3,6 +3,14 @@ import { withBullet } from './with/withBullet';
 import { withLink } from './with/withLink';
 import { withTransition } from './with/withTransition';
 
+export const Block = styled.span`
+    padding: 0.5em;
+    height: 50%;
+    margin: 5px;
+    color: ${({colour}) => colour};
+    background: ${({colour}) => colour};
+`
+
 export const Bullet = styled.span`
     border-radius: 50%;
     display: block;
@@ -40,6 +48,13 @@ export const Content = styled.div`
     flex-wrap: wrap;
     justify-content: left;
     align-items: center
+
+    @media (max-width: 500px) {
+        margin-left: 0;
+        margin-right: 0;
+        padding-left: 0;
+        border-left: none;
+    }
 `
 
 export const Detail = styled.p`
@@ -154,7 +169,18 @@ export const Option = styled.h6`
     font-size: 1.1em;
     margin: 0.2em;
     padding: 0.2em;
+    color: ${({colour = 'black'}) => colour};
+    transition: opacity 0.5s;
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    align-items: center;
+
+    &:hover {
+        opacity: 0.5;
+    }
 `
+export const LinkedOption = withLink(Option);
 export const BulletedOption = withBullet(Option);
 
 export const Paragraph = styled.p`
@@ -178,6 +204,11 @@ export const Rect = styled.div.attrs({
 })`
     height: 100%;
     width: 100%;
+    transition: opacity 0.05s;
+
+    &:hover {
+        opacity: 0.1;
+    }
 `
 
 export const Subtitle = styled.h4`
@@ -191,16 +222,39 @@ export const SuperTitle = styled.h2`
     background-color: ${({colour}) => colour};
     color: white;
     border-radius: 15px;
-    margin: 15px;
-    padding: 15px;
+    margin: 0.5em;
+    margin-bottom: 1em;
+    padding: 0.5em;
     position: relative;
-    left: -34px;
+    left: -1em;
+    width: 100%;
+
+    @media (max-width: 500px) {
+        font-size: 1.75em;
+    }
 `
 
 export const Title = styled.h3`
     font-size: 1.75em;
     margin: 0.1em;
-    display: block;
+
+    @media (max-width: 500px) {
+        font-size: 1.25em;
+    }
 `
+export const LinkedTitle = withLink(Title);
 export const BulletedTitle = withBullet(Title);
 export const LinkedBulletedTitle = withLink(BulletedTitle);
+
+export const Window = styled.div`
+    font-size: 0.8em;
+    border: 0.5em solid ${({colour}) => colour};
+    height: 120%;
+    width: 100%;
+    border-radius: 15px;
+    position: relative;
+    top: 1em;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+`
