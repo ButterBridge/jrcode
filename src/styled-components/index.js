@@ -225,9 +225,10 @@ export const LinkedBulletedTitle = withLink(BulletedTitle);
 export const Window = styled.div`
     font-size: 0.8em;
     border: 0.5em solid ${({colour}) => colour};
-    height: 100%;
+    height: 120%;
     width: 100%;
     border-radius: 15px;
     position: relative;
-    top: 5px;
+    top: 1em;
+    margin: 0;
 `

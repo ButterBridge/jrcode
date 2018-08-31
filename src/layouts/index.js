@@ -25,10 +25,10 @@ const TemplateWrapper = ({children, data, location}) => {
                                 />
                                 <div className="grid-main-header">
                                     <Header 
-                                        colours={gameProps.colours}
                                         siteName={siteName}
                                         isSmall={isSmall}
                                         location={location}
+                                        {...gameProps}
                                     />
                                 </div>
                                 <div className="grid-main-content">
