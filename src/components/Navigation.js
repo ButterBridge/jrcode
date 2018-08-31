@@ -2,12 +2,12 @@ import React from 'react';
 import Link from 'gatsby-link';
 import Icon from './Icon';
 import { NavBar, Container, NavBarItem, Option, IconHolder } from '../styled-components';
-import github from '../img/github-icon.svg';
-import twitter from '../img/twitter-icon.svg';
-import home from '../img/home-icon.svg';
-import about from '../img/about-icon.svg';
-import blog from '../img/blog-icon.svg';
-import contact from '../img/contact-icon.svg';
+import github from '../img/icons/github-icon.svg';
+import twitter from '../img/icons/twitter-icon.svg';
+import home from '../img/icons/home-icon.svg';
+import about from '../img/icons/about-icon.svg';
+import blog from '../img/icons/blog-icon.svg';
+import contact from '../img/icons/contact-icon.svg';
 
 const Navigation = ({colour, isSmall}) => (
     <div className={`grid-navigation${isSmall ? '-mini' : ''}`}>
