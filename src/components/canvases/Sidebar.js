@@ -5,13 +5,13 @@ import {colours} from '../../style';
 class Sidebar extends Component {
     render() {
         return (
-            <canvas ref="canvas" style={{width : '100%', height : '100%'}} />
+            <canvas ref={(el) => this.canvas = el} style={{width : '100%', height : '100%'}} />
         );
     }
 
     componentDidMount = () => {
         const {CanvasSpace, Rectangle, Create} = Pts;
-        const space = new CanvasSpace(this.refs.canvas);
+        const space = new CanvasSpace(this.canvas);
         const form = space.getForm();
 
         let pts, follower, count = 0;
