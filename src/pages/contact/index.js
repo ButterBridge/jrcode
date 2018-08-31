@@ -22,7 +22,6 @@ export default class Contact extends React.Component {
     render() {
         const {formSent, formSendError, submitting, name, email, message} = this.state;
         const {data : {site : { siteMetadata : { title }}}} = this.props;
-        console.log(title);
         return (
             <GameContext.Consumer>
                 {({colours}) => {

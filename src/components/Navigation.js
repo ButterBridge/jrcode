@@ -9,15 +9,18 @@ import about from '../img/icons/about-icon.svg';
 import blog from '../img/icons/blog-icon.svg';
 import contact from '../img/icons/contact-icon.svg';
 
-const Navigation = ({colour, isSmall}) => (
-    <div className={`grid-navigation${isSmall ? '-mini' : ''}`}>
+const Navigation = ({colour, isSmall, location : {pathname}}) => {
+    console.log(location);
+    return <div className={`grid-navigation${isSmall ? '-mini' : ''}`}>
         <div className="grid-navigation-links">
             <NavBar
                 colour={colour}
             >
                 <NavBarItem>
                     <Link to="/">
-                        <Option>{isSmall ? <IconHolder 
+                        <Option
+                            colour={pathname === '/' ? colour : 'black'}
+                        >{isSmall ? <IconHolder 
                             src={home}
                             alt="Home"
                         /> : 'Home'}</Option>
@@ -25,7 +28,9 @@ const Navigation = ({colour, isSmall}) => (
                 </NavBarItem>
                 <NavBarItem>
                     <Link to="/about">
-                        <Option>{isSmall ? <IconHolder 
+                        <Option
+                            colour={pathname === '/about' ? colour : 'black'}
+                        >{isSmall ? <IconHolder 
                             src={about}
                             alt="About"
                         /> : 'About'}</Option>
@@ -33,7 +38,9 @@ const Navigation = ({colour, isSmall}) => (
                 </NavBarItem>
                 <NavBarItem>
                     <Link to="/blog">
-                        <Option>{isSmall ? <IconHolder 
+                        <Option
+                            colour={pathname === '/blog' ? colour : 'black'}
+                        >{isSmall ? <IconHolder 
                             src={blog}
                             alt="Blog"
                         /> : 'Blog'}</Option>
@@ -41,7 +48,9 @@ const Navigation = ({colour, isSmall}) => (
                 </NavBarItem>
                 <NavBarItem>
                     <Link to="/contact">
-                        <Option>{isSmall ? <IconHolder 
+                        <Option
+                            colour={pathname === '/contact' ? colour : 'black'}
+                        >{isSmall ? <IconHolder 
                             src={contact}
                             alt="Contact"
                         /> : 'Contact'}</Option>
@@ -64,6 +73,6 @@ const Navigation = ({colour, isSmall}) => (
             </NavBar>
         </div>
     </div>
-);
+};
 
 export default Navigation

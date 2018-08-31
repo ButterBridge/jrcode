@@ -35,7 +35,6 @@ AboutPageTemplate.propTypes = {
 
 const AboutPage = (props) => {
     const { markdownRemark: post } = props.data;
-    console.log(props);
     return (
         <AboutPageTemplate
             contentComponent={HTMLContent}

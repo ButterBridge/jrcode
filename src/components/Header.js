@@ -2,13 +2,14 @@ import React from 'react';
 import Streamer from './Streamer';
 import Navigation from './Navigation';
 
-const Header = ({colours, siteName, isSmall}) => {
+const Header = ({colours, siteName, isSmall, location}) => {
     return (
         <div className="grid-header">
             <div className="grid-header-navigation">
                 <Navigation 
                     colour={colours[siteName.length]}
                     isSmall={isSmall}
+                    location={location}
                 />
             </div>
             <div className="grid-header-streamer">

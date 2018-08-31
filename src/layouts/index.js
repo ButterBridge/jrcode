@@ -8,8 +8,7 @@ import { GameProvider, GameContext } from '../contexts/GameContext';
 import Streamer from '../components/Streamer';
 import Header from '../components/Header';
 
-const TemplateWrapper = (props) => {
-    const { children, data } = props;
+const TemplateWrapper = ({children, data, location}) => {
     const siteName = 'jrcode';
     return <GameProvider>
         <GameContext.Consumer>
@@ -29,6 +28,7 @@ const TemplateWrapper = (props) => {
                                         colours={gameProps.colours}
                                         siteName={siteName}
                                         isSmall={isSmall}
+                                        location={location}
                                     />
                                 </div>
                                 <div className="grid-main-content">
