@@ -1,7 +1,8 @@
 import React from 'react';
 import Link from 'gatsby-link';
 import Icon from './Icon';
-import { NavBar, Container, NavBarItem, Option, IconHolder, Window } from '../styled-components';
+import { NavBar, Container, NavBarItem, Option, IconHolder, Window, Block } from '../styled-components';
+import {colours} from '../style';
 import github from '../img/icons/github-icon.svg';
 import twitter from '../img/icons/twitter-icon.svg';
 import home from '../img/icons/home-icon.svg';
@@ -37,15 +38,19 @@ class Navigation extends React.Component {
     }
 
     render () {
-        const {colour, isSmall, location : {pathname}} = this.props;
-        const {displayingGameWindow, gameWindowActions} = this.state;
+        const { colour, isSmall, location : {pathname}, progress } = this.props;
+        const { displayingGameWindow, gameWindowActions } = this.state;
         return <div className={`grid-navigation${isSmall ? '-mini' : ''}`}>
             <div className="grid-navigation-game">
                 {displayingGameWindow && <Transition
                     actions={gameWindowActions}
                 >
                     <Window>
-                        <Option>Hi</Option>
+                        {colours.map(colour => {
+                            return <Block 
+                                colour={progress.includes(colour) ? colour : 'black'}
+                            />
+                        })}
                     </Window>
                 </Transition>}
             </div>

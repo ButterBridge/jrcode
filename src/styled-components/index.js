@@ -3,6 +3,14 @@ import { withBullet } from './with/withBullet';
 import { withLink } from './with/withLink';
 import { withTransition } from './with/withTransition';
 
+export const Block = styled.span`
+    padding: 0.5em;
+    height: 50%;
+    margin: 5px;
+    color: ${({colour}) => colour};
+    background: ${({colour}) => colour};
+`
+
 export const Bullet = styled.span`
     border-radius: 50%;
     display: block;
@@ -231,4 +239,6 @@ export const Window = styled.div`
     position: relative;
     top: 1em;
     margin: 0;
+    display: flex;
+    justify-content: center;
 `
