@@ -196,6 +196,7 @@ export const SuperTitle = styled.h2`
     padding: 0.5em;
     position: relative;
     left: -1em;
+    width: 100%;
 `
 
 export const Title = styled.h3`
