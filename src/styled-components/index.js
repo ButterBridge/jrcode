@@ -48,6 +48,13 @@ export const Content = styled.div`
     flex-wrap: wrap;
     justify-content: left;
     align-items: center
+
+    @media (max-width: 500px) {
+        margin-left: 0;
+        margin-right: 0;
+        padding-left: 0;
+        border-left: none;
+    }
 `
 
 export const Detail = styled.p`
@@ -173,6 +180,7 @@ export const Option = styled.h6`
         opacity: 0.5;
     }
 `
+export const LinkedOption = withLink(Option);
 export const BulletedOption = withBullet(Option);
 
 export const Paragraph = styled.p`
@@ -220,13 +228,21 @@ export const SuperTitle = styled.h2`
     position: relative;
     left: -1em;
     width: 100%;
+
+    @media (max-width: 500px) {
+        font-size: 1.75em;
+    }
 `
 
 export const Title = styled.h3`
     font-size: 1.75em;
     margin: 0.1em;
-    display: block;
+
+    @media (max-width: 500px) {
+        font-size: 1.25em;
+    }
 `
+export const LinkedTitle = withLink(Title);
 export const BulletedTitle = withBullet(Title);
 export const LinkedBulletedTitle = withLink(BulletedTitle);
 

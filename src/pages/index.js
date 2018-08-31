@@ -1,12 +1,33 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Link from 'gatsby-link'
-import {Content, Main, Heading, Detail, Opener, Paragraph, LinkedBulletedTitle, LinkedMeta, Meta, TransitionContainer, SuperTitle} from '../styled-components'
+import {debounce} from 'lodash';
+import MediaQuery from 'react-responsive';
+import {Content, Main, Heading, Detail, Opener, Paragraph, LinkedBulletedTitle, LinkedMeta, Meta, TransitionContainer, SuperTitle, Option, LinkedTitle} from '../styled-components'
 import '../style/default-styles.css';
 import Transition from '../components/Transition';
 import { GameContext } from '../contexts/GameContext';
 
 export default class IndexPage extends React.Component {
+    state = {
+        innerWidth: window.innerWidth
+    }
+
+    componentDidMount = () => {
+        window.addEventListener('resize', this.debouncedUpdateResize);
+    }
+
+    componentWillUnmount = () => {
+        window.removeEventListener('resize', this.debouncedUpdateResize);
+    }
+
+    debouncedUpdateResize = debounce(() => {
+        this.setState({
+            innerWidth: window.innerWidth
+        })
+    }, 100)
+
+
     render() {
         const { data } = this.props;
         const { edges: posts } = data.allMarkdownRemark;
@@ -52,7 +73,11 @@ export default class IndexPage extends React.Component {
                                 </Content>
                             </Transition>
                         ))}
-                    </TransitionContainer></Main>
+                    </TransitionContainer>
+                        <Link to="/blog">
+                            <Option>See all posts</Option>
+                        </Link>
+                    </Main>
                 }}
             </GameContext.Consumer>
         )
