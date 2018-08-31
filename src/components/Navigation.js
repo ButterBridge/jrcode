@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'gatsby-link';
 import Icon from './Icon';
-import { NavBar, Container, NavBarItem, Option, IconHolder } from '../styled-components';
+import { NavBar, Container, NavBarItem, Option, IconHolder, Window } from '../styled-components';
 import github from '../img/icons/github-icon.svg';
 import twitter from '../img/icons/twitter-icon.svg';
 import home from '../img/icons/home-icon.svg';
@@ -10,8 +10,12 @@ import blog from '../img/icons/blog-icon.svg';
 import contact from '../img/icons/contact-icon.svg';
 
 const Navigation = ({colour, isSmall, location : {pathname}}) => {
-    console.log(location);
     return <div className={`grid-navigation${isSmall ? '-mini' : ''}`}>
+        <div className="grid-navigation-game">
+            <Window>
+                <Option>Hi</Option>
+            </Window>
+        </div>
         <div className="grid-navigation-links">
             <NavBar
                 colour={colour}

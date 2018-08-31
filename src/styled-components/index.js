@@ -156,6 +156,10 @@ export const Option = styled.h6`
     padding: 0.2em;
     color: ${({colour = 'black'}) => colour};
     transition: opacity 0.5s;
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    align-items: center;
 
     &:hover {
         opacity: 0.5;
@@ -217,3 +221,13 @@ export const Title = styled.h3`
 `
 export const BulletedTitle = withBullet(Title);
 export const LinkedBulletedTitle = withLink(BulletedTitle);
+
+export const Window = styled.div`
+    font-size: 0.8em;
+    border: 0.5em solid ${({colour}) => colour};
+    height: 100%;
+    width: 100%;
+    border-radius: 15px;
+    position: relative;
+    top: 5px;
+`
