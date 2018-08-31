@@ -191,10 +191,11 @@ export const SuperTitle = styled.h2`
     background-color: ${({colour}) => colour};
     color: white;
     border-radius: 15px;
-    margin: 15px;
-    padding: 15px;
+    margin: 0.5em;
+    margin-bottom: 1em;
+    padding: 0.5em;
     position: relative;
-    left: -34px;
+    left: -1em;
 `
 
 export const Title = styled.h3`
