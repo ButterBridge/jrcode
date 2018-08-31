@@ -154,10 +154,12 @@ export const Option = styled.h6`
     font-size: 1.1em;
     margin: 0.2em;
     padding: 0.2em;
-    color: ${({colour = 'black'}) => {
-        console.log(colour)
-        return colour
-    }};
+    color: ${({colour = 'black'}) => colour};
+    transition: opacity 0.5s;
+
+    &:hover {
+        opacity: 0.5;
+    }
 `
 export const BulletedOption = withBullet(Option);
 
