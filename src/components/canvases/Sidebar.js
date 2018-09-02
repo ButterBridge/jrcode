@@ -31,7 +31,6 @@ class Sidebar extends Component {
                 follower = follower.add(space.pointer.$subtract(follower).divide(5));
                 count++;
                 const {colours, progressing} = this.props;
-                progressing && console.log(progressing);
                 pts.forEach((p, i) => {
                     const mag = Math.min(follower.$subtract(Rectangle.center(p)).magnitude(), 750);
                     const scale = Math.min(1, Math.abs(1 - (0.4 * mag / space.center.y)));

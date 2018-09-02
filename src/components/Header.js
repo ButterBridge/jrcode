@@ -2,7 +2,7 @@ import React from 'react';
 import Streamer from './Streamer';
 import Navigation from './Navigation';
 
-const Header = ({colours, siteName, isSmall, location, progress, progressing}) => {
+const Header = ({colours, siteName, isSmall, location, progress, progressing, timeSpent}) => {
     return (
         <div className="grid-header">
             <div className="grid-header-navigation">
@@ -12,6 +12,7 @@ const Header = ({colours, siteName, isSmall, location, progress, progressing}) =
                     location={location}
                     progress={progress}
                     progressing={progressing}
+                    timeSpent={timeSpent}
                 />
             </div>
             <div className="grid-header-streamer">

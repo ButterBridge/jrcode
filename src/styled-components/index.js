@@ -5,8 +5,8 @@ import { withTransition } from './with/withTransition';
 
 export const Block = styled.span`
     padding: 0.5em;
-    height: 50%;
     margin: 5px;
+    height: 50%;
     color: ${({colour}) => colour};
     background: ${({colour}) => colour};
 `
@@ -142,7 +142,7 @@ export const Meta = styled.div`
     display: block;
     border-radius: 1em;
     margin: 1px;
-    background-color: ${({colour}) => colour};
+    background-color: ${({colour = "white"}) => colour};
 `
 export const LinkedMeta = withLink(Meta);
 
@@ -211,6 +211,12 @@ export const Rect = styled.div.attrs({
     }
 `
 
+export const Strong = styled.h6`
+    font-size: 1.1em;
+    padding: 0;
+    margin: 0;
+`
+
 export const Subtitle = styled.h4`
     font-size: 1.5em;
     margin: 0.5em;
@@ -257,4 +263,10 @@ export const Window = styled.div`
     margin: 0;
     display: flex;
     justify-content: center;
+    align-items: center;
+`
+
+export const WindowInsert = styled.div`
+    padding: 0.5em;
+    margin: 5px;
 `

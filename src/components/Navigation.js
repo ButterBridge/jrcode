@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'gatsby-link';
 import Icon from './Icon';
-import { NavBar, Container, NavBarItem, Option, IconHolder, Window, Block } from '../styled-components';
+import { NavBar, Container, NavBarItem, Option, IconHolder, Window, Block, Strong, WindowInsert } from '../styled-components';
 import {colours} from '../style';
 import github from '../img/icons/github-icon.svg';
 import twitter from '../img/icons/twitter-icon.svg';
@@ -38,7 +38,7 @@ class Navigation extends React.Component {
     }
 
     render () {
-        const { colour, isSmall, location : {pathname}, progress } = this.props;
+        const { colour, isSmall, location : {pathname}, progress, timeSpent } = this.props;
         const { displayingGameWindow, gameWindowActions } = this.state;
         return <div className={`grid-navigation${isSmall ? '-mini' : ''}`}>
             <div className="grid-navigation-game">
@@ -51,6 +51,7 @@ class Navigation extends React.Component {
                                 colour={progress.includes(colour) ? colour : 'black'}
                             />
                         })}
+                        <Strong>{timeSpent}s</Strong>
                     </Window>
                 </Transition>}
             </div>
