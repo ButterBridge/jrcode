@@ -5,6 +5,7 @@
   "author": "Austin Green",
   "dependencies": {
     "babel-polyfill": "^6.26.0",
+    "browser-monads": "^1.0.0",
     "bulma": "^0.6.0",
     "date-fns": "^1.29.0",
     "gatsby": "^1.9.213",

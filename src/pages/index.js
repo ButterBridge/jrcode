@@ -1,12 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Link from 'gatsby-link'
-import {debounce} from 'lodash';
+import { debounce } from 'lodash';
+import { window } from 'browser-monads';
 import MediaQuery from 'react-responsive';
-import {Content, Main, Heading, Detail, Opener, Paragraph, LinkedBulletedTitle, LinkedMeta, Meta, TransitionContainer, SuperTitle, Option, LinkedTitle} from '../styled-components'
-import '../style/default-styles.css';
+import Link from 'gatsby-link'
 import Transition from '../components/Transition';
 import { GameContext } from '../contexts/GameContext';
+import { Content, Main, Heading, Detail, Opener, Paragraph, LinkedBulletedTitle, LinkedMeta, Meta, TransitionContainer, SuperTitle, Option, LinkedTitle } from '../styled-components'
+import '../style/default-styles.css';
 
 export default class IndexPage extends React.Component {
     state = {

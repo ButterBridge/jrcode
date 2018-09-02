@@ -2,6 +2,7 @@ import React from "react";
 import PT from 'prop-types';
 import { Transition as ReactTransition } from "react-transition-group";
 import composeTransitionStyles from "../utils/transitions";
+import { window } from 'browser-monads';
 
 const timeout = 250;
 const historyExitingEventType = `history::exiting`;
