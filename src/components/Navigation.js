@@ -47,7 +47,8 @@ class Navigation extends React.Component {
                 >
                     <Window>
                         {colours.map(colour => {
-                            return <Block 
+                            return <Block
+                                key={colour}
                                 colour={progress.includes(colour) ? colour : 'black'}
                             />
                         })}
