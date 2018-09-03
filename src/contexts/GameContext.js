@@ -30,7 +30,7 @@ export class GameProvider extends React.Component {
                 progressing,
                 timeSpent,
                 progress: this.state[round].progress,
-                onMouseOverHeadLetter: this.onMouseOverHeadLetter,              
+                onMouseOverHeadLetter: this.onMouseOverHeadLetter,
                 generateRandomColours: this.generateRandomColours,
             }}>
                 {this.props.children}
@@ -153,6 +153,9 @@ export class GameProvider extends React.Component {
 
     updateLocalScore = () => {
         const { round, timeSpent } = this.state;
-        localStorage.setItem(round, timeSpent.toString());
+        const recordableTimeSpent = timeSpent.toString();
+        console.log({timeSpent});
+        localStorage.setItem(round.toString(), 'hello');
+        localStorage.setItem('hi', 'hello');
     }
 }

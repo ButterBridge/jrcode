@@ -5,6 +5,7 @@ import {Content, Main, Heading, Detail, Opener, Paragraph, LinkedBulletedTitle, 
 import '../../style/default-styles.css';
 import Transition from '../../components/Transition';
 import { GameContext } from '../../contexts/GameContext';
+import BlogPosts from '../../components/BlogPosts';
 
 export default class IndexPage extends React.Component {
     render() {
@@ -21,34 +22,11 @@ export default class IndexPage extends React.Component {
                         >
                             Blog...
                         </SuperTitle>
-                        {posts.map(({ node: post }, index) => (
-                            <Transition
-                                key={post.id}
-                                additionalTimeout={index * 200}
-                                actions={['fade', 'slide']}
-                            >
-                                <Content>
-                                    <LinkedBulletedTitle
-                                        addition="title"
-                                        linkTo={post.fields.slug} 
-                                        componentContent={post.frontmatter.title}
-                                        colour={colours[title.length]}
-                                    />
-                                    <Paragraph>{post.excerpt}</Paragraph>
-                                    <LinkedMeta
-                                        linkTo={post.fields.slug}
-                                        colour={colours[title.length]}
-                                    >
-                                        <Detail>Keep Reading →</Detail>
-                                    </LinkedMeta>
-                                    <Detail
-                                        colour={colours[title.length]}
-                                    >
-                                        {post.frontmatter.formattedDate}
-                                    </Detail>
-                                </Content>
-                            </Transition>
-                        ))}
+                        <BlogPosts 
+                            posts={posts}
+                            colours={colours}
+                            title={title}
+                        />
                     </TransitionContainer></Main>
                 }}
             </GameContext.Consumer>

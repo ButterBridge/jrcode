@@ -41,11 +41,11 @@ class Brand extends Component {
                         actions={['descend']}
                         style={{width : '100%', height : '100%'}}
                     >
-                        <Sidebar
+                        {/* <Sidebar
                             colours={colours}
                             dimensions={[siteName.length, 13]}
                             progressing={progressing}
-                        />
+                        /> */}
                     </Transition>
                 </div>}
             </div> 
