@@ -20,6 +20,8 @@ class Brand extends Component {
         const {fonts} = this.state;
         const {siteName, isSmall, isAlone, colours, onMouseOverHeadLetter, progressing} = this.props;
         if (!colours.length) return null;
+        const adjustedColours = isSmall ? ['', ...colours.slice(0, -1)]: colours;
+
         return (
             <div className={`grid-sidebar${isSmall ? '-mini' : ''}`}>
                 {`${isSmall ? ' ' : ''}${siteName}`.split('').map((char, i) => {
@@ -27,10 +29,10 @@ class Brand extends Component {
                         gridCols={{from : isSmall ? 1 : i + 1, to : isSmall ? 2 : i + 2}}
                         key={i}
                         font={fonts[i]}
-                        colour={['', ...colours][i]}
+                        colour={adjustedColours[i]}
                         onMouseEnter={() => {
                             this.changeFont(i);
-                            !progressing && onMouseOverHeadLetter(i - 1);
+                            !progressing && onMouseOverHeadLetter(isSmall ? i - 1 : i);
                         }}
                     >
                         {char}
