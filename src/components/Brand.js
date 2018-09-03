@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import PT from 'prop-types';
 import { sample } from 'lodash';
-import { HeadLetter } from '../styled-components';
-import {fonts} from '../style';
+import { window } from 'browser-monads';
 import Sidebar from './canvases/Sidebar';
 import Transition from './Transition';
+import { HeadLetter } from '../styled-components';
+import {fonts} from '../style';
 
 class Brand extends Component {
     state = {
@@ -36,22 +37,17 @@ class Brand extends Component {
                     </HeadLetter>
                 })}
                 {!isSmall && !isAlone && <div className="grid-sidebar-canvas">
-                    {/* <Transition
+                    {window.hasOwnProperty('Pts') && <Transition
                         additionalTimeout={600}
                         actions={['descend']}
                         style={{width : '100%', height : '100%'}}
-                    > */}
-                        {/* {window.hasOwnProperty('Pts') && <Sidebar
+                    >
+                        <Sidebar
                             colours={colours}
                             dimensions={[siteName.length, 13]}
                             progressing={progressing}
-                        />} */}
-                        {/* <Sidebar
-                            colours={colours}
-                            dimensions={[siteName.length, 13]}
-                            progressing={progressing}
-                        /> */}
-                    {/* </Transition> */}
+                        />
+                    </Transition>}
                 </div>}
             </div> 
         );
