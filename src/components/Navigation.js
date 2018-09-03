@@ -45,7 +45,9 @@ class Navigation extends React.Component {
                 {displayingGameWindow && <Transition
                     actions={gameWindowActions}
                 >
-                    <Window>
+                    <Window
+                        borderColour={isSmall ? 'white' : 'black'}
+                    >
                         {colours.map(colour => {
                             return <Block
                                 key={colour}

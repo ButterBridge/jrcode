@@ -254,12 +254,12 @@ export const LinkedBulletedTitle = withLink(BulletedTitle);
 
 export const Window = styled.div`
     font-size: 0.8em;
-    border: 0.5em solid ${({colour}) => colour};
+    border: ${({borderWidth = '0.5em'}) => borderWidth} solid ${({borderColour = "black"}) => borderColour};
     height: 120%;
     width: 100%;
     border-radius: 15px;
     position: relative;
-    top: 1em;
+    top: 1.5em;
     margin: 0;
     display: flex;
     justify-content: center;
