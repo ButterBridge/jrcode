@@ -26,27 +26,32 @@ class Brand extends Component {
                         gridCols={{from : isSmall ? 1 : i + 1, to : isSmall ? 2 : i + 2}}
                         key={i}
                         font={fonts[i]}
-                        colour={colours[i]}
+                        colour={['', ...colours][i]}
                         onMouseEnter={() => {
                             this.changeFont(i);
-                            !progressing && onMouseOverHeadLetter(i);
+                            !progressing && onMouseOverHeadLetter(i - 1);
                         }}
                     >
                         {char}
                     </HeadLetter>
                 })}
                 {!isSmall && !isAlone && <div className="grid-sidebar-canvas">
-                    <Transition
+                    {/* <Transition
                         additionalTimeout={600}
                         actions={['descend']}
                         style={{width : '100%', height : '100%'}}
-                    >
+                    > */}
+                        {/* {window.hasOwnProperty('Pts') && <Sidebar
+                            colours={colours}
+                            dimensions={[siteName.length, 13]}
+                            progressing={progressing}
+                        />} */}
                         {/* <Sidebar
                             colours={colours}
                             dimensions={[siteName.length, 13]}
                             progressing={progressing}
                         /> */}
-                    </Transition>
+                    {/* </Transition> */}
                 </div>}
             </div> 
         );
