@@ -17,16 +17,18 @@ class Navigation extends React.Component {
         gameWindowActions: [],
     }
 
-    componentDidUpdate (prevProps) {
-        if (this.props.progressing && this.props !== prevProps) {
+    componentDidUpdate (_, prevState) {
+        if (this.props.progressing && this.state === prevState) {
             this.setState({
                 displayingGameWindow: true,
                 gameWindowActions: ['slide', 'fade']
             })
+            this.props.toggleForceReveal()
             setTimeout(() => {
                 this.setState({
                     gameWindowActions: ['ascend', 'fadeOut']
                 }, () => {
+                    this.props.toggleForceReveal()
                     setTimeout(() => {
                         this.setState({
                             displayingGameWindow: false

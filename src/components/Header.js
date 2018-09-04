@@ -3,12 +3,12 @@ import Streamer from './Streamer';
 import Navigation from './Navigation';
 import Transition from './Transition';
 
-const Header = ({colours, siteName, isSmall, location, progress, progressing, timeSpent, scrollDir, scrollPos}) => {
-    console.log({scrollDir}, {scrollY});
+const Header = ({colours, siteName, isSmall, location, progress, progressing, timeSpent, scrollDir, scrollPos, toggleForceReveal, forceReveal}) => {
+    const isRevealed = scrollDir === 'up' || scrollY === 0 || forceReveal;
     return (
-        <div className="grid-header">
-            <Transition 
-                actions={[scrollDir === 'up' || scrollY === 0 ? 'descend' : 'ascend']}
+        <div className={`grid-header${isRevealed ? '' : '-hidden'}`}>
+            <Transition
+                actions={[isRevealed ? 'descend' : 'ascend']}
             >
                 <Fragment>
                     <div className="grid-header-navigation">
@@ -19,6 +19,7 @@ const Header = ({colours, siteName, isSmall, location, progress, progressing, ti
                             progress={progress}
                             progressing={progressing}
                             timeSpent={timeSpent}
+                            toggleForceReveal={toggleForceReveal}
                         />
                     </div>
                     <div className="grid-header-streamer">

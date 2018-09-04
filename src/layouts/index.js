@@ -19,7 +19,7 @@ const TemplateWrapper = ({children, data, location}) => {
                     <Helmet title={siteName} />
                     <ScrollProvider>
                         <ScrollContext.Consumer>
-                            {({scrollDir, scrollY}) => {
+                            {({scrollDir, scrollY, toggleForceReveal, forceReveal}) => {
                                 return <MediaQuery maxWidth={760}>
                                     {(isSmall) => {
                                         return <div className={`grid-main${isSmall ? '-mini' : ''}`}>
@@ -35,12 +35,14 @@ const TemplateWrapper = ({children, data, location}) => {
                                                     location={location}
                                                     scrollDir={scrollDir}
                                                     scrollY={scrollY}
+                                                    toggleForceReveal={toggleForceReveal}
+                                                    forceReveal={forceReveal}
                                                     {...gameProps}
                                                 />
                                             </div>
                                             <div className="grid-main-content">
                                                 <Transition
-                                                    actions={[scrollDir === 'up' || scrollY === 0 ? 'dip' : 'revert']}
+                                                    actions={[scrollDir === 'up' || scrollY === 0 || forceReveal ? 'dip' : 'revert']}
                                                 >
                                                     {children()}
                                                 </Transition>
