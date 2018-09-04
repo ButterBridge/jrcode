@@ -11,7 +11,7 @@ import Transition from '../components/Transition';
 import '../style/grid.sass';
 
 const TemplateWrapper = ({children, data, location}) => {
-    const siteName = 'jrcode';
+    const siteName = data.site.siteMetadata.title;
     return <GameProvider>
         <GameContext.Consumer>
             {(gameProps) => (
@@ -64,3 +64,13 @@ TemplateWrapper.propTypes = {
 }
 
 export default TemplateWrapper;
+
+export const layoutPageQuery = graphql`
+    query layoutQuery {
+        site {
+            siteMetadata {
+                title
+            }
+        }
+    }
+`
