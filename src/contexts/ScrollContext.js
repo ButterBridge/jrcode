@@ -33,7 +33,7 @@ export class ScrollProvider extends React.Component {
 
     throttledListenToScrolling = throttle(() => {
         const {scrollY : currentScrollY, scrollDir} = this.state;
-        const atBottom = window.screen.availHeight - window.scrollY < 80;
+        const atBottom = this.amountscrolled() > 90;
         this.setState({
             scrollY: window.scrollY,
             scrollDir: window.scrollY > currentScrollY || atBottom ? 'down' : 'up'
@@ -44,5 +44,22 @@ export class ScrollProvider extends React.Component {
         this.setState({
             forceReveal: !this.state.forceReveal
         })
+    }
+
+    getAmountScrolled(){
+        const windowHeight = window.innerHeight || (document.documentElement || document.body).clientHeight
+        const documentHeight = this.getDocHeight()
+        const scrollTop = window.pageYOffset || (document.documentElement || document.body.parentNode || document.body).scrollTop
+        const trackLength = docheight - winheight
+        const pctScrolled = Math.floor(scrollTop/trackLength * 100);
+        return pctScrolled;
+    }
+
+    getDocHeight() {
+        return Math.max(
+            document.body.scrollHeight, document.documentElement.scrollHeight,
+            document.body.offsetHeight, document.documentElement.offsetHeight,
+            document.body.clientHeight, document.documentElement.clientHeight
+        )
     }
 }
