@@ -8,7 +8,6 @@ export class ScrollProvider extends React.Component {
     state = {
         scrollY: window.scrollY,
         scrollDir: null,
-        listeningForScrollEnd: false,
         forceReveal: false
     }
 
@@ -25,36 +24,21 @@ export class ScrollProvider extends React.Component {
     }
 
     componentDidMount () {
-        window.addEventListener('scroll', this.throttledListenToScrolling)
+        window.addEventListener('scroll', this.throttledListenToScrolling);
     }
 
     componentWillUnmount () {
-        window.removeEventListener('scroll', this.throttledListenToScrolling)
+        window.removeEventListener('scroll', this.throttledListenToScrolling);
     }
 
     throttledListenToScrolling = throttle(() => {
-        const {scrollY : currentScrollY, scrollDir, listeningForScrollEnd} = this.state;
-        // if (!listeningForScrollEnd) this.listenForEndOfScrolling()
+        const {scrollY : currentScrollY, scrollDir} = this.state;
+        const atBottom = window.screen.availHeight - window.scrollY < 80;
         this.setState({
             scrollY: window.scrollY,
-            scrollDir: window.scrollY > currentScrollY ? 'down' : 'up',
-            listeningForScrollEnd: true
+            scrollDir: window.scrollY > currentScrollY || atBottom ? 'down' : 'up'
         });
-    }, 200);
-
-    listenForEndOfScrolling = () => {
-        const {scrollY : currentScrollY, scrollDir} = this.state;
-        const hasScrollEnded = window.scrollY === currentScrollY;
-        if (hasScrollEnded) {
-            this.setState({
-                scrollY: window.scrollY,
-                scrollDir: null,
-                listeningForScrollEnd: false
-            })
-        } else {
-            setTimeout(this.listenForEndOfScrolling(), 1000);
-        }
-    }
+    }, 300);
 
     toggleForceReveal = () => {
         this.setState({
