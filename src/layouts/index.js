@@ -19,7 +19,8 @@ const TemplateWrapper = ({children, data, location}) => {
                     <Helmet title={siteName} />
                     <ScrollProvider>
                         <ScrollContext.Consumer>
-                            {({scrollDir, scrollY, toggleForceReveal, forceReveal}) => {
+                            {({scrollDir, scrollY, forceReveal, toggleForceReveal}) => {
+                                const isHeaderRevealed = scrollDir === 'up' || scrollY === 0 || forceReveal;
                                 return <MediaQuery maxWidth={760}>
                                     {(isSmall) => {
                                         return <div className={`grid-main${isSmall ? '-mini' : ''}`}>
@@ -33,16 +34,14 @@ const TemplateWrapper = ({children, data, location}) => {
                                                     siteName={siteName}
                                                     isSmall={isSmall}
                                                     location={location}
-                                                    scrollDir={scrollDir}
-                                                    scrollY={scrollY}
+                                                    isHeaderRevealed={isHeaderRevealed}
                                                     toggleForceReveal={toggleForceReveal}
-                                                    forceReveal={forceReveal}
                                                     {...gameProps}
                                                 />
                                             </div>
                                             <div className="grid-main-content">
                                                 <Transition
-                                                    actions={[scrollDir === 'up' || scrollY === 0 || forceReveal ? 'dip' : 'revert']}
+                                                    actions={[isHeaderRevealed ? 'dip' : 'revert']}
                                                 >
                                                     {children()}
                                                 </Transition>
