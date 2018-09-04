@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import MediaQuery from 'react-responsive';
 import { GameProvider, GameContext } from '../contexts/GameContext';
+import { ScrollProvider, ScrollContext } from '../contexts/ScrollContext';
 import Brand from '../components/Brand';
 import Streamer from '../components/Streamer';
 import Header from '../components/Header';
@@ -16,32 +17,40 @@ const TemplateWrapper = ({children, data, location}) => {
             {(gameProps) => (
                 <Fragment>
                     <Helmet title={siteName} />
-                    <MediaQuery maxWidth={760}>
-                        {(isSmall) => {
-                            return <div className={`grid-main${isSmall ? '-mini' : ''}`}>
-                                <Brand 
-                                    siteName={siteName}
-                                    isSmall={isSmall}
-                                    {...gameProps}
-                                />
-                                <div className="grid-main-header">
-                                    <Header 
-                                        siteName={siteName}
-                                        isSmall={isSmall}
-                                        location={location}
-                                        {...gameProps}
-                                    />
-                                </div>
-                                <div className="grid-main-content">
-                                    <Transition
-                                        actions={['dip']}
-                                    >
-                                        {children()}
-                                    </Transition>
-                                </div>
-                            </div>
-                        }}
-                    </MediaQuery>
+                    <ScrollProvider>
+                        <ScrollContext.Consumer>
+                            {({scrollDir, scrollY}) => {
+                                return <MediaQuery maxWidth={760}>
+                                    {(isSmall) => {
+                                        return <div className={`grid-main${isSmall ? '-mini' : ''}`}>
+                                            <Brand 
+                                                siteName={siteName}
+                                                isSmall={isSmall}
+                                                {...gameProps}
+                                            />
+                                            <div className="grid-main-header">
+                                                <Header 
+                                                    siteName={siteName}
+                                                    isSmall={isSmall}
+                                                    location={location}
+                                                    scrollDir={scrollDir}
+                                                    scrollY={scrollY}
+                                                    {...gameProps}
+                                                />
+                                            </div>
+                                            <div className="grid-main-content">
+                                                <Transition
+                                                    actions={[scrollDir === 'up' || scrollY === 0 ? 'dip' : 'revert']}
+                                                >
+                                                    {children()}
+                                                </Transition>
+                                            </div>
+                                        </div>
+                                    }}
+                                </MediaQuery>
+                            }}
+                        </ScrollContext.Consumer>
+                    </ScrollProvider>
                 </Fragment>
             )}
         </GameContext.Consumer>
