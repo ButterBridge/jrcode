@@ -1,5 +1,5 @@
 import React from 'react';
-import { window } from 'browser-monads';
+import { window, document } from 'browser-monads';
 import { throttle } from 'lodash';
 
 export const ScrollContext = React.createContext();
