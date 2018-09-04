@@ -24,7 +24,7 @@ But - I promise - I _am_ sympathetic. Particularly on the front end. React is a 
 
 It gets even more ridiculous with creating components. I don't tend to be unequivocal (take this sentence as an example) but you shouldn't be using a third party toggle component without knowing that you could have made one if you thought it was worth the effort. Or a dropdown, or a form, or a modal box. So here at last we get to the title - I had to pinch myself, when trying to implement drag and drop for reordering in my Todo app [previously mentioned in this post about Parcel](https://www.jrcode.co.uk/blog/2018-08-10-getting-going-with-parcel/), I found myself reading the [docs for React DnD](http://react-dnd.github.io/react-dnd/).
 
-I cast no aspersions and make no criticisms at the devs behind it. It's clearly a capable, extensible and well-supported piece of kit and the fact it doesn't come with its own component library I like to think advocates my point somewhat. If I was working for a client, I'd probably use it. But the whole point of this endeavour was to try and look behind some of these smokescreens, so, and I think you for yur patience, here's how I harnessed the HTML5 drag and drop API to do what I needed myself.
+I cast no aspersions and make no criticisms at the devs behind it. It's clearly a capable, extensible and well-supported piece of kit and the fact it doesn't come with its own component library I like to think advocates my point somewhat. If I was working for a client, I'd probably use it. But the whole point of this endeavour was to try and look behind some of these smokescreens, so, and I think you for your patience, here's how I harnessed the HTML5 drag and drop API to do what I needed myself.
 
 ### Such a drag
 
