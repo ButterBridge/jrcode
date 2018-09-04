@@ -47,12 +47,11 @@ export class ScrollProvider extends React.Component {
     }
 
     getAmountScrolled(){
-        const windowHeight = window.innerHeight || (document.documentElement || document.body).clientHeight
-        const documentHeight = this.getDocHeight()
-        const scrollTop = window.pageYOffset || (document.documentElement || document.body.parentNode || document.body).scrollTop
-        const trackLength = docheight - winheight
-        const pctScrolled = Math.floor(scrollTop/trackLength * 100);
-        return pctScrolled;
+        const windowHeight = window.innerHeight || (document.documentElement || document.body).clientHeight;
+        const documentHeight = this.getDocHeight();
+        const scrollTop = window.pageYOffset || (document.documentElement || document.body.parentNode || document.body).scrollTop;
+        const trackLength = docheight - winheight;
+        return Math.floor(scrollTop/trackLength * 100);
     }
 
     getDocHeight() {
