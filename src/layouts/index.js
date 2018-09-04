@@ -2,11 +2,12 @@ import React, {Fragment} from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import MediaQuery from 'react-responsive';
-import Brand from '../components/Brand';
-import '../style/grid.sass';
 import { GameProvider, GameContext } from '../contexts/GameContext';
+import Brand from '../components/Brand';
 import Streamer from '../components/Streamer';
 import Header from '../components/Header';
+import Transition from '../components/Transition';
+import '../style/grid.sass';
 
 const TemplateWrapper = ({children, data, location}) => {
     const siteName = 'jrcode';
@@ -32,7 +33,11 @@ const TemplateWrapper = ({children, data, location}) => {
                                     />
                                 </div>
                                 <div className="grid-main-content">
-                                    {children()}
+                                    <Transition
+                                        actions={['dip']}
+                                    >
+                                        {children()}
+                                    </Transition>
                                 </div>
                             </div>
                         }}

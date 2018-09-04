@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'gatsby-link';
 import Icon from './Icon';
+import Transition from './Transition';
 import { NavBar, Container, NavBarItem, Option, IconHolder, Window, Block, Strong, WindowInsert } from '../styled-components';
 import {colours} from '../style';
 import github from '../img/icons/github-icon.svg';
@@ -9,7 +10,6 @@ import home from '../img/icons/home-icon.svg';
 import about from '../img/icons/about-icon.svg';
 import blog from '../img/icons/blog-icon.svg';
 import contact from '../img/icons/contact-icon.svg';
-import Transition from './Transition';
 
 class Navigation extends React.Component {
     state = {
@@ -119,8 +119,7 @@ class Navigation extends React.Component {
                 </NavBar>
             </div>
         </div>
-    }
-    
+    }    
 };
 
 export default Navigation
