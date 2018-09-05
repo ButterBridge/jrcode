@@ -34,6 +34,7 @@ export const Centraliser = styled.div`
 
 export const Container = styled.div`
     margin: 1em;
+    margin-bottom: 3em;
 `
 export const TransitionContainer = withTransition(Container);
 

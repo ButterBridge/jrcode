@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'gatsby-link';
 import { kebabCase } from 'lodash';
 import Transition from './Transition';
-import { Content, Detail, Paragraph, LinkedBulletedTitle, LinkedMeta, LinkedListItem } from '../styled-components'
+import { Content, Detail, Paragraph, LinkedBulletedTitle, LinkedMeta, LinkedListItem, LinkedOption } from '../styled-components'
 import { removeHyphens } from '../utils/helpers';
 
 
@@ -22,6 +22,13 @@ const BlogPosts = ({posts, colours, title}) => {
                         colour={colours[title.length]}
                     />
                     <Paragraph>{post.excerpt}</Paragraph>
+                    <Detail
+                        colour={colours[title.length]}
+                    >
+                        Tagged: {post.frontmatter.tags.map(tag => {
+                            return <LinkedOption colour="black" linkTo={`/tags/${kebabCase(tag)}/`}>{removeHyphens(tag)}</LinkedOption>
+                        })}
+                    </Detail>
                     <LinkedMeta
                         linkTo={post.fields.slug}
                         colour={colours[title.length]}
@@ -32,13 +39,6 @@ const BlogPosts = ({posts, colours, title}) => {
                         colour={colours[title.length]}
                     >
                         {post.frontmatter.formattedDate}
-                    </Detail>
-                    <Detail
-                        colour={colours[title.length]}
-                    >
-                        Tagged: {post.frontmatter.tags.map(tag => {
-                            return <LinkedListItem colour="black" linkTo={`/tags/${kebabCase(tag)}/`}>{removeHyphens(tag)}</LinkedListItem>
-                        })}
                     </Detail>
                 </Content>
             </Transition>
