@@ -93,6 +93,7 @@ export const pageQuery = graphql`
                         title
                         templateKey
                         formattedDate : date(formatString: "MMMM DD, YYYY")
+                        tags
                     }
                 }
             }

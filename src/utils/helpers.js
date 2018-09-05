@@ -9,3 +9,7 @@ export const areEquivalent = (array1, array2) => {
 }
 
 export const doNothing = () => {};
+
+export const removeHyphens = (str) => {
+    return str.replace(/\-/g, ' ');
+}
