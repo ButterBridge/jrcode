@@ -40,9 +40,9 @@ export class ScrollProvider extends React.Component {
         });
     }, 300);
 
-    toggleForceReveal = () => {
+    toggleForceReveal = (bool = this.state.forceReveal) => {
         this.setState({
-            forceReveal: !this.state.forceReveal
+            forceReveal: bool
         })
     }
 

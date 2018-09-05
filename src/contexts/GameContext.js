@@ -154,7 +154,6 @@ export class GameProvider extends React.Component {
     updateLocalScore = () => {
         const { round, timeSpent } = this.state;
         const recordableTimeSpent = timeSpent.toString();
-        localStorage.setItem(round.toString(), 'hello');
-        localStorage.setItem('hi', 'hello');
+        localStorage.setItem('round' + round.toString(), recordableTimeSpent);
     }
 }

@@ -225,12 +225,10 @@ export const Subtitle = styled.h4`
     padding: 0.5em;
 `
 
-// linear-gradient(270deg,rgba(138,201,38,1) 36%,rgba(138,201,38,0.5) 77%)
-// linear-gradient(270deg, rgba(0,255,4,0) 36%, rgba(240,119,119,0.5) 77%);
+
 export const SuperTitle = styled.h2`
     font-size: 2.25em;
     background: ${({colour = '#000000'}) => {
-        console.log(colour)
         const {r, g, b} = hexToRgb(colour);
         return `linear-gradient(90deg,rgba(${r},${g},${b},1) 70%,rgba(${r},${g},${b},0.7) 90%)`;
     }};
