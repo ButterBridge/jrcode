@@ -18,7 +18,10 @@ class TagsPage extends React.Component {
     
         group.sort((a, b) => {
             if (sortBy === 'use') {
-                return b.totalCount - a.totalCount;
+                if (b.totalCount - a.totalCount < 0) return -1;
+                if (b.totalCount - a.totalCount > 0) return 1;
+                if(a.fieldValue.toLowerCase() < b.fieldValue.toLowerCase()) return -1;
+                if(a.fieldValue.toLowerCase() > b.fieldValue.toLowerCase()) return 1;
             } else {
                 if(a.fieldValue.toLowerCase() < b.fieldValue.toLowerCase()) return -1;
                 if(a.fieldValue.toLowerCase() > b.fieldValue.toLowerCase()) return 1;
