@@ -4,6 +4,7 @@ import Helmet from 'react-helmet'
 import Link from 'gatsby-link'
 import { Main, Content, Title, List, ListItem, Opener, Option, TransitionContainer, SuperTitle } from '../../styled-components';
 import { GameContext } from '../../contexts/GameContext';
+import { removeHyphens } from '../../utils/helpers';
 
 class TagsPage extends React.Component {
     state = {
@@ -43,7 +44,7 @@ class TagsPage extends React.Component {
                             {group.map(tag => (
                                 <ListItem key={tag.fieldValue}>
                                     <Link to={`/tags/${kebabCase(tag.fieldValue)}/`}>
-                                        <Option>{tag.fieldValue} ({tag.totalCount})</Option>
+                                        <Option>{`${removeHyphens(tag.fieldValue)} • ${tag.totalCount}`}</Option>
                                     </Link>
                                 </ListItem>
                             ))}
