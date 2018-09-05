@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { withBullet } from './with/withBullet';
 import { withLink } from './with/withLink';
 import { withTransition } from './with/withTransition';
+import { hexToRgb } from '../utils/helpers';
 
 export const Block = styled.span`
     padding: 0.5em;
@@ -224,9 +225,15 @@ export const Subtitle = styled.h4`
     padding: 0.5em;
 `
 
+// linear-gradient(270deg,rgba(138,201,38,1) 36%,rgba(138,201,38,0.5) 77%)
+// linear-gradient(270deg, rgba(0,255,4,0) 36%, rgba(240,119,119,0.5) 77%);
 export const SuperTitle = styled.h2`
     font-size: 2.25em;
-    background-color: ${({colour}) => colour};
+    background: ${({colour = '#000000'}) => {
+        console.log(colour)
+        const {r, g, b} = hexToRgb(colour);
+        return `linear-gradient(90deg,rgba(${r},${g},${b},1) 70%,rgba(${r},${g},${b},0.7) 90%)`;
+    }};
     color: white;
     border-radius: 15px;
     margin: 0.5em;
