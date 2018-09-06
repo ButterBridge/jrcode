@@ -107,7 +107,6 @@ const getTransitionStyles = timeout => ({
 })
 
 const composeTransitionStyles = ({ timeout, status, actions }) => {
-    console.log(actions);
     const {elements, transitions} = actions.reduce((acc, action) => {
         acc.elements = {
             ...acc.elements,

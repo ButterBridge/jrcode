@@ -21,7 +21,6 @@ const TemplateWrapper = ({children, data, location}) => {
                         <ScrollContext.Consumer>
                             {({scrollDir, scrollY, forceReveal, toggleForceReveal}) => {
                                 const isHeaderRevealed = scrollDir === 'up' || scrollY === 0 || forceReveal;
-                                console.log(isHeaderRevealed);
                                 return <MediaQuery maxWidth={760}>
                                     {(isSmall) => {
                                         return <div className={`grid-main${isSmall ? '-mini' : ''}`}>

@@ -27,7 +27,13 @@ const BlogPosts = ({posts, colours, title}) => {
                     >
                         <Detail>Tagged:</Detail> 
                         {post.frontmatter.tags.map(tag => {
-                            return <LinkedOption colour="black" linkTo={`/tags/${kebabCase(tag)}/`}>{removeHyphens(tag)}</LinkedOption>
+                            return <LinkedOption 
+                                colour="black"
+                                linkTo={`/tags/${kebabCase(tag)}/`}
+                                key={tag}
+                            >
+                                {removeHyphens(tag)}
+                            </LinkedOption>
                         })}
                     </Meta>
                     <LinkedMeta

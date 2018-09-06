@@ -67,7 +67,10 @@ export default class IndexPage extends React.Component {
                             <FlexContainer>
                                 {Array(round).fill().map((_, i) => {
                                     const Widget = roundWidgetGetters[i];
-                                    return <Widget withFeedback={true} />
+                                    return <Widget 
+                                        withFeedback={true}
+                                        key={i}
+                                    />
                                 })}
                             </FlexContainer>
                         </Container>
