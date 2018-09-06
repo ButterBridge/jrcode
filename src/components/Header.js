@@ -3,7 +3,7 @@ import Streamer from './Streamer';
 import Navigation from './Navigation';
 import Transition from './Transition';
 
-const Header = ({colours, siteName, isSmall, location, progress, progressing, timeSpent, isHeaderRevealed, toggleForceReveal}) => {
+const Header = ({colours, siteName, isSmall, location, progress, progressing, timeSpent, isHeaderRevealed, toggleForceReveal, round}) => {
     return (
         <div className={`grid-header${isHeaderRevealed ? '' : '-hidden'}`}>
             <Transition
@@ -18,6 +18,7 @@ const Header = ({colours, siteName, isSmall, location, progress, progressing, ti
                             progress={progress}
                             progressing={progressing}
                             timeSpent={timeSpent}
+                            round={round}
                             toggleForceReveal={toggleForceReveal}
                         />
                     </div>

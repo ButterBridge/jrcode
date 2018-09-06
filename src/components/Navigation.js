@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'gatsby-link';
 import Icon from './Icon';
 import Transition from './Transition';
-import { NavBar, Container, NavBarItem, Option, IconHolder, Window, Block, Strong, WindowInsert } from '../styled-components';
+import { NavBar, Container, NavBarItem, Option, IconHolder } from '../styled-components';
 import {colours} from '../style';
 import github from '../img/icons/github-icon.svg';
 import twitter from '../img/icons/twitter-icon.svg';
@@ -10,6 +10,7 @@ import home from '../img/icons/home-icon.svg';
 import about from '../img/icons/about-icon.svg';
 import blog from '../img/icons/blog-icon.svg';
 import contact from '../img/icons/contact-icon.svg';
+import roundWidgetGetters from './collections/round-widgets';
 
 class Navigation extends React.Component {
     state = {
@@ -40,24 +41,15 @@ class Navigation extends React.Component {
     }
 
     render () {
-        const { colour, isSmall, location : {pathname}, progress, timeSpent } = this.props;
+        const { colour, isSmall, location : {pathname}, progress, timeSpent, round } = this.props;
         const { displayingGameWindow, gameWindowActions } = this.state;
+        const displayColours = colours.map(colour => progress.includes(colour) ? colour : 'black');
         return <div className={`grid-navigation${isSmall ? '-mini' : ''}`}>
             <div className="grid-navigation-game">
                 {displayingGameWindow && <Transition
                     actions={gameWindowActions}
                 >
-                    <Window
-                        borderColour={isSmall ? 'white' : 'black'}
-                    >
-                        {colours.map(colour => {
-                            return <Block
-                                key={colour}
-                                colour={progress.includes(colour) ? colour : 'black'}
-                            />
-                        })}
-                        <Strong>{timeSpent}s</Strong>
-                    </Window>
+                    {roundWidgetGetters[round - 1]({isSmall, displayColours, timeSpent})}
                 </Transition>}
             </div>
             <div className="grid-navigation-links">

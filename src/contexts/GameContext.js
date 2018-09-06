@@ -29,6 +29,7 @@ export class GameProvider extends React.Component {
                 colours,
                 progressing,
                 timeSpent,
+                round,
                 progress: this.state[round].progress,
                 onMouseOverHeadLetter: this.onMouseOverHeadLetter,
                 generateRandomColours: this.generateRandomColours,

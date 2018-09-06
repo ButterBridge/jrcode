@@ -6,7 +6,7 @@ import MediaQuery from 'react-responsive';
 import Link from 'gatsby-link'
 import Transition from '../components/Transition';
 import { GameContext } from '../contexts/GameContext';
-import { Main, Opener, TransitionContainer, SuperTitle, Option } from '../styled-components'
+import { Main, Opener, TransitionContainer, SuperTitle, Option, Container } from '../styled-components'
 import '../style/default-styles.css';
 import BlogPosts from '../components/BlogPosts';
 
@@ -39,22 +39,31 @@ export default class IndexPage extends React.Component {
             <GameContext.Consumer>
                 {({colours}) => {
                     return <Main><TransitionContainer>
-                        <Opener>
-                            Hello. Thanks for coming.
-                        </Opener>
-                        <SuperTitle
-                            colour={colours[title.length]}
-                        >
-                            Latest blog posts...
-                        </SuperTitle>
-                        <BlogPosts
-                            posts={posts}
-                            colours={colours}
-                            title={title}
-                        />
-                        <Link to="/blog">
-                            <Option>See all posts</Option>
-                        </Link>
+                        <Container>
+                            <Opener>
+                                Hello. Thanks for coming.
+                            </Opener>
+                            <SuperTitle
+                                colour={colours[title.length]}
+                            >
+                                Latest blog posts...
+                            </SuperTitle>
+                            <BlogPosts
+                                posts={posts}
+                                colours={colours}
+                                title={title}
+                            />
+                            <Link to="/blog">
+                                <Option>See all posts</Option>
+                            </Link>
+                        </Container>
+                        <Container>
+                            <SuperTitle
+                                colour={colours[title.length]}
+                            >
+                                Game Progress
+                            </SuperTitle>
+                        </Container>
                     </TransitionContainer></Main>
                 }}
             </GameContext.Consumer>
