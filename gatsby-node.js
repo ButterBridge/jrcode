@@ -45,7 +45,7 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
 
         const tags = posts.reduce((acc, post) => {
             if (get(post, 'node.frontmatter.tags')) {
-                edge.node.frontmatter.tags.forEach(tag => {
+                post.node.frontmatter.tags.forEach(tag => {
                     if (!acc.includes(tag)) {
                         acc.push(tag);
                     }

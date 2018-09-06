@@ -48,7 +48,7 @@ module.exports = {
                     `Hanalei+Fill`,
                     `MedievalSharp`,
                     `Pacifico`,
-                    `Rusland-Display`
+                    `Ruslan+Display`
                 ]
             }
         },
