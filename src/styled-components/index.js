@@ -8,6 +8,7 @@ export const Block = styled.span`
     padding: 0.5em;
     margin: 5px;
     height: 50%;
+    max-height: 1em;
     color: ${({colour}) => colour};
     background: ${({colour}) => colour};
 `
@@ -71,6 +72,12 @@ export const Detail = styled.p`
     border-radius: 1em;
 `
 
+export const FlexContainer = styled.div`
+    display: flex;
+    justify-content: left;
+    flex-wrap: wrap;
+`
+
 export const FormButton = styled.button`
     border-radius: 15px;
     padding: 0.5em;
@@ -104,7 +111,7 @@ export const HeadLetter = styled.span`
     border: 0.5px solid whitesmoke;
     background-color: ${({colour}) => colour};
     text-align: center;
-    grid-column :  ${({gridCols : {from, to}}) => `${from} / ${to}`}
+    grid-column :  ${({gridCols : {from, to}}) => `${from} / ${to}`};
 `
 
 export const IconHolder = styled.img`
@@ -261,11 +268,11 @@ export const LinkedBulletedTitle = withLink(BulletedTitle);
 export const Window = styled.div`
     font-size: 0.8em;
     border: ${({borderWidth = '0.5em'}) => borderWidth} solid ${({borderColour = "black"}) => borderColour};
-    height: 120%;
+    height: 100%;
     width: 100%;
     border-radius: 15px;
     position: relative;
-    top: 1.5em;
+    top: ${({moveDown = 0}) => `${moveDown}em`};
     margin: 0;
     display: flex;
     justify-content: center;

@@ -1,14 +1,15 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React, {Fragment} from 'react';
+import PropTypes from 'prop-types';
 import { debounce } from 'lodash';
 import { window } from 'browser-monads';
 import MediaQuery from 'react-responsive';
-import Link from 'gatsby-link'
+import Link from 'gatsby-link';
 import Transition from '../components/Transition';
 import { GameContext } from '../contexts/GameContext';
-import { Main, Opener, TransitionContainer, SuperTitle, Option, Container } from '../styled-components'
+import { Main, Opener, TransitionContainer, SuperTitle, Option, Container, FlexContainer, Detail } from '../styled-components';
 import '../style/default-styles.css';
 import BlogPosts from '../components/BlogPosts';
+import roundWidgetGetters from '../components/collections/round-widgets';
 
 export default class IndexPage extends React.Component {
     state = {
@@ -37,7 +38,7 @@ export default class IndexPage extends React.Component {
 
         return (
             <GameContext.Consumer>
-                {({colours}) => {
+                {({colours, round}) => {
                     return <Main><TransitionContainer>
                         <Container>
                             <Opener>
@@ -63,6 +64,12 @@ export default class IndexPage extends React.Component {
                             >
                                 Game Progress
                             </SuperTitle>
+                            <FlexContainer>
+                                {Array(round).fill().map((x, i) => {
+                                    const Widget = roundWidgetGetters[i];
+                                    return <Widget withFeedback={true} />
+                                })}
+                            </FlexContainer>
                         </Container>
                     </TransitionContainer></Main>
                 }}
@@ -75,8 +82,8 @@ IndexPage.propTypes = {
     data: PropTypes.shape({
         allMarkdownRemark: PropTypes.shape({
             edges: PropTypes.array,
-        }),
-    }),
+        })
+    })
 }
 
 export const pageQuery = graphql`

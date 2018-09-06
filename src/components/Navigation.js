@@ -44,12 +44,17 @@ class Navigation extends React.Component {
         const { colour, isSmall, location : {pathname}, progress, timeSpent, round } = this.props;
         const { displayingGameWindow, gameWindowActions } = this.state;
         const displayColours = colours.map(colour => progress.includes(colour) ? colour : 'black');
+        const Widget = roundWidgetGetters[round - 1];
         return <div className={`grid-navigation${isSmall ? '-mini' : ''}`}>
             <div className="grid-navigation-game">
                 {displayingGameWindow && <Transition
                     actions={gameWindowActions}
                 >
-                    {roundWidgetGetters[round - 1]({isSmall, displayColours, timeSpent})}
+                    <Widget 
+                        isSmall={isSmall}
+                        displayColours={displayColours}
+                        timeSpent={timeSpent}
+                    />
                 </Transition>}
             </div>
             <div className="grid-navigation-links">
