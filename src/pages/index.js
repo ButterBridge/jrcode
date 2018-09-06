@@ -65,7 +65,7 @@ export default class IndexPage extends React.Component {
                                 Game Progress
                             </SuperTitle>
                             <FlexContainer>
-                                {Array(round).fill().map((x, i) => {
+                                {Array(round).fill().map((_, i) => {
                                     const Widget = roundWidgetGetters[i];
                                     return <Widget withFeedback={true} />
                                 })}

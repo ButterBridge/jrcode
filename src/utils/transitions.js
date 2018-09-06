@@ -72,7 +72,7 @@ const getTransitionStyles = timeout => ({
         },
         entered: {
             transition: `transform ${timeout}ms`,
-            transform: 'translateY(5em)'
+            transform: 'translateY(5%)'
         },
         exited: {
             transform: 'translateY(0%)'
@@ -92,19 +92,22 @@ const getTransitionStyles = timeout => ({
         }
     },
 
-    revert : {
-        entering: {},
+    undip : {
+        entering: {
+            transform: 'translateY(5%)'
+        },
         entered: {
             transition: `transform ${timeout}ms`,
-            transform: 'translateY(0) translateX(0)'
+            transform: 'translateY(0%)'
         },
         exited: {
-            transform: 'translateY(0) translateX(0)'
+            transform: 'translateY(0%)'
         }
     }
 })
 
 const composeTransitionStyles = ({ timeout, status, actions }) => {
+    console.log(actions);
     const {elements, transitions} = actions.reduce((acc, action) => {
         acc.elements = {
             ...acc.elements,
