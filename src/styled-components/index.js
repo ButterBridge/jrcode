@@ -177,8 +177,8 @@ export const Opener = styled.h6`
 
 export const Option = styled.h6`
     font-size: ${({mini = false}) => mini ? '0.8em' : '1.1em'};
-    margin: 0.2em;
-    padding: 0.2em;
+    margin: 0.15em;
+    padding: 0.15em;
     color: ${({colour = 'black'}) => colour};
     transition: opacity 0.5s;
     display: flex;
