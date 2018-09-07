@@ -47,10 +47,11 @@ export const Content = styled.div`
     padding: 1.5em;
     margin-right: 1.5rem;
     margin-bottom: 1.5rem;
-    display: flex;
+    height: 100%;
+    /* display: flex;
     flex-wrap: wrap;
     justify-content: left;
-    align-items: center
+    align-items: center */
 
     @media (max-width: 500px) {
         margin-left: 0;
@@ -121,7 +122,7 @@ export const IconHolder = styled.img`
 
 export const List = styled.ul`
     margin: 0;
-    margin-left: 1em;
+    padding: 0.25em;
 `
 
 export const ListItem = styled.li`
@@ -175,7 +176,7 @@ export const Opener = styled.h6`
 `
 
 export const Option = styled.h6`
-    font-size: 1.1em;
+    font-size: ${({mini = false}) => mini ? '0.8em' : '1.1em'};
     margin: 0.2em;
     padding: 0.2em;
     color: ${({colour = 'black'}) => colour};

@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'gatsby-link';
 import { kebabCase } from 'lodash';
 import Transition from './Transition';
-import { Content, Detail, Paragraph, LinkedBulletedTitle, Meta, LinkedMeta, LinkedListItem, LinkedOption } from '../styled-components'
+import { Content, Detail, Paragraph, LinkedBulletedTitle, Meta, LinkedMeta, List, LinkedListItem, Option } from '../styled-components'
 import { removeHyphens } from '../utils/helpers';
 
 
@@ -15,38 +15,54 @@ const BlogPosts = ({posts, colours, title}) => {
                 actions={['fade', 'slide']}
             >
                 <Content>
-                    <LinkedBulletedTitle
-                        addition="title"
-                        linkTo={post.fields.slug} 
-                        componentContent={post.frontmatter.title}
-                        colour={colours[title.length]}
-                    />
-                    <Paragraph>{post.excerpt}</Paragraph>
-                    <Meta
-                        colour={colours[title.length]}
-                    >
-                        <Detail>Tagged:</Detail> 
-                        {post.frontmatter.tags.map(tag => {
-                            return <LinkedOption 
-                                colour="black"
-                                linkTo={`/tags/${kebabCase(tag)}/`}
-                                key={tag}
-                            >
-                                {removeHyphens(tag)}
-                            </LinkedOption>
-                        })}
-                    </Meta>
-                    <LinkedMeta
-                        linkTo={post.fields.slug}
-                        colour={colours[title.length]}
-                    >
-                        <Detail>Keep Reading →</Detail>
-                    </LinkedMeta>
-                    <Detail
-                        colour={colours[title.length]}
-                    >
-                        {post.frontmatter.formattedDate}
-                    </Detail>
+                  <div className="grid-postcard">
+                    <div className="grid-postcard-title" >
+                      <LinkedBulletedTitle
+                          addition="title"
+                          linkTo={post.fields.slug} 
+                          componentContent={post.frontmatter.title}
+                          colour={colours[title.length]}
+                      />
+
+                    </div>
+                      <Detail
+                          className="grid-postcard-date"
+                          colour={colours[title.length]}
+                      >
+                          {post.frontmatter.formattedDate}
+                      </Detail>
+                      <Meta
+                        className="grid-postcard-tags"
+                          colour={colours[title.length]}
+                      >
+                        <List>
+                          {post.frontmatter.tags.map(tag => {
+                              return <LinkedListItem 
+                                  colour="black"
+                                  linkTo={`/tags/${kebabCase(tag)}/`}
+                                  key={tag}
+                              >
+                                <Option mini>{removeHyphens(tag)}</Option>
+                              </LinkedListItem>
+                          })}
+                        </List>
+                      </Meta>
+                      <Paragraph
+                        className="grid-postcard-excerpt"
+                      >
+                        {post.excerpt}
+                      </Paragraph>
+                      <div className="grid-postcard-nav">
+                        <LinkedMeta
+                            linkTo={post.fields.slug}
+                            colour={colours[title.length]}
+                        >
+                            <Detail>Keep Reading →</Detail>
+                        </LinkedMeta>
+
+                      </div>
+
+                  </div>
                 </Content>
             </Transition>
         ))

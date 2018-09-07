@@ -1,146 +1,168 @@
 .grid-main 
-    display: grid;
-    grid-template-columns: 150px calc(100vw - 150px - 1em) 0%;
+  display: grid;
+  grid-template-columns: 150px calc(100vw - 150px - 1em) 0%;
 
 .grid-main-mini
-    display: grid;
-    grid-template-columns: 25px calc(100vw - 25px) 0%;
+  display: grid;
+  grid-template-columns: 25px calc(100vw - 25px) 0%;
 
 .grid-main-header 
-    grid-area : 1 / 2 / 1 / 2;
+  grid-area : 1 / 2 / 1 / 2;
 
 .grid-main-content 
-    grid-area: 2 / 2 / 2 / 2;
+  grid-area: 2 / 2 / 2 / 2;
 
 .grid-header
-    position: fixed;
-    z-index: 1;
-    background: linear-gradient(0deg, rgba(255,255,255,0) 0.4em, rgba(255,255,255,1) 0.4em);
-    display: grid;
-    width: 100%;
-    grid-template-rows: 3em 2em;
-    grid-template-columns: 100% 0%;
+  position: fixed;
+  z-index: 1;
+  background: linear-gradient(0deg, rgba(255,255,255,0) 0.4em, rgba(255,255,255,1) 0.4em);
+  display: grid;
+  width: 100%;
+  grid-template-rows: 3em 2em;
+  grid-template-columns: 100% 0%;
 
 .grid-header-hidden
-    position: fixed;
-    z-index: 1;
-    background: linear-gradient(0deg, rgba(255,255,255,0) 3em, rgba(255,255,255,1) 3em);
-    display: grid;
-    width: 100%;
-    grid-template-rows: 3em 2em;
-    grid-template-columns: 100% 0%;
+  position: fixed;
+  z-index: 1;
+  background: linear-gradient(0deg, rgba(255,255,255,0) 3em, rgba(255,255,255,1) 3em);
+  display: grid;
+  width: 100%;
+  grid-template-rows: 3em 2em;
+  grid-template-columns: 100% 0%;
 
 .grid-header-navigation
-    grid-area: 1 / 1 / 2 / 2;
-    padding-left: 1em;
+  grid-area: 1 / 1 / 2 / 2;
+  padding-left: 1em;
 
 .grid-header-streamer
-    grid-area: 2 / 1 / 3 / 2;
-    padding-left: 1em;
-    width: 100%;
-    margin-right: 1em;
-    margin-top: 1em;
-    z-index: 1;
+  grid-area: 2 / 1 / 3 / 2;
+  padding-left: 1em;
+  width: 100%;
+  margin-right: 1em;
+  margin-top: 1em;
+  z-index: 1;
 
 .grid-navigation
-    width: calc(100vw - 150px - 3em);
-    display: grid;
-    grid-template-columns: 30% 70%;
+  width: calc(100vw - 150px - 3em);
+  display: grid;
+  grid-template-columns: 30% 70%;
 
 .grid-navigation-mini
-    width: calc(100vw - 25px - 3em)
-    display: grid;
-    grid-template-columns: 145px;
+  width: calc(100vw - 25px - 3em)
+  display: grid;
+  grid-template-columns: 145px;
 
 .grid-navigation-game
-    grid-area: 1 / 1 / 2 / 2;
+  grid-area: 1 / 1 / 2 / 2;
 
 .grid-navigation-links
-    grid-area: 1 / 2 / 2 / 3;
+  grid-area: 1 / 2 / 2 / 3;
 
 .grid-streamer
-    display: grid;
-    grid-template-columns: repeat(100, calc((100vw - 150px - 3em) / 100));
-    height: 1em;
+  display: grid;
+  grid-template-columns: repeat(100, calc((100vw - 150px - 3em) / 100));
+  height: 1em;
 
 .grid-streamer-mini
-    display: grid;
-    grid-template-columns: repeat(100, calc((100vw - 25px - 2em) / 100));
-    height: 1em;
-    
+  display: grid;
+  grid-template-columns: repeat(100, calc((100vw - 25px - 2em) / 100));
+  height: 1em;
+  
 
 .grid-sidebar
-    position: fixed;
-    height: 100%;
-    display: grid;
-    grid-template: 2.5em / repeat(6, 16.6%);
-    width: 150px;
+  position: fixed;
+  height: 100%;
+  display: grid;
+  grid-template: 2.5em / repeat(6, 16.6%);
+  width: 150px;
 
 .grid-sidebar-mini
-    position: fixed;
-    width: 25px;
-    height: 100%;
-    display: grid;
-    grid-template: 0 / 100%;
+  position: fixed;
+  width: 25px;
+  height: 100%;
+  display: grid;
+  grid-template: 0 / 100%;
 
 .grid-sidebar-canvas
-    grid-area: 2 / 1 / 3 / 7;
-    width: 150px;
+  grid-area: 2 / 1 / 3 / 7;
+  width: 150px;
+
+
+.grid-postcard
+  display: grid;
+  grid-template-columns: 10em 1fr;
+  grid-template-rows: 3em 2.5em 1fr 1em;
+  grid-gap: 0.2em;
+
+.grid-postcard-title
+  grid-area: 1 / 1 / 2 / 3;
+
+.grid-postcard-date
+  grid-area: 2 / 1 / 3 / 3;
+
+.grid-postcard-tags
+  grid-area: 3 / 1 / 4 / 2;
+
+.grid-postcard-excerpt
+  grid-area: 3 / 2 / 4 / 3;
+
+.grid-postcard-nav
+  grid-area: 4 / 1 / 5 / 3;
 
 
 .grid-title 
-    display: grid;
-    grid-template-columns: 2em;
+  display: grid;
+  grid-template-columns: 2em;
 
 .grid-title-bullet 
-    grid-area: 1 / 1 / 2 / 2;
+  grid-area: 1 / 1 / 2 / 2;
 
 .grid-title-main 
-    grid-area: 1 / 2 / 2 / 3;
-    padding-left: 10px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+  grid-area: 1 / 2 / 2 / 3;
+  padding-left: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 
 .grid-title-post 
-    grid-area: 1 / 2 / 2 / 3;
-    padding-left: 10px;
+  grid-area: 1 / 2 / 2 / 3;
+  padding-left: 10px;
 
 
 .grid-option 
-    display: grid;
-    grid-template-columns: 2.5em;
+  display: grid;
+  grid-template-columns: 2.5em;
 
 .grid-option-bullet 
-    grid-area: 1 / 1 / 2 / 2;
+  grid-area: 1 / 1 / 2 / 2;
 
 .grid-option-main
-    grid-area: 1 / 2 / 2 / 3;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+  grid-area: 1 / 2 / 2 / 3;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 
 
 .grid-form
-    display: grid;
-    grid-template-columns: 30% 50%;
-    grid-template-rows: 50px 50px 150px 100px;
-    grid-gap: 10px 10px;
-    padding: 10px;
-    border-left: 1em solid;
-    border-bottom: 1em solid;
-    border-radius: 15px;
+  display: grid;
+  grid-template-columns: 30% 50%;
+  grid-template-rows: 50px 50px 150px 100px;
+  grid-gap: 10px 10px;
+  padding: 10px;
+  border-left: 1em solid;
+  border-bottom: 1em solid;
+  border-radius: 15px;
 
 
 .grid-widget
-    display: grid;
-    grid-template-rows: 1fr 1fr;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
 
 .grid-widget-status
-    grid-area: 1 / 1 / 2 / 2;
-    display: flex;
-    justify-content: center;
+  grid-area: 1 / 1 / 2 / 2;
+  display: flex;
+  justify-content: center;
 
 .grid-widget-feedback
-    grid-area: 2 / 1 / 3 / 2;
-    align-content: center;
+  grid-area: 2 / 1 / 3 / 2;
+  align-content: center;
