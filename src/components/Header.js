@@ -3,7 +3,7 @@ import Streamer from './Streamer';
 import Navigation from './Navigation';
 import Transition from './Transition';
 
-const Header = ({colours, siteName, isSmall, location, progress, progressing, timeSpent, isHeaderRevealed, toggleForceReveal, round}) => {
+const Header = ({colours, siteName, isSmall, location, progress, progressing, timeSpent, isHeaderRevealed, toggleForceReveal, round, currentHighScore}) => {
     return (
         <div className={`grid-header${isHeaderRevealed ? '' : '-hidden'}`}>
             <Transition
@@ -26,6 +26,8 @@ const Header = ({colours, siteName, isSmall, location, progress, progressing, ti
                         <Streamer
                             colours={colours.slice(0, -1)}
                             isSmall={isSmall}
+                            timeSpent={timeSpent}
+                            currentHighScore={currentHighScore}
                         />
                     </div>
                 </Fragment>
