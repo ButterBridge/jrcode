@@ -1,4 +1,4 @@
-import React, {Fragment} from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { debounce } from 'lodash';
 import { window } from 'browser-monads';
@@ -12,81 +12,66 @@ import BlogPosts from '../components/BlogPosts';
 import roundWidgetGetters from '../components/collections/round-widgets';
 
 export default class IndexPage extends React.Component {
-    state = {
-        innerWidth: window.innerWidth
-    }
-
-    componentDidMount = () => {
-        window.addEventListener('resize', this.debouncedUpdateResize);
-    }
-
-    componentWillUnmount = () => {
-        window.removeEventListener('resize', this.debouncedUpdateResize);
-    }
-
-    debouncedUpdateResize = debounce(() => {
-        this.setState({
-            innerWidth: window.innerWidth
-        })
-    }, 100)
-
-
-    render() {
-        const { data } = this.props;
-        const { edges: posts } = data.allMarkdownRemark;
-        const { title } = data.site.siteMetadata;
-
-        return (
-            <GameContext.Consumer>
-                {({colours, round}) => {
-                    return <Main><TransitionContainer>
-                        <Container>
-                            <Opener>
-                                Hello. Thanks for coming.
-                            </Opener>
-                            <SuperTitle
-                                colour={colours[title.length]}
-                            >
-                                Latest blog posts...
-                            </SuperTitle>
-                            <BlogPosts
-                                posts={posts}
-                                colours={colours}
-                                title={title}
-                            />
-                            <Link to="/blog">
-                                <Option>See all posts</Option>
-                            </Link>
-                        </Container>
-                        <Container>
-                            <SuperTitle
-                                colour={colours[title.length]}
-                            >
-                                Game Progress
-                            </SuperTitle>
-                            <FlexContainer>
-                                {Array(round).fill().map((_, i) => {
-                                    const Widget = roundWidgetGetters[i];
-                                    return <Widget 
-                                        withFeedback={true}
-                                        key={i}
-                                    />
-                                })}
-                            </FlexContainer>
-                        </Container>
-                    </TransitionContainer></Main>
-                }}
-            </GameContext.Consumer>
-        )
-    }
+  render() {
+    const { data } = this.props;
+    const { edges: posts } = data.allMarkdownRemark;
+    const { title } = data.site.siteMetadata;
+    return (
+      <GameContext.Consumer>
+        {({ colours, round }) => {
+          return <Main><TransitionContainer>
+            <Container>
+              <Opener>
+                Hello. Thanks for coming.
+              </Opener>
+              <SuperTitle
+                colour={colours[title.length]}
+              >
+                Latest blog posts...
+              </SuperTitle>
+              <BlogPosts
+                posts={posts}
+                colours={colours}
+                title={title}
+              />
+              <Link to="/blog">
+                <Option>See all posts</Option>
+              </Link>
+            </Container>
+            <Container>
+              <SuperTitle
+                colour={colours[title.length]}
+              >
+                Game Progress
+              </SuperTitle>
+              <FlexContainer>
+                <MediaQuery maxWidth={760}>
+                  {isSmall => {
+                    return Array(round).fill().map((_, i) => {
+                      const Widget = roundWidgetGetters[i];
+                      return <Widget
+                        isSmall={isSmall}
+                        withFeedback={true}
+                        key={i}
+                      />
+                    })
+                  }}
+                </MediaQuery>
+              </FlexContainer>
+            </Container>
+          </TransitionContainer></Main>
+        }}
+      </GameContext.Consumer>
+    )
+  }
 }
 
 IndexPage.propTypes = {
-    data: PropTypes.shape({
-        allMarkdownRemark: PropTypes.shape({
-            edges: PropTypes.array,
-        })
+  data: PropTypes.shape({
+    allMarkdownRemark: PropTypes.shape({
+      edges: PropTypes.array,
     })
+  })
 }
 
 export const pageQuery = graphql`
