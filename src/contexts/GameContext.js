@@ -1,6 +1,7 @@
 import React from 'react';
 import { colours } from '../style';
 import { sample, difference } from 'lodash';
+import { window } from 'browser-monads';
 import * as helpers from '../utils/helpers';
 
 export const GameContext = React.createContext('hi');
@@ -25,7 +26,7 @@ export class GameProvider extends React.Component {
 
   render() {
     const { colours, progressing, round, timeSpent } = this.state;
-    const currentHighScore = Math.min(this.state[round].timeToBeat, +localStorage.getItem(`round${round}`));
+    const currentHighScore = Math.min(this.state[round].timeToBeat, +window.localStorage.getItem(`round${round}`));
     return (
       <GameContext.Provider value={{
         colours,
@@ -63,7 +64,7 @@ export class GameProvider extends React.Component {
 
   getIsNewPersonalBest = () => {
     const { round, timeSpent } = this.state;
-    const roundScore = localStorage.getItem(`round${round}`);
+    const roundScore = window.localStorage.getItem(`round${round}`);
     return !roundScore || timeSpent < +roundScore;
   }
 
@@ -160,6 +161,6 @@ export class GameProvider extends React.Component {
   }
 
   updateLocalScore = (round, score) => {
-    localStorage.setItem('round' + round, score);
+    window.localStorage.setItem('round' + round, score);
   }
 }
