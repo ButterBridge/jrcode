@@ -197,3 +197,11 @@
 .grid-widget-feedback
   grid-area: 2 / 1 / 3 / 2;
   align-content: center;
+
+.grid-doublecolumn
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+.grid-doublecolumn > *
+  display: flex;
+  justify-content: center;

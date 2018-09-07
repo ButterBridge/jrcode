@@ -34,9 +34,14 @@ export default class IndexPage extends React.Component {
                 colours={colours}
                 title={title}
               />
-              <Link to="/blog">
-                <Option>See all posts</Option>
-              </Link>
+              <div className="grid-doublecolumn">
+                <Link to="/blog">
+                  <Option>See all posts</Option>
+                </Link>
+                <Link to="/tags">
+                  <Option>See all tags</Option>
+                </Link>
+              </div>
             </Container>
             <Container>
               <SuperTitle
