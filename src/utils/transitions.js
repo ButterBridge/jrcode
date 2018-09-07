@@ -72,7 +72,7 @@ const getTransitionStyles = timeout => ({
         },
         entered: {
             transition: `transform ${timeout}ms`,
-            transform: 'translateY(5%)'
+            transform: 'translateY(5em)'
         },
         exited: {
             transform: 'translateY(0%)'
@@ -94,7 +94,7 @@ const getTransitionStyles = timeout => ({
 
     undip : {
         entering: {
-            transform: 'translateY(5%)'
+            transform: 'translateY(5em)'
         },
         entered: {
             transition: `transform ${timeout}ms`,
