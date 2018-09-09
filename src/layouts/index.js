@@ -9,6 +9,7 @@ import Streamer from '../components/Streamer';
 import Header from '../components/Header';
 import Transition from '../components/Transition';
 import '../style/grid.sass';
+import '../style/code-style.css';
 
 const TemplateWrapper = ({children, data, location}) => {
     const siteName = data.site.siteMetadata.title;
