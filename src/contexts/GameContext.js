@@ -46,7 +46,8 @@ export class GameProvider extends React.Component {
   componentDidUpdate = () => {
     const { round, timeSpent } = this.state;
     const { timeToBeat } = this.state[round];
-    if (timeSpent >= Math.min(timeToBeat, window.localStorage.getItem(`round${round}`))) {
+    const currentHighScore = window.localStorage.getItem(`round${round}`);
+    if (timeSpent > 0 && currentHighScore && timeSpent >= Math.min(timeToBeat, currentHighScore)) {
       console.log('restart?');
       this.restartRound();
     }
