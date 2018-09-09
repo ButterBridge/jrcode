@@ -48,7 +48,6 @@ export class GameProvider extends React.Component {
     const { timeToBeat } = this.state[round];
     const currentHighScore = window.localStorage.getItem(`round${round}`);
     if (timeSpent > 0 && currentHighScore && timeSpent >= Math.min(timeToBeat, currentHighScore)) {
-      console.log('restart?');
       this.restartRound();
     }
   }
@@ -131,7 +130,6 @@ export class GameProvider extends React.Component {
 
   toggleTheClock = () => {
     const { clock } = this.state;
-    console.log('toggling from', clock);
     if (!clock) {
       const newClock = setInterval(() => {
         this.setState({
