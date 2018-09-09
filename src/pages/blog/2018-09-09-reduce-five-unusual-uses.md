@@ -1,13 +1,14 @@
 ---
 templateKey: 'blog-post'
 title: 'Reduce: Five Unusual Uses'
-date: '2018-09-02T16:55:10.000Z'
+date: '2018-09-09T16:55:10.000Z'
 description: >-
   ...for the best thing in JavaScript
 caption: Pretend to be a wizard by picking up a stick, pointing it at your computer, and commanding 'Reduce!'
 tags:
   - reduce
   - functional-programming
+  - third-party-APIs
   - lodash
   - arrays
 ---
