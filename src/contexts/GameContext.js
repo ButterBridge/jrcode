@@ -43,13 +43,14 @@ export class GameProvider extends React.Component {
     )
   }
 
-  // componentDidUpdate = () => {
-  //   const { round } = this.state;
-  //   const { timeToBeat } = this.state[round];
-  //   if (timeSpent >= timeToBeat) {
-  //     this.toggleTheClock()
-  //   }
-  // }
+  componentDidUpdate = () => {
+    const { round, timeSpent } = this.state;
+    const { timeToBeat } = this.state[round];
+    if (timeSpent >= Math.min(timeToBeat, localStorage.getItem(`round${round}`))) {
+      console.log('restart?');
+      this.restartRound();
+    }
+  }
 
   componentWillUnmount = () => {
     const { clock } = this.state;
@@ -106,6 +107,17 @@ export class GameProvider extends React.Component {
     });
   }
 
+  restartRound = () => {
+    const { round } = this.state;
+    this.toggleTheClock();
+    this.setState({
+      [round]: {
+        ...this.state[round],
+        progress: []
+      }
+    });
+  }
+
   swapColourRandomly = (targetIndex, done) => {
     this.setState({
       colours: this.state.colours.map((colour, index) => {
@@ -118,13 +130,14 @@ export class GameProvider extends React.Component {
 
   toggleTheClock = () => {
     const { clock } = this.state;
+    console.log('toggling from', clock);
     if (!clock) {
       const newClock = setInterval(() => {
         this.setState({
           timeSpent: this.state.timeSpent + 1
         })
       }, 1000);
-      this.setState({ clock: newClock })
+      this.setState({ clock: newClock });
     } else {
       clearInterval(clock);
       this.setState({
