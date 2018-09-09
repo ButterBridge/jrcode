@@ -45,7 +45,7 @@ Header.propTypes = {
   location: PropTypes.shape({
     pathname: PropTypes.string.isRequired
   }).isRequired,
-  progressing: PropTypes.bool.isRequired,
+  progressing: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]).isRequired,
   progress: PropTypes.array,
   timeSpent: PropTypes.number.isRequired,
   isHeaderRevealed: PropTypes.bool.isRequired,
