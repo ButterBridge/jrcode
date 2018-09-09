@@ -73,7 +73,7 @@ Brand.propTypes = {
   colours: PT.arrayOf(PT.string).isRequired,
   onMouseOverHeadLetter: PT.func.isRequired,
   generateRandomColours: PT.func.isRequired,
-  progressing: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]).isRequired,
+  progressing: PT.oneOfType([PT.string, PT.bool]).isRequired,
 }
 
 export default Brand;
