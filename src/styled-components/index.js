@@ -165,9 +165,9 @@ export const LinkedMeta = withLink(Meta);
 export const NavBar = styled.nav`
   display: flex;
   justify-content: flex-end;
-  padding-left: 1em;
-  padding-top: 1em;
-  margin-bottom: 0.5em;
+  padding: 1.5em;
+  padding-right: 0;
+  height: 100%;
 `;
 
 export const NavBarItem = styled.span`
