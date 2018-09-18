@@ -6,14 +6,19 @@ import Sidebar from './canvases/Sidebar';
 import Transition from './Transition';
 import { HeadLetter } from '../styled-components';
 import { fonts } from '../style';
+import { fillNewEmptyArray } from '../utils/helpers';
 
 class Brand extends Component {
   state = {
-    fonts: Array(this.props.siteName.length + 1).fill().map(x => sample(fonts)),
+    fonts: [],
   }
 
   componentDidMount = () => {
-    this.props.generateRandomColours(this.props.siteName.length + 1);
+    const brandLength = this.props.siteName.length + 1;
+    this.props.generateRandomColours(brandLength);
+    this.setState({
+      fonts: fillNewEmptyArray(brandLength, x => sample(fonts)),
+    });
   }
 
   render() {

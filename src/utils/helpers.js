@@ -22,3 +22,7 @@ export const hexToRgb = (hex) => {
     b: parseInt(result[3], 16)
   } : null;
 }
+
+export const fillNewEmptyArray = (size, mapCb) => {
+  return Array(size).fill().map(mapCb);
+}
