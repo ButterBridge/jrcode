@@ -5,11 +5,12 @@ import { window } from 'browser-monads';
 import MediaQuery from 'react-responsive';
 import Link from 'gatsby-link';
 import Transition from '../components/Transition';
+import BlogPosts from '../components/BlogPosts';
 import { GameContext } from '../contexts/GameContext';
 import { Main, Opener, TransitionContainer, SuperTitle, Option, Container, FlexContainer, Detail } from '../styled-components';
-import '../style/default-styles.css';
-import BlogPosts from '../components/BlogPosts';
 import roundWidgetGetters from '../components/collections/round-widgets';
+import { fillNewEmptyArray } from '../utils/helpers';
+import '../style/default-styles.css';
 
 export default class IndexPage extends React.Component {
   render() {
@@ -52,7 +53,7 @@ export default class IndexPage extends React.Component {
               <FlexContainer>
                 <MediaQuery maxWidth={760}>
                   {isSmall => {
-                    return Array(round).fill().map((_, i) => {
+                    return fillNewEmptyArray(round, (_, i) => {
                       const Widget = roundWidgetGetters[i];
                       return <Widget
                         isSmall={isSmall}

@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Rect } from '../styled-components';
+import { fillNewEmptyArray } from '../utils/helpers';
 
 const Streamer = ({ colours, isSmall, timeSpent, currentHighScore }) => {
   const streamerLength = 100;
   return (
     <div className={`grid-streamer${isSmall ? '-mini' : ''}`}>
-      {Array(streamerLength).fill().map((x, i, arr) => {
+      {fillNewEmptyArray(streamerLength, (x, i, arr) => {
         let colour = timeSpent === 0 ?
           colours[i % colours.length] :
           i > arr.length / currentHighScore * timeSpent ?

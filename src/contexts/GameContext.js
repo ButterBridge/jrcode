@@ -59,7 +59,7 @@ export class GameProvider extends React.Component {
 
   generateRandomColours = length => {
     this.setState({
-      colours: Array(length).fill().map(() => sample(colours))
+      colours: helpers.fillNewEmptyArray(length, () => sample(colours))
     })
   }
 
