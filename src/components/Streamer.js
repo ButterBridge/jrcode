@@ -1,18 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Transition from './Transition';
 import { Rect } from '../styled-components';
 import { fillNewEmptyArray } from '../utils/helpers';
 
 const Streamer = ({ colours, isSmall, timeSpent, currentHighScore }) => {
+  if (timeSpent === 0) return null;
   const streamerLength = 100;
   return (
     <div className={`grid-streamer${isSmall ? '-mini' : ''}`}>
       {fillNewEmptyArray(streamerLength, (x, i, arr) => {
-        let colour = timeSpent === 0 ?
+        const colour = timeSpent === 0 ?
           colours[i % colours.length] :
           i > arr.length / currentHighScore * timeSpent ?
             colours[i % colours.length] :
-            'white'
+            'whitesmoke'
         const borderRadius = {};
         if (i === 0) {
           borderRadius.bl = '15px';
@@ -20,15 +22,19 @@ const Streamer = ({ colours, isSmall, timeSpent, currentHighScore }) => {
         if (i === streamerLength - 1) {
           borderRadius.br = '15px';
         }
-        return <Rect
-          key={i}
-          colour={colour}
-          gridCols={{
-            from: i + 1,
-            to: i + 2
-          }}
-          borderRadius={borderRadius}
-        />
+        return <Transition
+          additionalTimeout={i*20}
+        >
+          <Rect
+            key={i}
+            colour={colour}
+            gridCols={{
+              from: i + 1,
+              to: i + 2
+            }}
+            borderRadius={borderRadius}
+          />
+        </Transition>
       })}
     </div>
   );
