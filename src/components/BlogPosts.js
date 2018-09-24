@@ -3,7 +3,7 @@ import Link from 'gatsby-link';
 import { kebabCase } from 'lodash';
 import MediaQuery from 'react-responsive';
 import Transition from './Transition';
-import { Content, Detail, Paragraph, LinkedBulletedTitle, Meta, LinkedMeta, List, LinkedListItem, Option } from '../styled-components'
+import { Content, Detail, ParagraphExcerpt, LinkedBulletedTitle, Meta, LinkedMeta, List, LinkedListItem, Option, LinkedParagraphEnder } from '../styled-components'
 import { removeHyphens } from '../utils/helpers';
 
 
@@ -47,18 +47,16 @@ const BlogPosts = ({ posts, colours, title }) => {
                     })}
                   </List>
                 </Meta>
-                <Paragraph
-                  className={`grid-postcard-excerpt${isSmall ? '-mini' : ''}`}
-                >
-                  {post.excerpt}
-                </Paragraph>
-                <div className={`grid-postcard-nav${isSmall ? '-mini' : ''}`}>
-                  <LinkedMeta
+                <div className={`grid-postcard-excerpt${isSmall ? '-mini' : ''}`}>
+                  <ParagraphExcerpt>
+                    {post.excerpt}
+                  </ParagraphExcerpt>
+                  <LinkedParagraphEnder
                     linkTo={post.fields.slug}
                     colour={colours[title.length]}
                   >
-                    <Detail>Keep Reading →</Detail>
-                  </LinkedMeta>
+                      {` read more`}
+                  </LinkedParagraphEnder>
                 </div>
               </div>
             }}

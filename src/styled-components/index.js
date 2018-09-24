@@ -134,7 +134,7 @@ export const ListItem = styled.li`
   border: 3px;
   list-style-type: none;
   display: inline-block;
-  background-color: ${({ background = 'white' }) => background};
+  background-color: ${({ background = 'whitesmoke' }) => background};
   padding: 5px;
   border-radius: 5px;
   margin: 5px;
@@ -157,7 +157,7 @@ export const Meta = styled.div`
   display: block;
   border-radius: 1em;
   margin: 1px;
-  background-color: ${({ colour = "white" }) => colour};
+  background-color: ${({ colour = "whitesmoke" }) => colour};
 `;
 export const LinkedMeta = withLink(Meta);
 
@@ -207,16 +207,35 @@ export const Paragraph = styled.p`
   margin-bottom: 0.5em;
 `;
 
+export const ParagraphExcerpt = styled.span`
+  font-size: 1em;
+  margin: 0;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+`;
+
+export const ParagraphEnder = styled.span`
+  font-size: 1em;
+  margin: 0;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  font-weight: bold;
+  font-style: italic;
+`;
+export const LinkedParagraphEnder = withLink(ParagraphEnder);
+
 export const Rect = styled.div.attrs({
   style: ({
     colour,
     gridCols: { from, to },
     borderRadius: { tl = 0, tr = 0, br = 0, bl = 0 }
-  }) => ({
-    backgroundColor: colour,
-    gridColumn: `${from} / ${to}`,
-    borderRadius: `${tl} ${tr} ${br} ${bl}`
-  })
+  }) => {
+    return {
+      backgroundColor: colour,
+      gridColumn: `${from} / ${to}`,
+      borderRadius: `${tl} ${tr} ${br} ${bl}`
+    }
+  }
 })`
   height: 100%;
   width: 100%;
