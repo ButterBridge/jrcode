@@ -107,21 +107,21 @@ export const pageQuery = graphql`
       siteMetadata {
         title
       }
-  }
-  markdownRemark(id: { eq: $id }) {
-    id
-    html
-    frontmatter {
-      date
-      formattedDate : date(formatString: "MMMM DD, YYYY")
-      title
-      description
-      tags
-      caption
     }
-  }
-  allFile(filter : {extension : {eq : "png"}}) {
-    edges {
+    markdownRemark(id: { eq: $id }) {
+      id
+      html
+      frontmatter {
+        date
+        formattedDate : date(formatString: "MMMM DD, YYYY")
+        title
+        description
+        tags
+        caption
+      }
+    }
+    allFile(filter : {extension : {eq : "png"}}) {
+      edges {
         node {
           childImageSharp {
             sizes {

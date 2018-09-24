@@ -81,32 +81,32 @@ IndexPage.propTypes = {
 }
 
 export const pageQuery = graphql`
-    query IndexQuery {
-        site {
-            siteMetadata {
-                title
-            }
-        }
-        allMarkdownRemark (
-            sort: { order: DESC, fields: [frontmatter___date] },
-            limit: 3,
-            filter: { frontmatter: { templateKey: { eq: "blog-post" } }}
-        ) {
-            edges {
-                node {
-                    excerpt(pruneLength: 250)
-                    id
-                    fields {
-                        slug
-                    }
-                    frontmatter {
-                        title
-                        templateKey
-                        formattedDate : date(formatString: "MMMM DD, YYYY")
-                        tags
-                    }
-                }
-            }
-        }
+  query IndexQuery {
+    site {
+      siteMetadata {
+        title
+      }
     }
+    allMarkdownRemark (
+      sort: { order: DESC, fields: [frontmatter___date] },
+      limit: 3,
+      filter: { frontmatter: { templateKey: { eq: "blog-post" } }}
+    ) {
+      edges {
+        node {
+          excerpt(pruneLength: 250)
+          id
+          fields {
+            slug
+          }
+          frontmatter {
+            title
+            templateKey
+            formattedDate : date(formatString: "MMMM DD, YYYY")
+            tags
+          }
+        }
+      }
+    }
+  }
 `

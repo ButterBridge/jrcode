@@ -1,10 +1,18 @@
 import React from 'react';
+import { Main, Opener, TransitionContainer, SuperTitle, Container } from '../styled-components';
 
 const NotFoundPage = () => (
-  <div>
-    <h1>NOT FOUND</h1>
-    <p>Sorry, there doesn't appear to be anything at this page...</p>
-  </div>
+  <Main>
+    <TransitionContainer>
+      <Container>
+        <SuperTitle
+          colour={colours[title.length]}
+        >
+          Nothing here, sorry! (404)
+        </SuperTitle>
+      </Container>
+    </TransitionContainer>
+  </Main>
 )
 
 export default NotFoundPage
