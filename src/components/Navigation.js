@@ -123,7 +123,7 @@ class Navigation extends React.Component {
 };
 
 Navigation.propTypes = {
-  colour: PropTypes.string.isRequired,
+  colour: PropTypes.string,
   isSmall: PropTypes.bool.isRequired,
   location: PropTypes.shape({
     pathname: PropTypes.string.isRequired

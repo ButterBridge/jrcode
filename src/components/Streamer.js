@@ -24,9 +24,9 @@ const Streamer = ({ colours, isSmall, timeSpent, currentHighScore }) => {
         }
         return <Transition
           additionalTimeout={i*20}
+          key={i}
         >
           <Rect
-            key={i}
             colour={colour}
             gridCols={{
               from: i + 1,

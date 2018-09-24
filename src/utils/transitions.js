@@ -55,7 +55,7 @@ const getTransitionStyles = timeout => ({
 
   descend: {
     entering: {
-      transform: 'translateY(-100%)'
+      transform: 'translateY(-110%)'
     },
     entered: {
       transition: `transform ${timeout}ms`,
@@ -85,7 +85,7 @@ const getTransitionStyles = timeout => ({
     },
     entered: {
       transition: `transform ${timeout}ms`,
-      transform: 'translateY(-100%)'
+      transform: 'translateY(-110%)'
     },
     exited: {
       transform: 'translateY(-100%)'
