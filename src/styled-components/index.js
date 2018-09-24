@@ -54,10 +54,6 @@ export const Content = styled.div`
   margin-right: 1.5rem;
   margin-bottom: 1.5rem;
   height: 100%;
-  /* display: flex;
-    flex-wrap: wrap;
-    justify-content: left;
-    align-items: center */
 
   @media (max-width: 500px) {
     margin-left: 0;
