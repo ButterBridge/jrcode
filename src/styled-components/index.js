@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { withBullet } from "./with/withBullet";
 import { withLink } from "./with/withLink";
 import { withTransition } from "./with/withTransition";
@@ -13,6 +13,18 @@ export const Block = styled.span`
   background: ${({ colour }) => colour};
 `;
 
+const pulse = keyframes`
+  from {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  to {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
+`;
+
 export const Bullet = styled.span`
   border-radius: 50%;
   display: block;
@@ -20,6 +32,7 @@ export const Bullet = styled.span`
   margin: 15px;
   color: ${({ colour }) => colour};
   background: ${({ colour }) => colour};
+  ${({active}) => active && `animation: ${pulse} 0.5s linear infinite;`}
 `;
 
 export const Button = styled.button`
@@ -47,20 +60,28 @@ export const Container = styled.div`
 export const TransitionContainer = withTransition(Container);
 
 export const Content = styled.div`
-  border-left: 1em solid ${({ colour }) => colour};
-  border-bottom: 1em solid ${({ colour }) => colour};
   border-radius: 15px;
   padding: 1.5em;
   margin-right: 1.5rem;
   margin-bottom: 1.5rem;
   height: 100%;
+  box-shadow: 0em 0em 0.2em 0em ${({ colour }) => colour};
+  transition: all 0.2s ease;
+  transform: translateY(0) translateX(0);
 
+  &:hover {
+    box-shadow: -0.25em 0.25em 0em 0.25em ${({ colour }) => colour};
+    transform: translateY(-0.125em) translateX(0.125em);
+  }
+  
   @media (max-width: 500px) {
     margin-left: 0;
     margin-right: 0;
     padding-left: 0;
     border-left: none;
   }
+
+  
 `;
 
 export const Detail = styled.p`
