@@ -37,11 +37,12 @@ const BlogPosts = ({ posts, colours, title }) => {
                   <List>
                     {post.frontmatter.tags.map(tag => {
                       return <LinkedListItem
+                        background="transparent"
                         colour="black"
                         linkTo={`/tags/${kebabCase(tag)}/`}
                         key={tag}
                       >
-                        <Option mini>{removeHyphens(tag)}</Option>
+                        <Option mini colour="whitesmoke">{removeHyphens(tag)}</Option>
                       </LinkedListItem>
                     })}
                   </List>

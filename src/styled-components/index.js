@@ -125,13 +125,16 @@ export const IconHolder = styled.img`
 export const List = styled.ul`
   margin: 0;
   padding: 0.25em;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
 `;
 
 export const ListItem = styled.li`
   border: 3px;
   list-style-type: none;
   display: inline-block;
-  background-color: white;
+  background-color: ${({ background = 'white' }) => background};
   padding: 5px;
   border-radius: 5px;
   margin: 5px;
@@ -164,6 +167,7 @@ export const NavBar = styled.nav`
   padding: 1.5em;
   padding-right: 0;
   height: 100%;
+  background: transparent;
 `;
 
 export const NavBarItem = styled.span`
