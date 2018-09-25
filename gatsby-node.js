@@ -4,9 +4,9 @@ const { createFilePath } = require('gatsby-source-filesystem');
 const generateBabelConfig = require('gatsby/dist/utils/babel-config');
 
 exports.createPages = ({ boundActionCreators, graphql }) => {
-    const { createPage } = boundActionCreators;
+  const { createPage } = boundActionCreators;
 
-    return graphql(`
+  return graphql(`
         {
             allMarkdownRemark(limit: 1000) {
                 edges {
@@ -24,77 +24,77 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
             }
         }
     `).then(result => {
-        if (result.errors) {
-            result.errors.forEach(e => console.error(e.toString()));
-            return Promise.reject(result.errors);
-        }
+      if (result.errors) {
+        result.errors.forEach(e => console.error(e.toString()));
+        return Promise.reject(result.errors);
+      }
 
-        const posts = result.data.allMarkdownRemark.edges;
+      const { edges: posts } = result.data.allMarkdownRemark;
 
-        posts.forEach(edge => {
-            const {id, fields, frontmatter} = edge.node;
-            createPage({
-                path: fields.slug,
-                tags: frontmatter.tags,
-                component: path.resolve(`src/templates/${String(frontmatter.templateKey)}.js`),
-                context: {
-                    id
-                },
-            })
+      posts.forEach(edge => {
+        const { id, fields, frontmatter } = edge.node;
+        createPage({
+          path: fields.slug,
+          tags: frontmatter.tags,
+          component: path.resolve(`src/templates/${frontmatter.templateKey}.js`),
+          context: {
+            id
+          },
         })
+      })
 
-        const tags = posts.reduce((acc, post) => {
-            if (get(post, 'node.frontmatter.tags')) {
-                post.node.frontmatter.tags.forEach(tag => {
-                    if (!acc.includes(tag)) {
-                        acc.push(tag);
-                    }
-                })
+      const tags = posts.reduce((acc, post) => {
+        if (get(post, 'node.frontmatter.tags')) {
+          post.node.frontmatter.tags.forEach(tag => {
+            if (!acc.includes(tag)) {
+              acc.push(tag);
             }
-            return acc;
-        }, []);
+          })
+        }
+        return acc;
+      }, []);
 
-        tags.forEach(tag => {
-            const tagPath = `/tags/${kebabCase(tag)}/`;
-            createPage({
-                path: tagPath,
-                component: path.resolve(`src/templates/tags.js`),
-                context: {
-                    tag
-                }
-            })
+      tags.forEach(tag => {
+        const tagPath = `/tags/${kebabCase(tag)}/`;
+        createPage({
+          path: tagPath,
+          component: path.resolve(`src/templates/tags.js`),
+          context: {
+            tag
+          }
         })
+      })
     })
 }
 
 exports.onCreateNode = ({ node, boundActionCreators, getNode }) => {
-    const { createNodeField } = boundActionCreators
+  const { createNodeField } = boundActionCreators
 
-    if (node.internal.type === 'MarkdownRemark') {
-        const value = createFilePath({ node, getNode })
-        createNodeField({
-            name: 'slug',
-            node,
-            value,
-        })
-    }
+  if (node.internal.type === 'MarkdownRemark') {
+    const value = createFilePath({ node, getNode })
+    createNodeField({
+      name: 'slug',
+      node,
+      value,
+    })
+  }
 }
 
 exports.modifyWebpackConfig = ({ config, stage }) => {
-    return Promise.all([
-        config.merge({
-            resolve: {
-                alias: {
-                    'react': __dirname + '/node_modules/react',
-                }
-            }
-        }),
-        config.merge({
-            resolve: {
-                alias: {
-                    'react-dom': __dirname + '/node_modules/react-dom',
-                }
-            }
-        })
-    ]);
+  return Promise.all([
+    config.merge({
+      resolve: {
+        alias: {
+          'react': __dirname + '/node_modules/react',
+        }
+      }
+    }),
+    config.merge({
+      resolve: {
+        alias: {
+          'react-dom': __dirname + '/node_modules/react-dom',
+        }
+      }
+    })
+  ]);
 };

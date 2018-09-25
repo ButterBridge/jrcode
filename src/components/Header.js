@@ -5,7 +5,6 @@ import Navigation from './Navigation';
 import Transition from './Transition';
 
 const Header = ({ colours, siteName, isSmall, location, progress, progressing, timeSpent, isHeaderRevealed, toggleForceReveal, round, currentHighScore }) => {
-  console.log({currentHighScore});
   if (!colours.length) return null;
   return (
     <div className={`grid-header${isHeaderRevealed ? '' : '-hidden'}`}>
