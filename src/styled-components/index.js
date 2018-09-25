@@ -187,6 +187,7 @@ export const NavBar = styled.nav`
   justify-content: flex-end;
   padding: 1.5em;
   padding-right: 0;
+  padding-bottom: 0;
   height: 100%;
   background: transparent;
 `;

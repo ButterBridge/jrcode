@@ -17,6 +17,7 @@ class Navigation extends React.Component {
   state = {
     displayingGameWindow: false,
     gameWindowActions: [],
+    hoveringIcon: '',
   }
 
   componentDidUpdate(_, prevState) {
@@ -43,7 +44,7 @@ class Navigation extends React.Component {
 
   render() {
     const { colour, isSmall, location: { pathname }, progress, timeSpent, round } = this.props;
-    const { displayingGameWindow, gameWindowActions } = this.state;
+    const { displayingGameWindow, gameWindowActions, hoveringIcon } = this.state;
     const displayColours = colours.map(colour => progress.includes(colour) ? colour : 'black');
     const Widget = roundWidgetGetters[round - 1];
     return <div className={`grid-navigation${isSmall ? '-mini' : ''}`}>
@@ -62,7 +63,10 @@ class Navigation extends React.Component {
         <NavBar
           colour={colour}
         >
-          <NavBarItem>
+          <NavBarItem
+            onMouseEnter={() => this.setHoveringIcon(isSmall ? 'Home' : '')}
+            onMouseLeave={() => this.setHoveringIcon('')}
+          >
             <Link to="/">
               <Option
                 colour={pathname === '/' ? colour : 'black'}
@@ -72,7 +76,10 @@ class Navigation extends React.Component {
               /> : 'Home'}</Option>
             </Link>
           </NavBarItem>
-          <NavBarItem>
+          <NavBarItem
+            onMouseEnter={() => this.setHoveringIcon(isSmall ? 'About' : '')}
+            onMouseLeave={() => this.setHoveringIcon('')}
+          >
             <Link to="/about">
               <Option
                 colour={pathname === '/about' ? colour : 'black'}
@@ -82,7 +89,10 @@ class Navigation extends React.Component {
               /> : 'About'}</Option>
             </Link>
           </NavBarItem>
-          <NavBarItem>
+          <NavBarItem
+            onMouseEnter={() => this.setHoveringIcon(isSmall ? 'Blog' : '')}
+            onMouseLeave={() => this.setHoveringIcon('')}
+          >
             <Link to="/blog">
               <Option
                 colour={pathname === '/blog' ? colour : 'black'}
@@ -92,7 +102,10 @@ class Navigation extends React.Component {
               /> : 'Blog'}</Option>
             </Link>
           </NavBarItem>
-          <NavBarItem>
+          <NavBarItem
+            onMouseEnter={() => this.setHoveringIcon(isSmall ? 'Contact' : '')}
+            onMouseLeave={() => this.setHoveringIcon('')}
+          >
             <Link to="/contact">
               <Option
                 colour={pathname === '/contact' ? colour : 'black'}
@@ -102,14 +115,20 @@ class Navigation extends React.Component {
               /> : 'Contact'}</Option>
             </Link>
           </NavBarItem>
-          <NavBarItem>
+          <NavBarItem
+            onMouseEnter={() => this.setHoveringIcon('Twitter')}
+            onMouseLeave={() => this.setHoveringIcon('')}
+          >
             <Icon
               link="https://twitter.com/Butter_Bridge"
               src={twitter}
               alt="Twitter"
             />
           </NavBarItem>
-          <NavBarItem>
+          <NavBarItem
+            onMouseEnter={() => this.setHoveringIcon('Github')}
+            onMouseLeave={() => this.setHoveringIcon('')}
+          >
             <Icon
               link="https://github.com/ButterBridge"
               src={github}
@@ -118,7 +137,14 @@ class Navigation extends React.Component {
           </NavBarItem>
         </NavBar>
       </div>
+      {hoveringIcon && <div className="grid-navigation-tooltip">
+        <Transition><Option mini>{hoveringIcon}</Option></Transition>
+      </div>}
     </div>
+  }
+
+  setHoveringIcon = (text) => {
+    this.setState({ hoveringIcon: text });
   }
 };
 
