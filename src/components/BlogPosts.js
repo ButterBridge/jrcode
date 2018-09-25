@@ -13,10 +13,9 @@ class BlogPosts extends React.Component {
   }
 
   toggleActive = toggle => {
-    console.log('toggling', toggle)
     this.setState({
       active: toggle
-    })
+    });
   }
 
   render() {
