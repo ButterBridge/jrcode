@@ -5,16 +5,15 @@ import { Rect } from '../styled-components';
 import { fillNewEmptyArray } from '../utils/helpers';
 
 const Streamer = ({ colours, isSmall, timeSpent, currentHighScore }) => {
-  if (timeSpent === 0) return null;
   const streamerLength = 100;
   return (
     <div className={`grid-streamer${isSmall ? '-mini' : ''}`}>
       {fillNewEmptyArray(streamerLength, (x, i, arr) => {
-        const colour = timeSpent === 0 ?
-          colours[i % colours.length] :
-          i > arr.length / currentHighScore * timeSpent ?
-            colours[i % colours.length] :
-            'whitesmoke'
+        const colour = 
+          (currentHighScore && i < arr.length / currentHighScore * timeSpent) ||
+          timeSpent === 0 ? 
+            'whitesmoke' : 
+            colours[i % colours.length];
         const borderRadius = {};
         if (i === 0) {
           borderRadius.bl = '15px';
@@ -22,6 +21,7 @@ const Streamer = ({ colours, isSmall, timeSpent, currentHighScore }) => {
         if (i === streamerLength - 1) {
           borderRadius.br = '15px';
         }
+        if (i === 50) console.log(colour)
         return <Transition
           additionalTimeout={i*20}
           key={i}

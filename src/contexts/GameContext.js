@@ -26,7 +26,7 @@ export class GameProvider extends React.Component {
 
   render() {
     const { colours, progressing, round, timeSpent } = this.state;
-    const currentHighScore = Math.min(this.state[round].timeToBeat, +window.localStorage.getItem(`round${round}`));
+    const currentHighScore = Math.min(this.state[round].timeToBeat, +(window.localStorage.getItem(`round${round}`) || this.state[round].timeToBeat));
     return (
       <GameContext.Provider value={{
         colours,
