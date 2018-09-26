@@ -14,7 +14,7 @@ function Icon({ link, ...imgProps }) {
 
 Icon.propTypes = {
   link: PT.string.isRequired,
-  src: PT.object.isRequired,
+  src: PT.string.isRequired,
   alt: PT.string.isRequired
 };
 

@@ -189,7 +189,6 @@ export class GameProvider extends React.Component {
   render() {
     const { colours, progressing, rounds, round, timeSpent } = this.state;
     const { children } = this.props;
-    console.log(rounds, round);
     const currentHighScore = Math.min(
       rounds[round].timeToBeat,
       +(
@@ -216,5 +215,5 @@ export class GameProvider extends React.Component {
 }
 
 GameProvider.propTypes = {
-  children: PT.array.isRequired
+  children: PT.object.isRequired
 };
