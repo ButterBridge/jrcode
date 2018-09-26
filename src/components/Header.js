@@ -1,16 +1,26 @@
-import React, { Fragment } from 'react';
-import PropTypes from 'prop-types';
-import Streamer from './Streamer';
-import Navigation from './Navigation';
-import Transition from './Transition';
+import React, { Fragment } from "react";
+import PropTypes from "prop-types";
+import Streamer from "./Streamer";
+import Navigation from "./Navigation";
+import Transition from "./Transition";
 
-const Header = ({ colours, siteName, isSmall, location, progress, progressing, timeSpent, isHeaderRevealed, toggleForceReveal, round, currentHighScore }) => {
+const Header = ({
+  colours,
+  siteName,
+  isSmall,
+  location,
+  progress,
+  progressing,
+  timeSpent,
+  isHeaderRevealed,
+  toggleForceReveal,
+  round,
+  currentHighScore
+}) => {
   if (!colours.length) return null;
   return (
-    <div className={`grid-header${isHeaderRevealed ? '' : '-hidden'}`}>
-      <Transition
-        actions={[isHeaderRevealed ? 'descend' : 'ascend']}
-      >
+    <div className={`grid-header${isHeaderRevealed ? "" : "-hidden"}`}>
+      <Transition actions={[isHeaderRevealed ? "descend" : "ascend"]}>
         <Fragment>
           <div className="grid-header-navigation">
             <Navigation
@@ -45,13 +55,14 @@ Header.propTypes = {
   location: PropTypes.shape({
     pathname: PropTypes.string.isRequired
   }).isRequired,
-  progressing: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]).isRequired,
+  progressing: PropTypes.oneOfType([PropTypes.string, PropTypes.bool])
+    .isRequired,
   progress: PropTypes.array,
   timeSpent: PropTypes.number.isRequired,
   isHeaderRevealed: PropTypes.bool.isRequired,
   toggleForceReveal: PropTypes.func.isRequired,
   round: PropTypes.number.isRequired,
   currentHighScore: PropTypes.number.isRequired
-}
+};
 
 export default Header;

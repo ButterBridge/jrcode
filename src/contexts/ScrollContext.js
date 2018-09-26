@@ -1,64 +1,60 @@
-import React from 'react';
-import { window, document } from 'browser-monads';
-import { throttle } from 'lodash';
+import React from "react";
+import PT from "prop-types";
+import { window, document } from "browser-monads";
+import { throttle } from "lodash";
+import { getAmountScrolled } from "../utils/helpers";
 
 export const ScrollContext = React.createContext();
 
 export class ScrollProvider extends React.Component {
-    state = {
-        scrollY: window.scrollY,
-        scrollDir: null,
-        forceReveal: false
-    }
+  state = {
+    scrollY: window.scrollY,
+    scrollDir: null,
+    forceReveal: false
+  };
 
-    render () {
-        const {scrollDir, scrollY, forceReveal} = this.state;
-        return <ScrollContext.Provider
-            value={{
-                scrollDir, scrollY, forceReveal,
-                toggleForceReveal: this.toggleForceReveal
-            }}
-        >
-            {this.props.children}
-        </ScrollContext.Provider>
-    }
+  throttledListenToScrolling = throttle(() => {
+    const { scrollY: currentScrollY } = this.state;
+    const atBottom = getAmountScrolled(window, document) > 90;
+    this.setState({
+      scrollY: window.scrollY,
+      scrollDir: window.scrollY > currentScrollY || atBottom ? "down" : "up"
+    });
+  }, 300);
 
-    componentDidMount () {
-        window.addEventListener('scroll', this.throttledListenToScrolling);
-    }
+  componentDidMount() {
+    window.addEventListener("scroll", this.throttledListenToScrolling);
+  }
 
-    componentWillUnmount () {
-        window.removeEventListener('scroll', this.throttledListenToScrolling);
-    }
+  componentWillUnmount() {
+    window.removeEventListener("scroll", this.throttledListenToScrolling);
+  }
 
-    throttledListenToScrolling = throttle(() => {
-        const {scrollY : currentScrollY, scrollDir} = this.state;
-        const atBottom = this.getAmountScrolled() > 90;
-        this.setState({
-            scrollY: window.scrollY,
-            scrollDir: window.scrollY > currentScrollY || atBottom ? 'down' : 'up'
-        });
-    }, 300);
+  toggleForceReveal = bool => {
+    const { forceReveal } = this.state;
+    this.setState({
+      forceReveal: bool || forceReveal
+    });
+  };
 
-    toggleForceReveal = (bool = this.state.forceReveal) => {
-        this.setState({
-            forceReveal: bool
-        })
-    }
-
-    getAmountScrolled(){
-        const windowHeight = window.innerHeight || (document.documentElement || document.body).clientHeight;
-        const documentHeight = this.getDocHeight();
-        const scrollTop = window.pageYOffset || (document.documentElement || document.body.parentNode || document.body).scrollTop;
-        const trackLength = documentHeight - windowHeight;
-        return Math.floor(scrollTop / trackLength * 100);
-    }
-
-    getDocHeight() {
-        return Math.max(
-            document.body.scrollHeight, document.documentElement.scrollHeight,
-            document.body.offsetHeight, document.documentElement.offsetHeight,
-            document.body.clientHeight, document.documentElement.clientHeight
-        )
-    }
+  render() {
+    const { scrollDir, scrollY, forceReveal } = this.state;
+    const { children } = this.props;
+    return (
+      <ScrollContext.Provider
+        value={{
+          scrollDir,
+          scrollY,
+          forceReveal,
+          toggleForceReveal: this.toggleForceReveal
+        }}
+      >
+        {children}
+      </ScrollContext.Provider>
+    );
+  }
 }
+
+ScrollProvider.propTypes = {
+  children: PT.object.isRequired
+};

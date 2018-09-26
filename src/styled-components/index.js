@@ -32,7 +32,7 @@ export const Bullet = styled.span`
   margin: 15px;
   color: ${({ colour }) => colour};
   background: ${({ colour }) => colour};
-  ${({active}) => active && `animation: ${pulse} 0.5s linear infinite;`}
+  ${({ active }) => active && `animation: ${pulse} 0.5s linear infinite;`};
 `;
 
 export const Button = styled.button`
@@ -73,15 +73,13 @@ export const Content = styled.div`
     box-shadow: -0.25em 0.25em 0em 0.25em ${({ colour }) => colour};
     transform: translateY(-0.125em) translateX(0.125em);
   }
-  
+
   @media (max-width: 500px) {
     margin-left: 0;
     margin-right: 0;
     padding-left: 0;
     border-left: none;
   }
-
-  
 `;
 
 export const Detail = styled.p`
@@ -155,7 +153,7 @@ export const ListItem = styled.li`
   border: 3px;
   list-style-type: none;
   display: inline-block;
-  background-color: ${({ background = 'whitesmoke' }) => background};
+  background-color: ${({ background = "whitesmoke" }) => background};
   padding: 5px;
   border-radius: 5px;
   margin: 5px;
@@ -256,7 +254,7 @@ export const Rect = styled.div.attrs({
       backgroundColor: colour,
       gridColumn: `${from} / ${to}`,
       borderRadius: `${tl} ${tr} ${br} ${bl}`
-    }
+    };
   }
 })`
   height: 100%;

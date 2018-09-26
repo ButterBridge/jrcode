@@ -1,10 +1,8 @@
-import React from 'react';
-import Transition from '../../components/Transition';
+import React from "react";
+import Transition from "../../components/Transition";
 
-export const withTransition = (Component) => {
-    return ({linkTo, ...props}) => {
-        return <Transition>
-            <Component {...props}/>
-        </Transition>
-    }
-}
+export default Component => ({ linkTo, ...props }) => (
+  <Transition>
+    <Component {...props} />
+  </Transition>
+);

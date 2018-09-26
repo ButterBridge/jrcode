@@ -1,16 +1,21 @@
-import React, { Fragment } from 'react';
-import PropTypes from 'prop-types';
-import { debounce } from 'lodash';
-import { window } from 'browser-monads';
-import MediaQuery from 'react-responsive';
-import Link from 'gatsby-link';
-import Transition from '../components/Transition';
-import BlogPosts from '../components/BlogPosts';
-import { GameContext } from '../contexts/GameContext';
-import { Main, Opener, TransitionContainer, SuperTitle, Option, Container, FlexContainer, Detail } from '../styled-components';
-import roundWidgetGetters from '../components/collections/round-widgets';
-import { fillNewEmptyArray } from '../utils/helpers';
-import '../style/default-styles.css';
+import React from "react";
+import PropTypes from "prop-types";
+import MediaQuery from "react-responsive";
+import Link from "gatsby-link";
+import BlogPosts from "../components/BlogPosts";
+import { GameContext } from "../contexts/GameContext";
+import {
+  Main,
+  Opener,
+  TransitionContainer,
+  SuperTitle,
+  Option,
+  Container,
+  FlexContainer
+} from "../styled-components";
+import roundWidgetGetters from "../components/collections/round-widgets";
+import { fillNewEmptyArray } from "../utils/helpers";
+import "../style/default-styles.css";
 
 export default class IndexPage extends React.Component {
   render() {
@@ -20,65 +25,57 @@ export default class IndexPage extends React.Component {
     return (
       <GameContext.Consumer>
         {({ colours, round }) => {
-          return <Main><TransitionContainer>
-            <Container>
-              <Opener>
-                Hello. Thanks for coming.
-              </Opener>
-              <SuperTitle
-                colour={colours[title.length]}
-              >
-                Latest blog posts...
-              </SuperTitle>
-              <BlogPosts
-                posts={posts}
-                colours={colours}
-                title={title}
-              />
-              <div className="grid-doublecolumn">
-                <Link to="/blog">
-                  <Option>See all posts</Option>
-                </Link>
-                <Link to="/tags">
-                  <Option>See all tags</Option>
-                </Link>
-              </div>
-            </Container>
-            <Container>
-              <SuperTitle
-                colour={colours[title.length]}
-              >
-                Game Progress
-              </SuperTitle>
-              <FlexContainer>
-                <MediaQuery maxWidth={760}>
-                  {isSmall => {
-                    return fillNewEmptyArray(round, (_, i) => {
-                      const Widget = roundWidgetGetters[i];
-                      return <Widget
-                        isSmall={isSmall}
-                        withFeedback={true}
-                        key={i}
-                      />
-                    })
-                  }}
-                </MediaQuery>
-              </FlexContainer>
-            </Container>
-          </TransitionContainer></Main>
+          return (
+            <Main>
+              <TransitionContainer>
+                <Container>
+                  <Opener>Hello. Thanks for coming.</Opener>
+                  <SuperTitle colour={colours[title.length]}>
+                    Latest blog posts...
+                  </SuperTitle>
+                  <BlogPosts posts={posts} colours={colours} title={title} />
+                  <div className="grid-doublecolumn">
+                    <Link to="/blog">
+                      <Option>See all posts</Option>
+                    </Link>
+                    <Link to="/tags">
+                      <Option>See all tags</Option>
+                    </Link>
+                  </div>
+                </Container>
+                <Container>
+                  <SuperTitle colour={colours[title.length]}>
+                    Game Progress
+                  </SuperTitle>
+                  <FlexContainer>
+                    <MediaQuery maxWidth={760}>
+                      {isSmall => {
+                        return fillNewEmptyArray(round, (_, i) => {
+                          const Widget = roundWidgetGetters[i];
+                          return (
+                            <Widget isSmall={isSmall} withFeedback key={i} />
+                          );
+                        });
+                      }}
+                    </MediaQuery>
+                  </FlexContainer>
+                </Container>
+              </TransitionContainer>
+            </Main>
+          );
         }}
       </GameContext.Consumer>
-    )
+    );
   }
 }
 
 IndexPage.propTypes = {
   data: PropTypes.shape({
     allMarkdownRemark: PropTypes.shape({
-      edges: PropTypes.array,
+      edges: PropTypes.array
     })
   })
-}
+};
 
 export const pageQuery = graphql`
   query IndexQuery {
@@ -87,10 +84,10 @@ export const pageQuery = graphql`
         title
       }
     }
-    allMarkdownRemark (
-      sort: { order: DESC, fields: [frontmatter___date] },
-      limit: 3,
-      filter: { frontmatter: { templateKey: { eq: "blog-post" } }}
+    allMarkdownRemark(
+      sort: { order: DESC, fields: [frontmatter___date] }
+      limit: 3
+      filter: { frontmatter: { templateKey: { eq: "blog-post" } } }
     ) {
       edges {
         node {
@@ -102,11 +99,11 @@ export const pageQuery = graphql`
           frontmatter {
             title
             templateKey
-            formattedDate : date(formatString: "MMMM DD, YYYY")
+            formattedDate: date(formatString: "MMMM DD, YYYY")
             tags
           }
         }
       }
     }
   }
-`
+`;

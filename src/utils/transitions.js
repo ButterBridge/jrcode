@@ -1,127 +1,132 @@
 const getTransitionStyles = timeout => ({
   fade: {
     entering: {
-      opacity: 0,
+      opacity: 0
     },
     entered: {
       transition: `opacity ${timeout}ms ease-in-out`,
-      opacity: 1,
+      opacity: 1
     },
     exited: {
       transition: `opacity ${timeout}ms ease-in-out`,
-      opacity: 0,
-    },
+      opacity: 0
+    }
   },
 
   fadeOut: {
     entering: {
-      opacity: 1,
+      opacity: 1
     },
     entered: {
       transition: `opacity ${timeout}ms ease-in-out`,
-      opacity: 0,
+      opacity: 0
     },
     exited: {
       transition: `opacity ${timeout}ms ease-in-out`,
-      opacity: 0,
-    },
+      opacity: 0
+    }
   },
 
   slide: {
     entering: {
-      transform: 'translateX(-100%)'
+      transform: "translateX(-100%)"
     },
     entered: {
       transition: `transform ${timeout}ms`,
-      transform: 'translateX(0%)'
+      transform: "translateX(0%)"
     },
     exited: {
-      transform: 'translateX(0%)'
+      transform: "translateX(0%)"
     }
   },
 
   slideOut: {
     entering: {
-      transform: 'translateX(0%)'
+      transform: "translateX(0%)"
     },
     entered: {
       transition: `transform ${timeout}ms`,
-      transform: 'translateX(-100%)'
+      transform: "translateX(-100%)"
     },
     exited: {
-      transform: 'translateX(-100%)'
+      transform: "translateX(-100%)"
     }
   },
 
   descend: {
     entering: {
-      transform: 'translateY(-110%)'
+      transform: "translateY(-110%)"
     },
     entered: {
       transition: `transform ${timeout}ms`,
-      transform: 'translateY(0%)'
+      transform: "translateY(0%)"
     },
     exited: {
-      transform: 'translateY(0%)'
+      transform: "translateY(0%)"
     }
   },
 
   dip: {
     entering: {
-      transform: 'translateY(0%)'
+      transform: "translateY(0%)"
     },
     entered: {
       transition: `transform ${timeout}ms`,
-      transform: 'translateY(4em)'
+      transform: "translateY(4em)"
     },
     exited: {
-      transform: 'translateY(0%)'
+      transform: "translateY(0%)"
     }
   },
 
   ascend: {
     entering: {
-      transform: 'translateY(0%)'
+      transform: "translateY(0%)"
     },
     entered: {
       transition: `transform ${timeout}ms`,
-      transform: 'translateY(-110%)'
+      transform: "translateY(-110%)"
     },
     exited: {
-      transform: 'translateY(-100%)'
+      transform: "translateY(-100%)"
     }
   },
 
   undip: {
     entering: {
-      transform: 'translateY(4em)'
+      transform: "translateY(4em)"
     },
     entered: {
       transition: `transform ${timeout}ms`,
-      transform: 'translateY(0%)'
+      transform: "translateY(0%)"
     },
     exited: {
-      transform: 'translateY(0%)'
+      transform: "translateY(0%)"
     }
   }
-})
+});
 
 const composeTransitionStyles = ({ timeout, status, actions }) => {
-  const { elements, transitions } = actions.reduce((acc, action) => {
-    acc.elements = {
-      ...acc.elements,
-      ...getTransitionStyles()[action][status]
-    };
-    acc.transitions.push(getTransitionStyles(timeout)[action][status].transition || '');
-    return acc;
-  }, {
-    elements: {},
-    transitions: []
-  });
+  const { elements, transitions } = actions.reduce(
+    (acc, action) => {
+      acc.elements = {
+        ...acc.elements,
+        ...getTransitionStyles()[action][status]
+      };
+      acc.transitions.push(
+        getTransitionStyles(timeout)[action][status].transition || ""
+      );
+      return acc;
+    },
+    {
+      elements: {},
+      transitions: []
+    }
+  );
 
   elements.transition = transitions.join();
 
   return elements;
-}
+};
 
 export default composeTransitionStyles;
