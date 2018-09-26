@@ -1,7 +1,7 @@
 import styled, { keyframes } from "styled-components";
-import { withBullet } from "./with/withBullet";
-import { withLink } from "./with/withLink";
-import { withTransition } from "./with/withTransition";
+import withBullet from "./with/withBullet";
+import withLink from "./with/withLink";
+import withTransition from "./with/withTransition";
 import { hexToRgb } from "../utils/helpers";
 
 export const Block = styled.span`

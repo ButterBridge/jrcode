@@ -1,7 +1,7 @@
 import React from "react";
-import { Bullet } from "../../styled-components";
+import { Bullet } from "..";
 
-export default Component => ({
+const withBullet = Component => ({
   componentContent,
   addition,
   colour,
@@ -24,3 +24,5 @@ export default Component => ({
     </div>
   );
 };
+
+export default withBullet;

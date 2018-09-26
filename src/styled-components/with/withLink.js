@@ -6,4 +6,5 @@ const withLink = Component => ({ linkTo, ...props }) => (
     <Component {...props} />
   </Link>
 );
+
 export default withLink;

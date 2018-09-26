@@ -11,7 +11,7 @@ export class GameProvider extends React.Component {
   state = {
     colours: [],
     progressing: false,
-    round: 1,
+    round: 0,
     timeSpent: 0,
     clock: null,
     rounds: [
@@ -189,6 +189,7 @@ export class GameProvider extends React.Component {
   render() {
     const { colours, progressing, rounds, round, timeSpent } = this.state;
     const { children } = this.props;
+    console.log(rounds, round);
     const currentHighScore = Math.min(
       rounds[round].timeToBeat,
       +(
