@@ -45,7 +45,7 @@ export const getAmountScrolled = (window, document) => {
   const windowHeight =
     window.innerHeight ||
     (document.documentElement || document.body).clientHeight;
-  const documentHeight = getDocHeight();
+  const documentHeight = getDocHeight(document);
   const scrollTop =
     window.pageYOffset ||
     (document.documentElement || document.body.parentNode || document.body)
