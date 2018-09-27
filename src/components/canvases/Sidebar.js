@@ -10,9 +10,8 @@ class Sidebar extends Component {
     const space = new CanvasSpace(this.canvas);
     const form = space.getForm();
 
-    let pts;
+    let gridCells;
     let follower;
-    let count = 0;
 
     const colourRef = {
       random: () => sample(styleColours),
@@ -22,23 +21,22 @@ class Sidebar extends Component {
     space.add({
       start: () => {
         const { dimensions } = this.props;
-        pts = Create.gridCells(space.innerBound, ...dimensions);
+        gridCells = Create.gridCells(space.innerBound, ...dimensions);
         follower = space.center;
       },
 
       animate: () => {
         follower = follower.add(space.pointer.$subtract(follower).divide(5));
-        count += 1;
         const { colours, progressing } = this.props;
-        pts.forEach((p, i) => {
+        gridCells.forEach(point => {
           const mag = Math.min(
-            follower.$subtract(Rectangle.center(p)).magnitude(),
+            follower.$subtract(Rectangle.center(point)).magnitude(),
             750
           );
           const scale = Math.min(1, Math.abs(1 - (0.4 * mag) / space.center.y));
           const r = Rectangle.fromCenter(
-            Rectangle.center(p),
-            Rectangle.size(p)
+            Rectangle.center(point),
+            Rectangle.size(point)
           );
           const colourFill = progressing
             ? colourRef[progressing]({ colours })
