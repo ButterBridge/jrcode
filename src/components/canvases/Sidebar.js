@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import PT from "prop-types";
+import { window } from "browser-monads";
 import { sample } from "lodash";
 import { colours as styleColours } from "../../style";
 
 class Sidebar extends Component {
   componentDidMount = () => {
-    const { CanvasSpace, Rectangle, Create } = Pts;
+    const { CanvasSpace, Rectangle, Create } = window.Pts;
     const space = new CanvasSpace(this.canvas);
     const form = space.getForm();
 

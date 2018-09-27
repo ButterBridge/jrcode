@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { window } from "browser-monads";
 import PT from "prop-types";
 import { sample } from "lodash";
 import Sidebar from "./canvases/Sidebar";
@@ -62,7 +63,7 @@ class Brand extends Component {
         {!isSmall &&
           !isAlone && (
             <div className="grid-sidebar-canvas">
-              {!!Pts && (
+              {!!window.Pts && (
                 <Transition
                   additionalTimeout={600}
                   actions={["descend"]}
