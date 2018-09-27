@@ -25,9 +25,9 @@ class Brand extends Component {
   changeFont = targetindex => {
     const { fonts } = this.state;
     this.setState({
-      fonts: fonts.map((font, index) => {
-        return index === targetindex ? sample(fontStyles) : font;
-      })
+      fonts: fonts.map(
+        (font, index) => (index === targetindex ? sample(fontStyles) : font)
+      )
     });
   };
 

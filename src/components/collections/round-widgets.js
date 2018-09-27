@@ -33,9 +33,9 @@ const roundWidgetGetters = [
               moveDown={withFeedback ? "0" : "1.5"}
               colour="white"
             >
-              {displayColours.map((colour, i) => {
-                return <Block key={i} colour={colour} />;
-              })}
+              {displayColours.map((colour, i) => (
+                <Block key={i} colour={colour} />
+              ))}
               {timeSpent > 0 && <Strong>{`${timeSpent}s`}</Strong>}
             </Window>
           </div>

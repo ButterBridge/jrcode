@@ -37,62 +37,56 @@ class BlogPosts extends React.Component {
       >
         <Content>
           <MediaQuery maxWidth={1000}>
-            {isSmall => {
-              return (
-                <div className={`grid-postcard${isSmall ? "-mini" : ""}`}>
-                  <div
-                    className={`grid-postcard-title${isSmall ? "-mini" : ""}`}
-                    onMouseEnter={() => this.toggleActive(true)}
-                    onMouseLeave={() => this.toggleActive(false)}
-                  >
-                    <LinkedBulletedTitle
-                      active={active}
-                      addition="title"
-                      linkTo={post.fields.slug}
-                      componentContent={post.frontmatter.title}
-                      colour={colours[title.length]}
-                    />
-                  </div>
-                  <div
-                    className={`grid-postcard-date${isSmall ? "-mini" : ""}`}
-                  >
-                    <Option mini>{post.frontmatter.formattedDate}</Option>
-                  </div>
-                  <Meta
-                    className={`grid-postcard-tags${isSmall ? "-mini" : ""}`}
+            {isSmall => (
+              <div className={`grid-postcard${isSmall ? "-mini" : ""}`}>
+                <div
+                  className={`grid-postcard-title${isSmall ? "-mini" : ""}`}
+                  onMouseEnter={() => this.toggleActive(true)}
+                  onMouseLeave={() => this.toggleActive(false)}
+                >
+                  <LinkedBulletedTitle
+                    active={active}
+                    addition="title"
+                    linkTo={post.fields.slug}
+                    componentContent={post.frontmatter.title}
+                    colour={colours[title.length]}
+                  />
+                </div>
+                <div className={`grid-postcard-date${isSmall ? "-mini" : ""}`}>
+                  <Option mini>{post.frontmatter.formattedDate}</Option>
+                </div>
+                <Meta
+                  className={`grid-postcard-tags${isSmall ? "-mini" : ""}`}
+                  colour={colours[title.length]}
+                >
+                  <List>
+                    {post.frontmatter.tags.map(tag => (
+                      <LinkedListItem
+                        background="transparent"
+                        colour="black"
+                        linkTo={`/tags/${kebabCase(tag)}/`}
+                        key={tag}
+                      >
+                        <Option mini colour="whitesmoke">
+                          {removeHyphens(tag)}
+                        </Option>
+                      </LinkedListItem>
+                    ))}
+                  </List>
+                </Meta>
+                <div
+                  className={`grid-postcard-excerpt${isSmall ? "-mini" : ""}`}
+                >
+                  <ParagraphExcerpt>{post.excerpt}</ParagraphExcerpt>
+                  <LinkedParagraphEnder
+                    linkTo={post.fields.slug}
                     colour={colours[title.length]}
                   >
-                    <List>
-                      {post.frontmatter.tags.map(tag => {
-                        return (
-                          <LinkedListItem
-                            background="transparent"
-                            colour="black"
-                            linkTo={`/tags/${kebabCase(tag)}/`}
-                            key={tag}
-                          >
-                            <Option mini colour="whitesmoke">
-                              {removeHyphens(tag)}
-                            </Option>
-                          </LinkedListItem>
-                        );
-                      })}
-                    </List>
-                  </Meta>
-                  <div
-                    className={`grid-postcard-excerpt${isSmall ? "-mini" : ""}`}
-                  >
-                    <ParagraphExcerpt>{post.excerpt}</ParagraphExcerpt>
-                    <LinkedParagraphEnder
-                      linkTo={post.fields.slug}
-                      colour={colours[title.length]}
-                    >
-                      {` read more`}
-                    </LinkedParagraphEnder>
-                  </div>
+                    {` read more`}
+                  </LinkedParagraphEnder>
                 </div>
-              );
-            }}
+              </div>
+            )}
           </MediaQuery>
         </Content>
       </Transition>

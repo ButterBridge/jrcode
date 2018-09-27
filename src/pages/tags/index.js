@@ -44,6 +44,7 @@ class TagsPage extends React.Component {
         if (a.fieldValue.toLowerCase() > b.fieldValue.toLowerCase()) return 1;
         return 0;
       }
+      return 0;
     });
 
     return (

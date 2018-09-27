@@ -1,11 +1,11 @@
 import React from "react";
 import PT from "prop-types";
+import { window } from "browser-monads";
 import { Transition as ReactTransition } from "react-transition-group";
 import composeTransitionStyles from "../utils/transitions";
-import { window } from "browser-monads";
 
 const timeout = 250;
-const historyExitingEventType = `history::exiting`;
+const historyExitingEventType = "history::exiting";
 
 class Transition extends React.Component {
   state = {

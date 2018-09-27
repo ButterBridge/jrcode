@@ -24,46 +24,44 @@ export default class IndexPage extends React.Component {
     const { title } = data.site.siteMetadata;
     return (
       <GameContext.Consumer>
-        {({ colours, round }) => {
-          return (
-            <Main>
-              <TransitionContainer>
-                <Container>
-                  <Opener>Hello. Thanks for coming.</Opener>
-                  <SuperTitle colour={colours[title.length]}>
-                    Latest blog posts...
-                  </SuperTitle>
-                  <BlogPosts posts={posts} colours={colours} title={title} />
-                  <div className="grid-doublecolumn">
-                    <Link to="/blog">
-                      <Option>See all posts</Option>
-                    </Link>
-                    <Link to="/tags">
-                      <Option>See all tags</Option>
-                    </Link>
-                  </div>
-                </Container>
-                <Container>
-                  <SuperTitle colour={colours[title.length]}>
-                    Game Progress
-                  </SuperTitle>
-                  <FlexContainer>
-                    <MediaQuery maxWidth={760}>
-                      {isSmall =>
-                        fillNewEmptyArray(round, (_, i) => {
-                          const Widget = roundWidgetGetters[i];
-                          return (
-                            <Widget isSmall={isSmall} withFeedback key={i} />
-                          );
-                        })
-                      }
-                    </MediaQuery>
-                  </FlexContainer>
-                </Container>
-              </TransitionContainer>
-            </Main>
-          );
-        }}
+        {({ colours, round }) => (
+          <Main>
+            <TransitionContainer>
+              <Container>
+                <Opener>Hello. Thanks for coming.</Opener>
+                <SuperTitle colour={colours[title.length]}>
+                  Latest blog posts...
+                </SuperTitle>
+                <BlogPosts posts={posts} colours={colours} title={title} />
+                <div className="grid-doublecolumn">
+                  <Link to="/blog">
+                    <Option>See all posts</Option>
+                  </Link>
+                  <Link to="/tags">
+                    <Option>See all tags</Option>
+                  </Link>
+                </div>
+              </Container>
+              <Container>
+                <SuperTitle colour={colours[title.length]}>
+                  Game Progress
+                </SuperTitle>
+                <FlexContainer>
+                  <MediaQuery maxWidth={760}>
+                    {isSmall =>
+                      fillNewEmptyArray(round, (_, i) => {
+                        const Widget = roundWidgetGetters[i];
+                        return (
+                          <Widget isSmall={isSmall} withFeedback key={i} />
+                        );
+                      })
+                    }
+                  </MediaQuery>
+                </FlexContainer>
+              </Container>
+            </TransitionContainer>
+          </Main>
+        )}
       </GameContext.Consumer>
     );
   }

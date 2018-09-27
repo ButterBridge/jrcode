@@ -153,11 +153,14 @@ export class GameProvider extends React.Component {
     const { colours: currentColours, round, rounds } = this.state;
     this.setState(
       {
-        colours: currentColours.map((colour, index) => {
-          return index === currentColours.length - 1
-            ? sample(difference(styleColours, [...progress, currentColours[0]]))
-            : sample(styleColours);
-        }),
+        colours: currentColours.map(
+          (colour, index) =>
+            index === currentColours.length - 1
+              ? sample(
+                  difference(styleColours, [...progress, currentColours[0]])
+                )
+              : sample(styleColours)
+        ),
         rounds: rounds.map((examinedRound, index) => ({
           ...examinedRound,
           progress:
