@@ -25,34 +25,32 @@ const TemplateWrapper = ({ children, data, location }) => {
                     scrollDir === "up" || scrollY === 0 || forceReveal;
                   return (
                     <MediaQuery maxWidth={760}>
-                      {isSmall => {
-                        return (
-                          <div className={`grid-main${isSmall ? "-mini" : ""}`}>
-                            <Brand
+                      {isSmall => (
+                        <div className={`grid-main${isSmall ? "-mini" : ""}`}>
+                          <Brand
+                            siteName={siteName}
+                            isSmall={isSmall}
+                            {...gameProps}
+                          />
+                          <div className="grid-main-header">
+                            <Header
                               siteName={siteName}
                               isSmall={isSmall}
+                              location={location}
+                              isHeaderRevealed={isHeaderRevealed}
+                              toggleForceReveal={toggleForceReveal}
                               {...gameProps}
                             />
-                            <div className="grid-main-header">
-                              <Header
-                                siteName={siteName}
-                                isSmall={isSmall}
-                                location={location}
-                                isHeaderRevealed={isHeaderRevealed}
-                                toggleForceReveal={toggleForceReveal}
-                                {...gameProps}
-                              />
-                            </div>
-                            <div className="grid-main-content">
-                              <Transition
-                                actions={[isHeaderRevealed ? "dip" : "undip"]}
-                              >
-                                {children()}
-                              </Transition>
-                            </div>
                           </div>
-                        );
-                      }}
+                          <div className="grid-main-content">
+                            <Transition
+                              actions={[isHeaderRevealed ? "dip" : "undip"]}
+                            >
+                              {children()}
+                            </Transition>
+                          </div>
+                        </div>
+                      )}
                     </MediaQuery>
                   );
                 }}
