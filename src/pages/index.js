@@ -49,14 +49,14 @@ export default class IndexPage extends React.Component {
                   </SuperTitle>
                   <FlexContainer>
                     <MediaQuery maxWidth={760}>
-                      {isSmall => {
-                        return fillNewEmptyArray(round, (_, i) => {
+                      {isSmall =>
+                        fillNewEmptyArray(round, (_, i) => {
                           const Widget = roundWidgetGetters[i];
                           return (
                             <Widget isSmall={isSmall} withFeedback key={i} />
                           );
-                        });
-                      }}
+                        })
+                      }
                     </MediaQuery>
                   </FlexContainer>
                 </Container>

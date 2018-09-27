@@ -12,6 +12,7 @@ class Sidebar extends Component {
 
     let gridCells;
     let follower;
+    let count = 0;
 
     const colourRef = {
       random: () => sample(styleColours),
@@ -27,6 +28,7 @@ class Sidebar extends Component {
 
       animate: () => {
         follower = follower.add(space.pointer.$subtract(follower).divide(5));
+        count += 1;
         const { colours, progressing } = this.props;
         gridCells.forEach(point => {
           const mag = Math.min(
