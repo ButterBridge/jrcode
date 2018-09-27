@@ -187,7 +187,7 @@ export const NavBar = styled.nav`
   padding-right: 0;
   padding-bottom: 0;
   height: 100%;
-  background: transparent;
+  background: whitesmoke;
 `;
 
 export const NavBarItem = styled.span`
