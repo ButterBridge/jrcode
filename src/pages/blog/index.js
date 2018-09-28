@@ -5,7 +5,7 @@ import "../../style/default-styles.css";
 import { GameContext } from "../../contexts/GameContext";
 import BlogPosts from "../../components/BlogPosts";
 
-export default class IndexPage extends React.Component {
+export default class BlogIndexPage extends React.Component {
   render() {
     const { data } = this.props;
     const { edges: posts } = data.allMarkdownRemark;
@@ -13,22 +13,20 @@ export default class IndexPage extends React.Component {
 
     return (
       <GameContext.Consumer>
-        {({ colours }) => {
-          return (
-            <Main>
-              <TransitionContainer>
-                <SuperTitle colour={colours[title.length]}>Blog...</SuperTitle>
-                <BlogPosts posts={posts} colours={colours} title={title} />
-              </TransitionContainer>
-            </Main>
-          );
-        }}
+        {({ colours }) => (
+          <Main>
+            <TransitionContainer>
+              <SuperTitle colour={colours[title.length]}>Blog...</SuperTitle>
+              <BlogPosts posts={posts} colours={colours} title={title} />
+            </TransitionContainer>
+          </Main>
+        )}
       </GameContext.Consumer>
     );
   }
 }
 
-IndexPage.propTypes = {
+BlogIndexPage.propTypes = {
   data: PropTypes.shape({
     allMarkdownRemark: PropTypes.shape({
       edges: PropTypes.array

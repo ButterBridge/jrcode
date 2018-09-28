@@ -51,7 +51,6 @@ export default class IndexPage extends React.Component {
                     {isSmall =>
                       fillNewEmptyArray(round + 1, (_, i) => {
                         const Widget = roundWidgetGetters[i];
-                        console.log(Widget);
                         return (
                           <Widget isSmall={isSmall} withFeedback key={i} />
                         );
