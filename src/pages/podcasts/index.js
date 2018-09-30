@@ -3,22 +3,28 @@ import PT from "prop-types";
 import { HTMLContent } from "../../components/Content";
 import { Main, TransitionContainer } from "../../styled-components";
 
+const episodes = [];
+
 class PodcastsTemplate extends Component {
   state = {
     selectedEpisode: 1
   };
 
   render() {
-    const { podcasts } = this.props;
+    const { podcastDetails } = this.props;
     const { selectedEpisode } = this.state;
     const {
-      node: { html, frontmatter }
-    } = podcasts.find(
+      node: { html }
+    } = podcastDetails.find(
       podcast => +podcast.node.frontmatter.episode === selectedEpisode
     );
+    const episode = episodes[selectedEpisode];
     return (
       <Main>
         <TransitionContainer>
+          <audio controls>
+            <source src={episode} />
+          </audio>
           <HTMLContent content={html} />
         </TransitionContainer>
       </Main>
@@ -27,14 +33,14 @@ class PodcastsTemplate extends Component {
 }
 
 PodcastsTemplate.propTypes = {
-  podcasts: PT.arrayOf(PT.object).isRequired
+  podcastDetails: PT.arrayOf(PT.object).isRequired
 };
 
 const Podcasts = ({ data }) => {
   const {
-    allMarkdownRemark: { edges }
+    allMarkdownRemark: { edges: podcastDetails }
   } = data;
-  return <PodcastsTemplate podcasts={edges} />;
+  return <PodcastsTemplate podcastDetails={podcastDetails} />;
 };
 
 Podcasts.propTypes = {
@@ -59,6 +65,7 @@ export const pageQuery = graphql`
             description
             tags
             episode
+            src
           }
         }
       }
