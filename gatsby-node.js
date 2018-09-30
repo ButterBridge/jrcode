@@ -7,10 +7,7 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
 
   return graphql(`
     {
-      allMarkdownRemark(
-        limit: 1000
-        filter: { frontmatter: { templateKey: { eq: "blog-post" } } }
-      ) {
+      allMarkdownRemark(limit: 1000) {
         edges {
           node {
             id
@@ -32,10 +29,11 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
     }
 
     const { edges: posts } = result.data.allMarkdownRemark;
+    const PAGES_TO_CONVERT = ["about-page", "blog-post"];
 
     posts.forEach(edge => {
       const { id, fields, frontmatter } = edge.node;
-      if (frontmatter.templateKey === "blog-post") {
+      if (PAGES_TO_CONVERT.includes(frontmatter.templateKey)) {
         createPage({
           path: fields.slug,
           tags: frontmatter.tags,

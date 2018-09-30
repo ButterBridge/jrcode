@@ -18,7 +18,6 @@ class TemplateWrapper extends Component {
 
   componentDidMount = () => {
     window.addEventListener("keyup", e => {
-      console.log(e.which);
       if (e.which === 9) {
         this.setState({
           useFocusRings: true
