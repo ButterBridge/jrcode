@@ -62,7 +62,10 @@ class TagsPage extends React.Component {
                       <Option>1, 2, 3</Option>
                     </Window>
                   </Button>
-                  <Button onClick={() => this.handleSortClick("alphabet")}>
+                  <Button
+                    onClick={() => this.handleSortClick("alphabet")}
+                    ringColour={colour}
+                  >
                     <Window colour={sortBy === "alphabet" ? colour : "white"}>
                       <Option>A, B, C</Option>
                     </Window>

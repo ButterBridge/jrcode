@@ -32,7 +32,7 @@ export const Bullet = styled.span`
   margin: 15px;
   color: ${({ colour }) => colour};
   background: ${({ colour }) => colour};
-  ${({ active }) => active && `animation: ${pulse} 0.5s linear infinite;`};
+  ${({ active }) => active && `animation: ${pulse} 0.5s ease infinite;`};
 `;
 
 export const Button = styled.button`

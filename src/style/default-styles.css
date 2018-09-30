@@ -16,3 +16,8 @@ p {
 body {
   background: whitesmoke;
 }
+
+.no-focus-outline a:focus,
+.no-focus-outline button:focus {
+  outline: none;
+}
