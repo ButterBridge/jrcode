@@ -106,7 +106,7 @@ export default class Contact extends React.Component {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  our website.
+                  {` our website.`}
                 </a>
               </Paragraph>
               {formSendError && (
