@@ -184,10 +184,14 @@ export const NavBar = styled.nav`
   display: flex;
   justify-content: flex-end;
   padding: 1.5em;
-  padding-right: 0;
-  padding-bottom: 0;
+  padding-right: 1em;
   height: 100%;
-  background: whitesmoke;
+  background: transparent;
+  /* background: linear-gradient(
+    0deg,
+    rgba(235, 245, 245, 1) 0%,
+    rgba(235, 245, 245, 0) 90%
+  ); */
 `;
 
 export const NavBarItem = styled.span`

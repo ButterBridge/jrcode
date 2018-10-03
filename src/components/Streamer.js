@@ -6,6 +6,7 @@ import { fillNewEmptyArray } from "../utils/helpers";
 
 const Streamer = ({ colours, isSmall, timeSpent, currentHighScore }) => {
   const streamerLength = 100;
+  if (!timeSpent) return null;
   return (
     <div className={`grid-streamer${isSmall ? "-mini" : ""}`}>
       {fillNewEmptyArray(streamerLength, (x, i, arr) => {
@@ -16,12 +17,12 @@ const Streamer = ({ colours, isSmall, timeSpent, currentHighScore }) => {
             ? "whitesmoke"
             : colours[i % colours.length];
         const borderRadius = {};
-        if (i === 0) {
-          borderRadius.bl = "15px";
-        }
-        if (i === streamerLength - 1) {
-          borderRadius.br = "15px";
-        }
+        // if (i === 0) {
+        //   borderRadius.bl = "15px";
+        // }
+        // if (i === streamerLength - 1) {
+        //   borderRadius.br = "15px";
+        // }
         return (
           <Transition additionalTimeout={i * 20} key={i}>
             <Rect
