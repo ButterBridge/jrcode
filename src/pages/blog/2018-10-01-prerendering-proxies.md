@@ -16,7 +16,7 @@ tags:
   - gatsby
 ---
 
-Here's a little gotcha you'll likely have to overcome if you prerender your React app, like I had to using the static site generator [Gatsby](https://www.gatsbyjs.org/) on this site, and how it leads you to some murky ES6 JavaScript concepts
+Here's a little gotcha you'll likely have to overcome if you prerender your React app, like I had to using the static site generator [Gatsby](https://www.gatsbyjs.org/) on this site, and how it leads you to some murky ES6 JavaScript concepts.
 
 ## When I'm Coding Window
 
