@@ -8,8 +8,8 @@ const roundWidgetGetters = [
   class extends React.Component {
     static propTypes = {
       isSmall: PT.bool,
-      displayColours: PT.arrayOf(PT.string).isRequired,
-      timeSpent: PT.number.isRequired,
+      displayColours: PT.arrayOf(PT.string),
+      timeSpent: PT.number,
       withFeedback: PT.bool
     };
 
@@ -20,7 +20,7 @@ const roundWidgetGetters = [
         timeSpent,
         withFeedback
       } = this.props;
-      const roundScore = window.localStorage.getItem("round1");
+      const roundScore = window.localStorage.getItem("round0");
       const feedback = roundScore
         ? `Personal Best: ${roundScore}`
         : "Align all colours to begin";

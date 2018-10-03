@@ -65,8 +65,8 @@ export class GameProvider extends React.Component {
   onMouseOverHeadLetter = letterIndex => {
     const { clock, colours } = this.state;
     const initialRound = this.determineCurrentRound();
-    this[initialRound.onMouseOverHeadLetter](letterIndex, () => {
-      if (helpers[initialRound.checkResult](colours)) {
+    this[initialRound.onMouseOverHeadLetter](letterIndex, nextColours => {
+      if (helpers[initialRound.checkResult](nextColours)) {
         this.triggerProgression(initialRound.minorProgression, () => {
           this[initialRound.onPositiveResult](initialRound, () => {
             const subsequentRound = this.determineCurrentRound();
@@ -87,13 +87,12 @@ export class GameProvider extends React.Component {
 
   progressToNextRound = () => {
     const { rounds, round, colours, timeSpent } = this.state;
-    const currentRound = this.determineCurrentRound();
     if (this.getIsNewPersonalBest()) {
-      this.updateLocalScore(currentRound, timeSpent.toString());
+      this.updateLocalScore(round, timeSpent.toString());
     }
     this.toggleTheClock();
     this.setState({
-      round: rounds[round + 1] ? round + 1 : 1
+      round: rounds[round + 1] ? round + 1 : 0
     });
     this.triggerProgression("random", () => {
       this.setState({
@@ -118,15 +117,18 @@ export class GameProvider extends React.Component {
   };
 
   swapColourRandomly = (targetIndex, done) => {
-    const { colours } = this.state;
+    const { colours: prevColours } = this.state;
     this.setState(
       {
-        colours: colours.map(
+        colours: prevColours.map(
           (colour, index) =>
             index === targetIndex ? sample(styleColours) : colour
         )
       },
-      done
+      () => {
+        const { colours: nextColours } = this.state;
+        done(nextColours);
+      }
     );
   };
 
@@ -192,6 +194,7 @@ export class GameProvider extends React.Component {
   render() {
     const { colours, progressing, rounds, round, timeSpent } = this.state;
     const { children } = this.props;
+    console.log(round, rounds[round]);
     const currentHighScore = Math.min(
       rounds[round].timeToBeat,
       +(

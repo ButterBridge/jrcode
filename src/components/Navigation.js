@@ -20,8 +20,8 @@ class Navigation extends React.Component {
     hoveringIcon: ""
   };
 
-  static getDerivedStateFromProps = ({ progressing }, prevState) => {
-    if (progressing && this.state === prevState) {
+  static getDerivedStateFromProps = ({ progressing }) => {
+    if (progressing) {
       return {
         displayingGameWindow: true,
         gameWindowActions: ["slide", "fade"]
@@ -74,7 +74,7 @@ class Navigation extends React.Component {
       displayColour =>
         progress.includes(displayColour) ? displayColour : "black"
     );
-    const Widget = roundWidgetGetters[round - 1];
+    const Widget = roundWidgetGetters[round];
     return (
       <div className={`grid-navigation${isSmall ? "-mini" : ""}`}>
         <div className="grid-navigation-game">
