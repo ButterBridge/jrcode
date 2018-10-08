@@ -10,7 +10,7 @@ tags:
   - functional-programming
   - third-party-APIs
   - lodash
-  - arrays
+  - javascript
 ---
 
 The array method **reduce** is the best thing in JavaScript, but it's only existed as a native method of the language since 2009 or so, when the [5th Edition of ECMAScript](https://en.wikipedia.org/wiki/ECMAScript#5th_Edition) was released. Before then, people would have relied on their own or other implementations. Even now, there are arguments for going elsewhere - [lodash's reduce](https://lodash.com/docs/4.17.10#reduce), for example, can handle objects too.

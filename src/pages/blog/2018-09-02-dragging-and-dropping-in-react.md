@@ -1,14 +1,14 @@
 ---
-templateKey: 'blog-post'
-title: 'Dragging and Dropping in React'
-date: '2018-09-02T16:55:10.000Z'
+templateKey: "blog-post"
+title: "Dragging and Dropping in React"
+date: "2018-09-02T16:55:10.000Z"
 description: >-
   ...and drawing a line on external libraries
 caption: Mid-drag!
 tags:
   - react
   - drag-and-drop
-  - external-libraries
+  - third-party-APIs
   - learning-to-code
 ---
 
@@ -33,64 +33,63 @@ This [W3Schools tutorial](https://www.w3schools.com/html/html5_draganddrop.asp) 
 At its core, we need five - count 'em - handlers. For me, they all lived in my `Todos` class, and were passed to the `Todo` component if necessary.
 
 ```js
-    handleDragStart = dragStartIndex => {
-        this.setState({
-            dragStartIndex
-        })
-    }
+handleDragStart = dragStartIndex => {
+  this.setState({
+    dragStartIndex
+  });
+};
 ```
 
 This is where it begins! When a user begins dragging an element, we log in state which index is being dragged. Note that this is only possible if the element is given the `draggable` property. It's called by my list item's `onDragStart` listener.
 
 ```js
-    handleDragOver = e => {
-        e.preventDefault();
-    }
+handleDragOver = e => {
+  e.preventDefault();
+};
 ```
 
 This is necessary for elements that could permit the 'drop' to register. By default, this doesn't happen.
 
 ```js
+handleDragEnter = currentOverDragIndex => {
+  this.setState({
+    currentOverDragIndex
+  });
+};
 
-    handleDragEnter = currentOverDragIndex => {
-        this.setState({
-            currentOverDragIndex
-        });
-    }
-
-    handleDragEnd = () => {
-        this.setState({
-            currentOverDragIndex : null
-        });
-    }
+handleDragEnd = () => {
+  this.setState({
+    currentOverDragIndex: null
+  });
+};
 ```
 
 This is perhaps not entirely necessary, but the way I handled this was to slightly enlarge the gap between the two todos if they were currently being dragged over - seemed like a good idea, purely from a UX perspective. So this gets logged `onDragOver`, and cancelled out `onDragEnd` (which is differend to `onDrop`), which affects the CSS on render.
 
 ```js
-    handleDrop = () => {
-        const {reorderTodo} = this.props;
-        const {dragStartIndex, currentOverDragIndex} = this.state;
-        const offset = dragStartIndex < currentOverDragIndex ? -1 : 0
-        reorderTodo(dragStartIndex, currentOverDragIndex + offset);
-        this.setState({
-            currentOverDragIndex : null
-        })
-    }
+handleDrop = () => {
+  const { reorderTodo } = this.props;
+  const { dragStartIndex, currentOverDragIndex } = this.state;
+  const offset = dragStartIndex < currentOverDragIndex ? -1 : 0;
+  reorderTodo(dragStartIndex, currentOverDragIndex + offset);
+  this.setState({
+    currentOverDragIndex: null
+  });
+};
 ```
 
 And this is where the magic happens! `onDrop`, this function lets my top level state-affecting function know the details it needs in order to reorder my items, using what I've kept track of in state. Here's how it does that:
 
 ```js
-    reorderTodo = (from, to) => {
-        const {todos} = this.state;
-        const newlyOrderedTodos = [...todos];
-        const [swappedOutTodo] = newlyOrderedTodos.splice(from, 1);
-        newlyOrderedTodos.splice(to, 0, swappedOutTodo);
-        this.setState({
-            todos : newlyOrderedTodos
-        })
-    }
+reorderTodo = (from, to) => {
+  const { todos } = this.state;
+  const newlyOrderedTodos = [...todos];
+  const [swappedOutTodo] = newlyOrderedTodos.splice(from, 1);
+  newlyOrderedTodos.splice(to, 0, swappedOutTodo);
+  this.setState({
+    todos: newlyOrderedTodos
+  });
+};
 ```
 
 (An aside - I think this is the first time I have used `.splice` in a project... and twice!)

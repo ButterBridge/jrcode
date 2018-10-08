@@ -6,11 +6,11 @@ description: >-
   The tale of the missing window, and the proxy that found it
 caption: '"Rear Window is not defined"'
 tags:
-  - prerendering
-  - browser apis
+  - SSR
+  - browsers
   - proxies
   - recursion
-  - errors
+  - error handling
   - ES6
   - react
   - gatsby
