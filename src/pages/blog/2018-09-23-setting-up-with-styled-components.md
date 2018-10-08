@@ -1,10 +1,11 @@
 ---
-templateKey: 'blog-post'
-title: 'Setting Up With Styled Components'
-date: '2018-09-23T16:55:10.000Z'
+templateKey: "blog-post"
+title: "Setting Up With Styled Components"
+date: "2018-09-23T16:55:10.000Z"
 description: >-
   Stay DRY with Styled Components
 caption: Stylish, but DRY.
+canonical: "https://www.jrcode.co.uk/blog/2018-09-23-setting-up-with-styled-components/"
 tags:
   - styled-components
   - react
@@ -37,7 +38,7 @@ CSS-in-JS is not an approach without logic. It entirely suits the compositional 
 The standard syntax for a styled component looks like this:
 
 ```js
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const Subheading = styled.h3`
   font-size: 1.5em;
@@ -50,23 +51,27 @@ export const Subheading = styled.h3`
 I've been naughty and added a couple of styling attributes in there already. But you will have more restraint. Here's how I might use some styled components in a React component:
 
 ```js
-import { Main, Subheading, FlexCollection, FlexButton, ButtonText } from './styled';
+import {
+  Main,
+  Subheading,
+  FlexCollection,
+  FlexButton,
+  ButtonText
+} from "./styled";
 
 const Tags = ({ tags }) => (
-  (
-    <Main>
-      <Subheading>All tags...</Subheading>
-      <FlexCollection>
-        {tags.map(tag => (
-          <Link to={`/tags/${tag}`} key={tag}>
-            <FlexButton>
-              <ButtonText>{tag}</ButtonText>
-            </FlexButton>
-          </Link>
-        ))}
-      </FlexCollection>
-    </Main>
-  )
+  <Main>
+    <Subheading>All tags...</Subheading>
+    <FlexCollection>
+      {tags.map(tag => (
+        <Link to={`/tags/${tag}`} key={tag}>
+          <FlexButton>
+            <ButtonText>{tag}</ButtonText>
+          </FlexButton>
+        </Link>
+      ))}
+    </FlexCollection>
+  </Main>
 );
 ```
 
@@ -78,8 +83,8 @@ When I want to reuse the component (this won't be my only subheading), I can jus
 const Button = styled.a`
   background: transparent;
   border: 2px solid red;
-  color: ${(props) => props.primary ? "cyan" : "palevioletred"};
-`
+  color: ${props => (props.primary ? "cyan" : "palevioletred")};
+`;
 ```
 
 ### Start as you mean to go on
@@ -87,7 +92,7 @@ const Button = styled.a`
 At the start of a project I now copy in and adapt two files to `src/components/styled-components` - one called `elements.js` and one called `structures.js`. After adaptation, both will contain skeletal styled component descriptions for every component I identified in the planning stage of my project. Here's an `elements.js`, containing every element I expected to use in the project, that I did recently:
 
 ```js
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const SuperHeading = styled.h1``;
 export const Heading = styled.h3``;
@@ -118,10 +123,11 @@ export const FlexCollection = styled.div`
 `;
 export const EqualColumns = styled.div`
   display: grid;
-  grid-template-columns: ${({numberOfCols}) => `repeat(${numberOfCols}, 1fr)`};
+  grid-template-columns: ${({ numberOfCols }) =>
+    `repeat(${numberOfCols}, 1fr)`};
 `;
 export const Column = styled.div`
-  grid-column: ${({colStart}) => colStart};
+  grid-column: ${({ colStart }) => colStart};
 `;
 export const Footer = styled.footer``;
 export const Form = styled.form``;
