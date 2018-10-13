@@ -1,5 +1,5 @@
 import React from "react";
-import PropTypes from "prop-types";
+import PT from "prop-types";
 import Link from "gatsby-link";
 import Icon from "./Icon";
 import Transition from "./Transition";
@@ -20,35 +20,34 @@ class Navigation extends React.Component {
     hoveringIcon: ""
   };
 
-  static getDerivedStateFromProps = ({ progressing }) => {
-    if (progressing) {
-      return {
-        displayingGameWindow: true,
-        gameWindowActions: ["slide", "fade"]
-      };
-    }
-    return {};
-  };
-
-  componentDidUpdate(_, prevState) {
+  componentDidUpdate() {
     const { progressing, toggleForceReveal } = this.props;
-    if (progressing && this.state === prevState) {
-      toggleForceReveal(true);
-      setTimeout(() => {
-        this.setState(
-          {
-            gameWindowActions: ["ascend", "fadeOut"]
-          },
-          () => {
-            toggleForceReveal(false);
-            setTimeout(() => {
-              this.setState({
-                displayingGameWindow: false
-              });
-            }, 1000);
-          }
-        );
-      }, 6000);
+    const { displayingGameWindow } = this.state;
+    if (progressing && !displayingGameWindow) {
+      this.setState(
+        {
+          displayingGameWindow: true,
+          gameWindowActions: ["slide", "fade"]
+        },
+        () => {
+          toggleForceReveal(true);
+          setTimeout(() => {
+            this.setState(
+              {
+                gameWindowActions: ["ascend", "fadeOut"]
+              },
+              () => {
+                toggleForceReveal(false);
+                setTimeout(() => {
+                  this.setState({
+                    displayingGameWindow: false
+                  });
+                }, 1000);
+              }
+            );
+          }, 6000);
+        }
+      );
     }
   }
 
@@ -171,16 +170,16 @@ class Navigation extends React.Component {
 }
 
 Navigation.propTypes = {
-  colour: PropTypes.string,
-  isSmall: PropTypes.bool.isRequired,
-  location: PropTypes.shape({
-    pathname: PropTypes.string.isRequired
+  colour: PT.string,
+  isSmall: PT.bool.isRequired,
+  location: PT.shape({
+    pathname: PT.string.isRequired
   }).isRequired,
-  progress: PropTypes.array,
-  progressing: PropTypes.bool.isRequired,
-  toggleForceReveal: PropTypes.func.isRequired,
-  timeSpent: PropTypes.number.isRequired,
-  round: PropTypes.number.isRequired
+  progress: PT.array,
+  progressing: PT.oneOfType([PT.string, PT.bool]).isRequired,
+  toggleForceReveal: PT.func.isRequired,
+  timeSpent: PT.number.isRequired,
+  round: PT.number.isRequired
 };
 
 export default Navigation;

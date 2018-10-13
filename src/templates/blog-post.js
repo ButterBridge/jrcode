@@ -93,7 +93,7 @@ BlogPostTemplate.propTypes = {
   contentComponent: PropTypes.func,
   frontmatter: PropTypes.object.isRequired,
   siteTitle: PropTypes.string.isRequired,
-  images: PropTypes.object.isRequired
+  images: PropTypes.object
 };
 
 const BlogPost = ({ data }) => {

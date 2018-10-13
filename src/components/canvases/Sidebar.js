@@ -69,7 +69,7 @@ class Sidebar extends Component {
 Sidebar.propTypes = {
   dimensions: PT.arrayOf(PT.number).isRequired,
   colours: PT.arrayOf(PT.string).isRequired,
-  progressing: PT.bool.isRequired
+  progressing: PT.oneOfType([PT.string, PT.bool]).isRequired
 };
 
 export default Sidebar;
