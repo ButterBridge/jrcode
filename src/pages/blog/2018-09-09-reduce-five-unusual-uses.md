@@ -5,7 +5,7 @@ date: "2018-09-09T16:55:10.000Z"
 description: >-
   ...for the best thing in JavaScript
 caption: Pretend to be a wizard by picking up a stick, pointing it at your computer, and commanding 'Reduce!'
-canonical: "https://www.jrcode.co.uk/blog/2018-09-09-reduce-five-unusual-uses/"
+canonical: "https://blog.northcoders.com/reduce-five-unusual-uses"
 tags:
   - reduce
   - functional-programming

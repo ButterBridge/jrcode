@@ -23,7 +23,7 @@ export const BlogPostTemplate = ({
   contentComponent: PostContent = Content,
   siteTitle,
   images,
-  frontmatter: { description, tags, title, caption, formattedDate }
+  frontmatter: { description, tags, title, caption, formattedDate, canonical }
 }) => {
   tags.sort((a, b) => {
     if (a.toLowerCase() < b.toLowerCase()) return -1;
@@ -38,7 +38,10 @@ export const BlogPostTemplate = ({
         if (!colours.length) return null;
         return (
           <Main colour={themeColour}>
-            <Helmet title={`${siteTitle} - blog - ${title}`} />
+            <Helmet>
+              <title>{`${siteTitle} - blog - ${title}`}</title>
+              <meta rel="canonical" href={canonical} />
+            </Helmet>
             <TransitionContainer>
               <BulletedTitle
                 addition="title"
@@ -139,6 +142,7 @@ export const pageQuery = graphql`
         description
         tags
         caption
+        canonical
       }
     }
     allFile(filter: { extension: { eq: "png" } }) {

@@ -1,10 +1,11 @@
 ---
-templateKey: 'blog-post'
-title: 'User Sessions With React'
-date: '2018-09-16T16:55:10.000Z'
+templateKey: "blog-post"
+title: "User Sessions With React"
+date: "2018-09-16T16:55:10.000Z"
 description: >-
   Render props in React make authorising your application easy
 caption: They remember each other, like old friends.
+canonical: ""
 tags:
   - react
   - composition
@@ -30,37 +31,39 @@ Firebase authentication actually has a facility built in to handle this, but you
 First, let's look at how to set up your application. There's multiple ways to do this, but I like this [render props pattern](https://reactjs.org/docs/render-props.html). You could use composition or just plain old conditional rendering, but this way you get an overview on the top level of your application of all the potential next level views (the homepage or the sign in page) as well as creating a potentially extensible `Auth` component you could use at different levels of your application.
 
 ```js
-import React, { Component } from 'react';
-import SignIn from './SignIn';
-import RestOfMyApplication from './RestOfMyApplication';
-import LoadingScreen from './LoadingScreen';
+import React, { Component } from "react";
+import SignIn from "./SignIn";
+import RestOfMyApplication from "./RestOfMyApplication";
+import LoadingScreen from "./LoadingScreen";
 
 class App extends Component {
   state = {
-    currentUser: null,
-  }
+    currentUser: null
+  };
 
   changeCurrentUser = (user = null) => {
     this.setState({
-      currentUser: user,
+      currentUser: user
     });
-  }
+  };
 
   render() {
     const { currentUser } = this.state;
     return (
-      <Auth 
+      <Auth
         currentUser={currentUser}
-        render={(isCheckingUserStatus, errorMessage) => (
-          isCheckingUserStatus
-            ? <LoadingScreen />
-            : errorMessage
-              ? <RestOfMyApplication currentUser={currentUser} /> 
-              : <SignIn 
-                errorMessage={errorMessage}
-                changeCurrentUser={this.changeCurrentUser} 
-              />
-        )}
+        render={(isCheckingUserStatus, errorMessage) =>
+          isCheckingUserStatus ? (
+            <LoadingScreen />
+          ) : errorMessage ? (
+            <RestOfMyApplication currentUser={currentUser} />
+          ) : (
+            <SignIn
+              errorMessage={errorMessage}
+              changeCurrentUser={this.changeCurrentUser}
+            />
+          )
+        }
       />
     );
   }
@@ -163,25 +166,26 @@ export default Auth;
 There is of course one missing piece to complete this labyrinth - how did that session token get into local storage in the first place? Simple enough - when a user logs in, and perhaps when they create an account, generate a session token and store it both in the database and in local storage. Something like this, held in the `SignIn` component:
 
 ```js
-import auth from '../firebase/auth';
+import auth from "../firebase/auth";
 
 handleLoginSubmit = () => {
   const { loginEmail, loginPassword } = this.state;
   const { changeCurrentUser } = this.props;
-  auth.signInWithEmailAndPassword(loginEmail, loginPassword)
+  auth
+    .signInWithEmailAndPassword(loginEmail, loginPassword)
     .then(() => dbApi.getUserByEmail(loginEmail))
-    .then((loggedInUser) => {
+    .then(loggedInUser => {
       changeCurrentUser(loggedInUser);
-      return db.collection('sessions').add({
+      return db.collection("sessions").add({
         userId: loggedInUser.id,
-        timestamp: moment().format(),
+        timestamp: moment().format()
       });
     })
     .then(({ id }) => {
-      localStorage.setItem('sessionId', id);
+      localStorage.setItem("sessionId", id);
     })
-    .catch(/* handle errors */)
-}
+    .catch(/* handle errors */);
+};
 ```
 
 So, sign in via Firebase's Authentication API. If successful, grab the user data we hold from the database and put that user in state (we know from earlier that this will allow the App to render the rest of the application). But don't quit there - create a session token with reference to the user and the current time (use `moment().format()` because you can't send in whole moment object) and grab the automatically generated id to use as a token in local storage.

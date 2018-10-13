@@ -1,10 +1,11 @@
 ---
-templateKey: 'blog-post'
-title: 'Gatsby and the Hybrids'
-date: '2018-08-07T21:24:10.000Z'
+templateKey: "blog-post"
+title: "Gatsby and the Hybrids"
+date: "2018-08-07T21:24:10.000Z"
 description: >-
   Gatsby, the mad scientist, creates a hybridised component - because he can.
 caption: Hot stuff
+canonical: ""
 tags:
   - gatsby
   - react
@@ -19,13 +20,13 @@ I've made some progress with structuring the website, but will save that for ano
 
 React and the way it managed browser state was a revelation to me. The idea of keeping the essence of your application in one place with some hard and fast rules about how to change it (no mutants allowed) makes such wonderful sense. I started off making these complex, intricate, but admittedly bloated states, and later taught myself to pare them down to something elegant and essential. State as a driver of the rendering of your application is a beautiful thing.
 
-React's state gives you access to hyper-market: endless ingredients and endless possibilities and you will try everything in the store. Gatsby is more like an artisan delicatessen: there's a set of beautiful dishes that you can craft nicely on a plate, but you're not going to be cooking anything. There's a sense that when there's something nice on the page, *you didn't really do it*.
+React's state gives you access to hyper-market: endless ingredients and endless possibilities and you will try everything in the store. Gatsby is more like an artisan delicatessen: there's a set of beautiful dishes that you can craft nicely on a plate, but you're not going to be cooking anything. There's a sense that when there's something nice on the page, _you didn't really do it_.
 
 It's not really a criticism, just as I wouldn't criticise a party host for not making their own canapés. But sometimes you want a little flourish of your own doing, not just submit to a beautiful [typography](https://kyleamathews.github.io/typography.js/) theme.
 
 ## Hybrid cookery
 
-Thankfully, for the sake of this metaphor, the deli near mine serves some great raw ingredients too - and so we reach the concept of a hybrid component. I stumbled on [this page on the Gatsby guides](https://www.gatsbyjs.org/docs/building-apps-with-gatsby/) - specifically the second subheading - and realised that just because Gatsby was principally server-side rendered, that didn't mean I couldn't have my React playtime too. Sure, you sacrifice a *tiny* amount of loading speed as that portion of your app isn't pre-rendered, but if you are clever about your componentisation, it's nothing. And that Gatsby handles this code-splitting for you, well...
+Thankfully, for the sake of this metaphor, the deli near mine serves some great raw ingredients too - and so we reach the concept of a hybrid component. I stumbled on [this page on the Gatsby guides](https://www.gatsbyjs.org/docs/building-apps-with-gatsby/) - specifically the second subheading - and realised that just because Gatsby was principally server-side rendered, that didn't mean I couldn't have my React playtime too. Sure, you sacrifice a _tiny_ amount of loading speed as that portion of your app isn't pre-rendered, but if you are clever about your componentisation, it's nothing. And that Gatsby handles this code-splitting for you, well...
 
 So I've ben messing around with some random colour and font generation on user activity in the top left corner. Whether it'll still be there when I publish the website, I'm not sure, but I image there will be something to engage a user a bit beyond what I can do with CSS pseudo-selectors.
 

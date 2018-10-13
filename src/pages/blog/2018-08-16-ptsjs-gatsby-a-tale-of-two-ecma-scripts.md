@@ -1,10 +1,11 @@
 ---
-templateKey: 'blog-post'
-title: 'Pts.js and Gatsby - a Tale of Two ECMAScripts'
-date: '2018-08-16T16:55:10.000Z'
+templateKey: "blog-post"
+title: "Pts.js and Gatsby - a Tale of Two ECMAScripts"
+date: "2018-08-16T16:55:10.000Z"
 description: >-
   Hard won battles on the transpilation front
 caption: The original inspiration...
+canonical: ""
 tags:
   - pts.js
   - gatsby
@@ -29,7 +30,7 @@ That one's an easy workaround. Not being able to compile an entire library becau
 
 It would have been easy to write off what I was trying to do. It's the interactive pattern you can probably still see on the left hand side (I doubt I'll ditch it in a hurry, hard won gain that it was). Fun, but entirely superficial. But that would definitely have gone agains the point of me making this website - to run up against brick walls and slowly chisel them away.
 
-This particular brick wall was formulated on one of those occasions a workmate sent round a link to something cool. The normal sequence of events in these occasions is to think *that looks interesting, I'll play around with that later* and promptly forget about it. Not this time! The link in question was to [Pts.js](https://ptsjs.org/), and having a few minutes I looked at the source code for some of the examples. I was pleasantly surprised to see that I could vaguely decipher it, at least to the extent that I could repurpose the code for my own aesthetic. Not knowing much advanced geometry and generally having a design brain, it was exciting to find *something* that I thought I could make **something** out of.
+This particular brick wall was formulated on one of those occasions a workmate sent round a link to something cool. The normal sequence of events in these occasions is to think _that looks interesting, I'll play around with that later_ and promptly forget about it. Not this time! The link in question was to [Pts.js](https://ptsjs.org/), and having a few minutes I looked at the source code for some of the examples. I was pleasantly surprised to see that I could vaguely decipher it, at least to the extent that I could repurpose the code for my own aesthetic. Not knowing much advanced geometry and generally having a design brain, it was exciting to find _something_ that I thought I could make **something** out of.
 
 It was relatively easy to get something going in localhost. I rewrote one of their html demos in React, integrated it with my own colours and style, messed around with some CSS grid and in a few hours I had something that actually resembled what I'd been imagining in my head at the start.
 
@@ -41,9 +42,9 @@ This was a bit of a kick in the teeth, seeing how easy Gatsby has been to use up
 
 My initial research suggested that the easiest solution would also be the one I was never going to take up - wait for Gatsby v2 and its updated Uglify transpilation system (read more about this on [this issue thread](https://github.com/gatsbyjs/gatsby/issues/3780)). I won't document every step I attempted in accurate detail, mostly because I don't remember exactly and don't want to mislead, but here's a few things I tried (most of them requiring me to discover that they were even an option before I tried them):
 
-* exposing the `.babelrc` file in the root directory and trying a range of different plugins and presets
-* accessing the `exports.modifyWebpackConfig` hook in gatsby-node.js and trying out some different babel configurations in there
-* bringing the entire library into the code itself and attempting to transpile / rewrite sections to be compliant with whatever Babel config I had going at the time
+- exposing the `.babelrc` file in the root directory and trying a range of different plugins and presets
+- accessing the `exports.modifyWebpackConfig` hook in gatsby-node.js and trying out some different babel configurations in there
+- bringing the entire library into the code itself and attempting to transpile / rewrite sections to be compliant with whatever Babel config I had going at the time
 
 These produced variously useless results ranging from failure to render the component in question to failure to even finish the development build. There was a lot of making no progress and trying an entirely different tack, before thinking of a variation on what you'd been doing a couple of hours ago, and reverting to that setup. Frustrating stuff.
 

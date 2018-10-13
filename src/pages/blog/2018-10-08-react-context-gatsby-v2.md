@@ -4,6 +4,7 @@ title: "Using Context in Gatsby v2"
 date: "2018-10-08T16:55:10.000Z"
 description: >-
   A mini migration challenge
+canonical: ""
 tags:
   - react
   - SSR

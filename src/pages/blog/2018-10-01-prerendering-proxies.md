@@ -5,6 +5,7 @@ date: "2018-10-01T16:55:10.000Z"
 description: >-
   The tale of the missing window, and the proxy that found it
 caption: '"Rear Window is not defined"'
+canonical: ""
 tags:
   - SSR
   - browsers

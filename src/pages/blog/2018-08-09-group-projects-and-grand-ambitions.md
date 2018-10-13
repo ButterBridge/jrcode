@@ -1,9 +1,10 @@
 ---
-templateKey: 'blog-post'
-title: 'Group Projects and Grand Ambitions'
-date: '2018-08-09T16:55:10.000Z'
+templateKey: "blog-post"
+title: "Group Projects and Grand Ambitions"
+date: "2018-08-09T16:55:10.000Z"
 description: >-
   How to do code to teach code
+canonical: ""
 tags:
   - northcoders
   - projects
@@ -18,11 +19,11 @@ There can be any number of frustrations in working with third party software, bu
 
 Here are some of the issues:
 
-*Automation* - there are several regular tasks which take more clicks than one would like: sharing repos and notes, feedback forms, slack reminders, internal review documents. But there are all hosted on apis that we have access to, and turning these tasks into a one-button click absolves the need for having to go downstairs to get your phone becasue in a moment of self-righteousness you enabled two-factor authentication, or remembering the exact name we gave to a sprint (was it dance-party / play-list / music-tracker / audio-documenter...?)
+_Automation_ - there are several regular tasks which take more clicks than one would like: sharing repos and notes, feedback forms, slack reminders, internal review documents. But there are all hosted on apis that we have access to, and turning these tasks into a one-button click absolves the need for having to go downstairs to get your phone becasue in a moment of self-righteousness you enabled two-factor authentication, or remembering the exact name we gave to a sprint (was it dance-party / play-list / music-tracker / audio-documenter...?)
 
-*Spread* - we have resources dotted around the interweb across several different services - slack, github, heroku, firebase, a packet of post-it notes we opened, wrote something vitally important on, then left in a draw. Sometimes even knowing which service hosts the information isn't a given. Creating one space that drew the key information together would make for a pleasant open-up-your-laptop-with-a-coffee-by-your-side start of day experience.
+_Spread_ - we have resources dotted around the interweb across several different services - slack, github, heroku, firebase, a packet of post-it notes we opened, wrote something vitally important on, then left in a draw. Sometimes even knowing which service hosts the information isn't a given. Creating one space that drew the key information together would make for a pleasant open-up-your-laptop-with-a-coffee-by-your-side start of day experience.
 
-*Analytics* - By tying all the information together, it'ss far easier to perform the sort of analyses that could better inform our practise - what are people asking for help with the most? Is there a time of day we need to have more support available? Can we have available solutions from previous similar requests?
+_Analytics_ - By tying all the information together, it'ss far easier to perform the sort of analyses that could better inform our practise - what are people asking for help with the most? Is there a time of day we need to have more support available? Can we have available solutions from previous similar requests?
 
 ## Teamwork -> dreamwork
 

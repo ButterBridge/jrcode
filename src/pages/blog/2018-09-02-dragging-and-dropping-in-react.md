@@ -5,6 +5,7 @@ date: "2018-09-02T16:55:10.000Z"
 description: >-
   ...and drawing a line on external libraries
 caption: Mid-drag!
+canonical: ""
 tags:
   - react
   - drag-and-drop

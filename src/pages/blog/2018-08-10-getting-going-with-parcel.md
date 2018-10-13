@@ -1,10 +1,11 @@
 ---
-templateKey: 'blog-post'
-title: 'Getting Going With Parcel.js'
-date: '2018-08-10T16:55:10.000Z'
+templateKey: "blog-post"
+title: "Getting Going With Parcel.js"
+date: "2018-08-10T16:55:10.000Z"
 description: >-
   An alternative to webpack?
 caption: It's not beautiful, but it is parcelled...
+canonical: ""
 tags:
   - parcel.js
   - webpack
@@ -37,8 +38,8 @@ Anyhoo, after the `npm install -g parcel-bundler` I added the following to my pa
 
 ```json
 {
-    "dev": "NODE_ENV=development parcel ./src/index.html",
-    "build": "parcel build ./src/index.html/",
+  "dev": "NODE_ENV=development parcel ./src/index.html",
+  "build": "parcel build ./src/index.html/"
 }
 ```
 
@@ -48,12 +49,12 @@ It took a bit of experimentation to discover which babel packages I needed for t
 
 ```json
 {
-    "babel-core": "^6.26.3",
-    "babel-plugin-transform-class-properties": "^6.24.1",
-    "babel-plugin-transform-object-rest-spread": "^6.26.0",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-react": "^6.24.1",
-    "babel-preset-react-app": "^3.1.0"
+  "babel-core": "^6.26.3",
+  "babel-plugin-transform-class-properties": "^6.24.1",
+  "babel-plugin-transform-object-rest-spread": "^6.26.0",
+  "babel-preset-env": "^1.7.0",
+  "babel-preset-react": "^6.24.1",
+  "babel-preset-react-app": "^3.1.0"
 }
 ```
 
@@ -61,8 +62,8 @@ And the following .babelrc file in the root of my project:
 
 ```json
 {
-    "presets": ["react-app", "env",  "react"],
-    "plugins": ["transform-object-rest-spread", "transform-class-properties"]
+  "presets": ["react-app", "env", "react"],
+  "plugins": ["transform-object-rest-spread", "transform-class-properties"]
 }
 ```
 
@@ -70,18 +71,18 @@ The plugins are important for a couple of experimental syntaxes I've used, and w
 
 ```js
 handleToggleComplete = todoToToggle => {
-    const {todos} = this.state;
-    this.setState({
-        todos : todos.map(todo => {
-            return todo === todoToToggle ?
-                {
-                    ...todo,
-                    completed : !todo.completed
-                } :
-                todo
-        })
+  const { todos } = this.state;
+  this.setState({
+    todos: todos.map(todo => {
+      return todo === todoToToggle
+        ? {
+            ...todo,
+            completed: !todo.completed
+          }
+        : todo;
     })
-}
+  });
+};
 ```
 
 And that was enough to run my dev script in the package.json! No need to configure for importing .css files, or anything like that, which is lovely. On running dev, parcel creates a dist folder in your root containing the compiled code, which is always a grand thing to explore if you are looking for a way to hurt your eyes.
@@ -102,35 +103,35 @@ First I installed jest, enzyme, and enzyme's adapter for react version 16, givin
 
 ```json
 {
-    "enzyme": "^3.4.1",
-    "enzyme-adapter-react-16": "^1.2.0",
-    "jest": "^23.4.2"
+  "enzyme": "^3.4.1",
+  "enzyme-adapter-react-16": "^1.2.0",
+  "jest": "^23.4.2"
 }
 ```
 
 I configured these according to instructions on this neat [tutorial video from Jack Franklin](https://www.youtube.com/watch?v=aSQ8v9JH5C8&t=11s), giving me this in a setup.js in a 'tests' directory:
 
 ```js
-import Enzyme from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
+import Enzyme from "enzyme";
+import Adapter from "enzyme-adapter-react-16";
 
-Enzyme.configure({adapter : new Adapter()});
+Enzyme.configure({ adapter: new Adapter() });
 ```
 
 I used a jest.config.file in the root directory to point to this in setupFiles (this code a bit below), and added a package.json test script that was initially a rather poetic `"test": "jest"` (as jest is capable of searching for files that meet naming conventions) but I later changed to `"test": "jest src/tests"` because it seemed to be going a bit slow, and I thought this would help (I don't think it did). Finally a test in the directory described in that script...
 
 ```js
-import React from 'react';
-import App from '../components/App';
-import {shallow} from 'enzyme';
+import React from "react";
+import App from "../components/App";
+import { shallow } from "enzyme";
 
-describe('App', () => {
-    it('starts with nothing in the newTodoText input', () => {
-        const wrapper = shallow(<App />);
-        const newTodoTextState = wrapper.state().newTodoText;
-        expect(newTodoTextState).toEqual('');
-    })
-})
+describe("App", () => {
+  it("starts with nothing in the newTodoText input", () => {
+    const wrapper = shallow(<App />);
+    const newTodoTextState = wrapper.state().newTodoText;
+    expect(newTodoTextState).toEqual("");
+  });
+});
 ```
 
 ...thinking this would be a neat way of getting going, but immediately hit a brick wall, with the unfriendly error message 'SecurityError: localStorage is not available for opaque origins'. Opaque as the error message is, it was pretty obvious what the problem was - the localStorage I was using for storing the todos is a browser API, but here I was trying to access it in lowly node.
@@ -141,14 +142,14 @@ But I was on a role and quickly found the jest docs on webpack static file impor
 
 ```js
 module.exports = {
-    setupFiles: ["<rootDir>/tests/setup.js"],
-    verbose: true,
-    testURL: "http://localhost/",
-    moduleNameMapper: {
-        "\\.(css|less|sass|scss)$": "<rootDir>/tests/styleMock.js",
-        "\\.(gif|ttf|eot|svg)$": "<rootDir>/tests/fileMock.js"
-    }
-}
+  setupFiles: ["<rootDir>/tests/setup.js"],
+  verbose: true,
+  testURL: "http://localhost/",
+  moduleNameMapper: {
+    "\\.(css|less|sass|scss)$": "<rootDir>/tests/styleMock.js",
+    "\\.(gif|ttf|eot|svg)$": "<rootDir>/tests/fileMock.js"
+  }
+};
 ```
 
 ...and these sweet little mock files you can see referenced there:
@@ -158,7 +159,7 @@ module.exports = {
 module.exports = {};
 
 //fileMock.js
-module.exports = 'test-file-stub';
+module.exports = "test-file-stub";
 ```
 
 And then it worked.

@@ -1,10 +1,11 @@
 ---
-templateKey: 'blog-post'
-title: 'Forms with Gatsby & Netlify'
-date: '2018-08-19T16:55:10.000Z'
+templateKey: "blog-post"
+title: "Forms with Gatsby & Netlify"
+date: "2018-08-19T16:55:10.000Z"
 description: >-
   Submission made easy
 caption: What testing forms looks like...
+canonical: ""
 tags:
   - gatsby
   - netlify
@@ -26,158 +27,141 @@ Most of the magic happens in a contact.js file in the pages folder. As you can s
 
 ```js
 import React from "react";
-import {/* various */} from '../../styled-components';
+import /* various */ "../../styled-components";
 import { encode } from "../../utils/helpers";
 
 export default class Contact extends React.Component {
-    state = { 
-        name: '',
-        email: '',
-        message: '',
-        hunny : '',
-        formSent: false,
-        formSendError: false,
-        submitting: false,
+  state = {
+    name: "",
+    email: "",
+    message: "",
+    hunny: "",
+    formSent: false,
+    formSendError: false,
+    submitting: false
+  };
+
+  render() {
+    const {
+      formSent,
+      formSendError,
+      submitting,
+      name,
+      email,
+      message,
+      hunny
+    } = this.state;
+    return (
+      <Main>
+        <TransitionContainer>
+          <SuperTitle>Contact</SuperTitle>
+          <Paragraph>/* intro stuff... */</Paragraph>
+          {formSendError && <Opener>Oops!</Opener>}
+          {formSent && <Opener>Thanks!</Opener>}
+          <form
+            name="contact"
+            method="post"
+            data-netlify="true"
+            onSubmit={this.handleSubmit}
+          >
+            <input type="hidden" name="form-name" value="contact" />
+            <p hidden>
+              <input name="hunny" onChange={this.handleChange} value={hunny} />
+            </p>
+            <FormLabel>Your name:</FormLabel>
+            <FormInput
+              type="text"
+              name="name"
+              onChange={this.handleChange}
+              value={name}
+            />
+            /* Some more form inputs... */
+            <FormButton
+              type="submit"
+              disabled={submitting || !name || !email || !message}
+            >
+              Send
+            </FormButton>
+          </form>
+        </TransitionContainer>
+      </Main>
+    );
+  }
+
+  handleChange = e => {
+    this.setState({
+      [e.target.name]: e.target.value
+    });
+  };
+
+  handleSubmit = e => {
+    const { name, email, message, hunny } = this.state;
+
+    if (hunny) return;
+
+    this.setState({
+      formSent: false,
+      formSendError: false,
+      submitting: true
+    });
+
+    const encoding = encode({
+      "form-name": "contact",
+      name,
+      email,
+      message
+    });
+
+    const headers = {
+      "Content-Type": "application/x-www-form-urlencoded"
     };
 
-    render() {
-        const {
-            formSent,
-            formSendError,
-            submitting,
-            name,
-            email, 
-            message,
-            hunny
-        } = this.state;
-        return (
-            <Main>
-                <TransitionContainer>
-                    <SuperTitle>
-                        Contact
-                    </SuperTitle>
-                    <Paragraph>
-                        /* intro stuff... */
-                    </Paragraph>
-                    {formSendError && <Opener>Oops!</Opener>}
-                    {formSent && <Opener>Thanks!</Opener>}
-                    <form
-                        name="contact"
-                        method="post"
-                        data-netlify="true"
-                        onSubmit={this.handleSubmit}
-                    >
-                        <input 
-                            type="hidden"
-                            name="form-name"
-                            value="contact"
-                        />
-                        <p hidden>
-                            <input 
-                                name="hunny" 
-                                onChange={this.handleChange}
-                                value={hunny}
-                            />
-                        </p>
-                        <FormLabel>
-                            Your name:
-                        </FormLabel>
-                        <FormInput 
-                            type="text"
-                            name="name"
-                            onChange={this.handleChange}
-                            value={name}
-                        />
-                        /* Some more form inputs... */
-                        <FormButton
-                            type="submit"
-                            disabled={
-                                submitting || 
-                                !name || 
-                                !email || 
-                                !message
-                            }
-                        >
-                            Send
-                        </FormButton>
-                    </form>
-                </TransitionContainer>
-            </Main>
-        );
-    }
-
-    handleChange = e => {
-        this.setState({ 
-            [e.target.name]: e.target.value 
-        });
-    };
-
-    handleSubmit = e => {
-        const {name, email, message, hunny} = this.state;
-
-        if (hunny) return;
-
+    fetch("/", {
+      method: "POST",
+      headers,
+      body: encoding
+    })
+      .then(() => {
         this.setState({
-            formSent: false,
-            formSendError: false,
-            submitting: true
-        })
-
-        const encoding = encode({
-            'form-name': 'contact',
-            name, email, message
-        })
-
-        const headers = {
-            'Content-Type': 'application/x-www-form-urlencoded' 
-        }
-
-        fetch('/', {
-            method: 'POST',
-            headers,
-            body: encoding
-        })
-        .then(() => {
-            this.setState({
-                formSent: true,
-                name: '',
-                email: '',
-                message: '',
-                submitting: false
-            })
-        })
-        .catch((err) => {
-            this.setState({
-                formSendError: err,
-                submitting: false
-            })
+          formSent: true,
+          name: "",
+          email: "",
+          message: "",
+          submitting: false
         });
+      })
+      .catch(err => {
+        this.setState({
+          formSendError: err,
+          submitting: false
+        });
+      });
 
-        e.preventDefault();
-    };
+    e.preventDefault();
+  };
 }
 ```
 
 Let's have a look at some the things that make this function.
 
-* The `<form>` element has most of the magic stuff in. The `data-netlify="true"` prop is what netlify uses to hook into the onSubmit and capture the data. Apparently just having `netlify` as a prop should work too, but it didn't for me. The `name` prop is what Netlify will store responses under in your admin panel.
+- The `<form>` element has most of the magic stuff in. The `data-netlify="true"` prop is what netlify uses to hook into the onSubmit and capture the data. Apparently just having `netlify` as a prop should work too, but it didn't for me. The `name` prop is what Netlify will store responses under in your admin panel.
 
-* There's a very important hidden `input` field as the first child of the form. This is required because of the aforementioned programmatic generation of the form - exactly how Netlify uses this, I cannot say.
+- There's a very important hidden `input` field as the first child of the form. This is required because of the aforementioned programmatic generation of the form - exactly how Netlify uses this, I cannot say.
 
-* Internally, Netlify will do some spam filtering, including using a Recaptcha if they smell a rat apparently. Something else you can do is add a 'honeypot' as you can see above. Netlify have this service built in - you can provide a hidden form input that only a bot would fill in, and see Netlify 'quietly discard' the submission. But with a stateful React component like I have here, I can prevent the submission even being made.
+- Internally, Netlify will do some spam filtering, including using a Recaptcha if they smell a rat apparently. Something else you can do is add a 'honeypot' as you can see above. Netlify have this service built in - you can provide a hidden form input that only a bot would fill in, and see Netlify 'quietly discard' the submission. But with a stateful React component like I have here, I can prevent the submission even being made.
 
-* Netlify expects submissions in x-www-form-urlencoded format - basically key=value pairs, joined with '&' - here's the little helper function I used to do this:
+- Netlify expects submissions in x-www-form-urlencoded format - basically key=value pairs, joined with '&' - here's the little helper function I used to do this:
 
 ```js
 const encode = data => {
-    return Object.entries(data)
-        .map(([key, value]) => {
-            const encKey = encodeURIComponent(key);
-            const encVal = encodeURIComponent(value);
-            return `${encKey}=${encVal}`
-        })
-        .join("&");
-}
+  return Object.entries(data)
+    .map(([key, value]) => {
+      const encKey = encodeURIComponent(key);
+      const encVal = encodeURIComponent(value);
+      return `${encKey}=${encVal}`;
+    })
+    .join("&");
+};
 ```
 
 It requires a `form-name` property and all the fields that you wish to submit alongside.
