@@ -1,29 +1,11 @@
 import React from "react";
 import PT from "prop-types";
-import { window } from "browser-monads";
 import { Transition as ReactTransition } from "react-transition-group";
 import composeTransitionStyles from "../utils/transitions";
 
 const timeout = 250;
-const historyExitingEventType = "history::exiting";
 
 class Transition extends React.Component {
-  state = {
-    exiting: false
-  };
-
-  componentDidMount() {
-    window.addEventListener(historyExitingEventType, this.listenerHandler);
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener(historyExitingEventType, this.listenerHandler);
-  }
-
-  listenerHandler = () => {
-    this.setState({ exiting: true });
-  };
-
   render() {
     const {
       additionalTimeout = 0,
@@ -31,7 +13,6 @@ class Transition extends React.Component {
       children,
       style: additionalStyle
     } = this.props;
-    const { exiting } = this.state;
 
     const transitionProps = {
       timeout: {
@@ -39,7 +20,7 @@ class Transition extends React.Component {
         exit: timeout
       },
       appear: true,
-      in: !exiting
+      in: true
     };
 
     return (

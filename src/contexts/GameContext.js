@@ -132,25 +132,6 @@ export class GameProvider extends React.Component {
     );
   };
 
-  toggleTheClock = () => {
-    const { clock } = this.state;
-    if (!clock) {
-      const newClock = setInterval(() => {
-        const { timeSpent } = this.state;
-        this.setState({
-          timeSpent: timeSpent + 1
-        });
-      }, 1000);
-      this.setState({ clock: newClock });
-    } else {
-      clearInterval(clock);
-      this.setState({
-        clock: null,
-        timeSpent: 0
-      });
-    }
-  };
-
   targetNewColour = ({ progress }, done) => {
     const { colours: currentColours, round, rounds } = this.state;
     this.setState(
@@ -171,6 +152,25 @@ export class GameProvider extends React.Component {
       },
       done
     );
+  };
+
+  toggleTheClock = () => {
+    const { clock } = this.state;
+    if (!clock) {
+      const newClock = setInterval(() => {
+        const { timeSpent } = this.state;
+        this.setState({
+          timeSpent: timeSpent + 1
+        });
+      }, 1000);
+      this.setState({ clock: newClock });
+    } else {
+      clearInterval(clock);
+      this.setState({
+        clock: null,
+        timeSpent: 0
+      });
+    }
   };
 
   triggerProgression = (type, cb) => {
