@@ -63,7 +63,7 @@ export class GameProvider extends React.Component {
   };
 
   onMouseOverHeadLetter = letterIndex => {
-    const { clock, colours } = this.state;
+    const { clock } = this.state;
     const initialRound = this.determineCurrentRound();
     this[initialRound.onMouseOverHeadLetter](letterIndex, nextColours => {
       if (helpers[initialRound.checkResult](nextColours)) {
@@ -74,7 +74,7 @@ export class GameProvider extends React.Component {
             if (
               helpers[subsequentRound.checkCompletion](
                 subsequentRound.progress,
-                colours
+                styleColours
               )
             ) {
               this.progressToNextRound();
@@ -194,11 +194,10 @@ export class GameProvider extends React.Component {
   render() {
     const { colours, progressing, rounds, round, timeSpent } = this.state;
     const { children } = this.props;
+    const { timeToBeat, progress } = rounds[round];
     const currentHighScore = Math.min(
-      rounds[round].timeToBeat,
-      +(
-        window.localStorage.getItem(`round${round}`) || rounds[round].timeToBeat
-      )
+      timeToBeat,
+      +(window.localStorage.getItem(`round${round}`) || timeToBeat)
     );
     return (
       <GameContext.Provider
@@ -208,7 +207,7 @@ export class GameProvider extends React.Component {
           timeSpent,
           round,
           currentHighScore,
-          progress: rounds[round].progress,
+          progress,
           onMouseOverHeadLetter: this.onMouseOverHeadLetter,
           generateRandomColours: this.generateRandomColours
         }}

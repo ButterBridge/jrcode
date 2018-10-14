@@ -1,18 +1,13 @@
 import { difference } from "lodash";
 
-export const areAllEqual = array => {
-  return array.every(item => item === array[0]);
-};
+export const areAllEqual = array => array.every(item => item === array[0]);
 
-export const areEquivalent = (array1, array2) => {
-  return !difference(array2, array1).length;
-};
+export const areEquivalent = (array1, array2) =>
+  !difference(array2, array1).length;
 
 export const doNothing = () => {};
 
-export const removeHyphens = str => {
-  return str.replace(/\-/g, " ");
-};
+export const removeHyphens = str => str.replace(/-/g, " ");
 
 export const hexToRgb = hex => {
   const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
@@ -25,11 +20,10 @@ export const hexToRgb = hex => {
     : null;
 };
 
-export const fillNewEmptyArray = (size, mapCb) => {
-  return Array(size)
+export const fillNewEmptyArray = (size, mapCb) =>
+  Array(size)
     .fill()
     .map(mapCb);
-};
 
 export const getDocHeight = document =>
   Math.max(
