@@ -5,7 +5,7 @@ date: "2018-11-04T16:55:10.000Z"
 description: >-
   A bit on 'what for' and 'how to'
 caption: ""
-canonical: ""
+canonical: "https://blog.northcoders.com/refactoring-katas"
 tags:
   - reduce
   - refactoring
@@ -117,10 +117,10 @@ At this stage, I'm close to happy. This is decent functional programming. But it
 ```js
 const tallyAndDeduct = ({ amount, tally }, value) => {
   while (amount - value >= 0) {
-    change[value] = (change[value] || 0) + 1;
+    tally[value] = (tally[value] || 0) + 1;
     amount -= value;
   }
-  return { amount, change };
+  return { amount, tally };
 };
 
 const calculateChange = (pennies, coins) => {
