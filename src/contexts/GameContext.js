@@ -17,7 +17,7 @@ export class GameProvider extends React.Component {
     rounds: [
       {
         onMouseOverHeadLetter: "swapColourRandomly",
-        checkResult: "areAllEqual",
+        checkStatus: "areAllEqual",
         onPositiveResult: "targetNewColour",
         checkCompletion: "areEquivalent",
         minorProgression: "flash",
@@ -66,7 +66,8 @@ export class GameProvider extends React.Component {
     const { clock } = this.state;
     const initialRound = this.determineCurrentRound();
     this[initialRound.onMouseOverHeadLetter](letterIndex, nextColours => {
-      if (helpers[initialRound.checkResult](nextColours)) {
+      const isStatusPositive = helpers[initialRound.checkStatus](nextColours);
+      if (isStatusPositive) {
         this.triggerProgression(initialRound.minorProgression, () => {
           this[initialRound.onPositiveResult](initialRound, () => {
             const subsequentRound = this.determineCurrentRound();
