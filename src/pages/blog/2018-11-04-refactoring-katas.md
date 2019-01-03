@@ -1,7 +1,7 @@
 ---
 templateKey: "blog-post"
 title: "Refactoring Katas"
-date: "2018-11-04T16:55:10.000Z"
+date: "2018-12-11T16:55:10.000Z"
 description: >-
   A bit on 'what for' and 'how to'
 caption: ""
